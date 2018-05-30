@@ -1,6 +1,12 @@
 package view;
 
-import javax.swing.JOptionPane;
+import java.awt.Dimension;
+import java.awt.Rectangle;
+import java.util.Observer;
+
+import showboard.BoardFrame;
+import showboard.IPawn;
+import showboard.ISquare;
 
 /**
  * <h1>The Class ViewFacade provides a facade of the View component.</h1>
@@ -15,15 +21,17 @@ public class ViewFacade implements IView {
      */
     public ViewFacade() {
         super();
+    	BoardFrame board = new BoardFrame("Lorann", false);
+    	System.out.println("view");
     }
 
     /*
      * (non-Javadoc)
      * @see view.IView#displayMessage(java.lang.String)
      */
-    @Override
+    /*@Override
     public final void displayMessage(final String message) {
         JOptionPane.showMessageDialog(null, message);
-    }
-
+    }*/
 }
+

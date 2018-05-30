@@ -18,6 +18,8 @@ public final class ModelFacade implements IModel {
      */
     public ModelFacade() {
         super();
+    	System.out.println("model");
+
     }
 
     /*

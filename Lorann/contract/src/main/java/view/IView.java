@@ -1,5 +1,7 @@
 package view;
 
+import showboard.BoardFrame;
+
 /**
  * <h1>The Interface IView.</h1>
  *
@@ -14,5 +16,5 @@ public interface IView {
      * @param message
      *            the message
      */
-    void displayMessage(String message);
+    //void displayMessage(String message);
 }
