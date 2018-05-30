@@ -21,7 +21,7 @@ public class ViewFacade implements IView {
      */
     public ViewFacade() {
         super();
-    	BoardFrame board = new BoardFrame("Lorann", false);
+        init();
     	System.out.println("view");
     }
 
@@ -33,5 +33,10 @@ public class ViewFacade implements IView {
     public final void displayMessage(final String message) {
         JOptionPane.showMessageDialog(null, message);
     }*/
+    
+    public void init(){
+    	BoardFrame board = new BoardFrame("Lorann", false);
+
+    }
 }
 

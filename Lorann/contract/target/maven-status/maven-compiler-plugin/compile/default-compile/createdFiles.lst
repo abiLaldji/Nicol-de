@@ -1,4 +1,7 @@
+<<<<<<< HEAD
+=======
 view\IView.class
 model\Example.class
 model\IModel.class
 controller\IController.class
+>>>>>>> branch 'master' of https://github.com/abiLaldji/Nicol-de

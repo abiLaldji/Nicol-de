@@ -1,7 +1,9 @@
 package model.element.nonMobile;
 
-public class VBone {
-public void draw (Position position) {
+import model.element.Position;
+
+public class VBone implements Wall{
 	
-}
+	public void draw (Position position) {
+	}
 }

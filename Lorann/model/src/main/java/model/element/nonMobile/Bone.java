@@ -1,7 +1,9 @@
 package model.element.nonMobile;
 
-public class Bone {
-public void draw (Position position) {
+import model.element.Position;
+
+public class Bone implements Wall{
+	public void draw (Position position) {
 	
-}
+	}
 }

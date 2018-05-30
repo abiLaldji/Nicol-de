@@ -1,5 +1,7 @@
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 model/dao/ExampleDAO.class
 model/element/Kill.class
 model/element/nonMobile/fg.class
@@ -17,4 +19,5 @@ model/element/Loot.class
 model/element/Direction.class
 model/element/Sprite.class
 model/element/Collision.class
+>>>>>>> branch 'master' of https://github.com/abiLaldji/Nicol-de
 >>>>>>> branch 'master' of https://github.com/abiLaldji/Nicol-de
