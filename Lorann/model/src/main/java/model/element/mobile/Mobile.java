@@ -1,45 +1,48 @@
 package model.element.mobile;
 
 public class Mobile implements IMobile{
-private final int SPEED = 1;
-private boolean alive = true;
-
-public void moveUp() {
 	
-}
-
-public void moveDown() {
+	private final int SPEED = 1;
+	private boolean alive = true;
 	
-}
-
-public void moveLeft() {
+	public void moveUp() {
+		
+	}
 	
-}
-
-public void moveRight() {
+	public void moveDown() {
+		
+	}
 	
-}
-
-public void moveUpRight() {
+	public void moveLeft() {
+		
+	}
 	
-}
-
-public void moveUpLeft() {
+	public void moveRight() {
+		
+	}
 	
-}
-public void moveDownRight() {
+	public void moveUpRight() {
+		
+	}
 	
-}
-public void moveDownLeft() {
+	public void moveUpLeft() {
+		
+	}
 	
-}
-
-public boolean isAlive() {
-	return alive;
+	public void moveDownRight() {
+		
+	}
 	
-}
-
-public void doNothing() {
+	public void moveDownLeft() {
+		
+	}
 	
-}
+	public boolean isAlive() {
+		return alive;
+		
+	}
+	
+	public void doNothing() {
+		
+	}
 }

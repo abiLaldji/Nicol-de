@@ -13,7 +13,9 @@ public interface IMobile {
 	public void moveUpRight();
 
 	public void moveUpLeft();
+	
 	public void moveDownRight();
+	
 	public void moveDownLeft();
 
 	public boolean isAlive();

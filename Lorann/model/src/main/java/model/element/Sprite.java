@@ -2,6 +2,8 @@ package model.element;
 
 import java.awt.Image;
 
+import showboard.BoardFrame;
+
 public class Sprite {
 	private boolean loaded;
 	private String imageLink;
@@ -12,6 +14,8 @@ public class Sprite {
 	private Position position;
 	private Dimension dimension;
 	private Penetrability penetrability;
+	private int imageHeight = 90;
+	private int imageWidth = 96;
 	
 	
 	public Sprite(Direction direction, Position position, Penetrability penetrability, Dimension dimension, String imageLink) {
