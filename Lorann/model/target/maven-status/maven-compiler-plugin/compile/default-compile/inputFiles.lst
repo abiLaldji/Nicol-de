@@ -1,6 +1,19 @@
-E:\A1\projet\projet 5\Projet de départ avec Maven et plugins déjà configurés Fichier\Lorann\model\src\main\java\model\dao\LorannBDDConnector.java
-E:\A1\projet\projet 5\Projet de départ avec Maven et plugins déjà configurés Fichier\Lorann\model\src\main\java\model\dao\ExampleDAO.java
-E:\A1\projet\projet 5\Projet de départ avec Maven et plugins déjà configurés Fichier\Lorann\model\src\main\java\model\ModelFacade.java
-E:\A1\projet\projet 5\Projet de départ avec Maven et plugins déjà configurés Fichier\Lorann\model\src\main\java\model\dao\package-info.java
-E:\A1\projet\projet 5\Projet de départ avec Maven et plugins déjà configurés Fichier\Lorann\model\src\main\java\model\package-info.java
-E:\A1\projet\projet 5\Projet de départ avec Maven et plugins déjà configurés Fichier\Lorann\model\src\main\java\model\dao\AbstractDAO.java
+C:\Users\tille\git\Nicol-de\Lorann\model\src\main\java\model\element\Collision.java
+C:\Users\tille\git\Nicol-de\Lorann\model\src\main\java\model\element\Dimension.java
+C:\Users\tille\git\Nicol-de\Lorann\model\src\main\java\model\element\mobile\ve.java
+C:\Users\tille\git\Nicol-de\Lorann\model\src\main\java\model\element\Rebound.java
+C:\Users\tille\git\Nicol-de\Lorann\model\src\main\java\model\element\Loot.java
+C:\Users\tille\git\Nicol-de\Lorann\model\src\main\java\model\package-info.java
+C:\Users\tille\git\Nicol-de\Lorann\model\src\main\java\model\element\ICollision.java
+C:\Users\tille\git\Nicol-de\Lorann\model\src\main\java\model\element\nonMobile\fg.java
+C:\Users\tille\git\Nicol-de\Lorann\model\src\main\java\model\element\Position.java
+C:\Users\tille\git\Nicol-de\Lorann\model\src\main\java\model\ModelFacade.java
+C:\Users\tille\git\Nicol-de\Lorann\model\src\main\java\model\element\Sprite.java
+C:\Users\tille\git\Nicol-de\Lorann\model\src\main\java\model\dao\LorannBDDConnector.java
+C:\Users\tille\git\Nicol-de\Lorann\model\src\main\java\model\element\Kill.java
+C:\Users\tille\git\Nicol-de\Lorann\model\src\main\java\model\dao\package-info.java
+C:\Users\tille\git\Nicol-de\Lorann\model\src\main\java\model\element\Penetrability.java
+C:\Users\tille\git\Nicol-de\Lorann\model\src\main\java\model\element\Direction.java
+C:\Users\tille\git\Nicol-de\Lorann\model\src\main\java\model\dao\AbstractDAO.java
+C:\Users\tille\git\Nicol-de\Lorann\model\src\main\java\model\dao\ExampleDAO.java
+C:\Users\tille\git\Nicol-de\Lorann\model\src\main\java\model\element\Block.java
