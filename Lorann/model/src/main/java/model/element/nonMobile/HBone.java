@@ -1,7 +1,10 @@
 package model.element.nonMobile;
 
-public class HBone {
-public void draw(Position position) {
+import model.element.Position;
+
+
+public class HBone implements Wall {
+	public void draw(Position position) {
 	
 }
 }
