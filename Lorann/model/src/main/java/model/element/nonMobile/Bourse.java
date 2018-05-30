@@ -1,6 +1,8 @@
 package model.element.nonMobile;
 
-public class Bourse {
+import model.element.Sprite;
+
+public class Bourse extends Sprite{
 	private static String IMAGE = "purse.png";
 
 }

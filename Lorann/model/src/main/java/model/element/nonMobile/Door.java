@@ -1,10 +1,14 @@
 package model.element.nonMobile;
 
-public class Door {
-	public setState (State state) {
-		
+import model.element.Sprite;
+
+public class Door extends Sprite {
+	public void setState(State state) {
 	}
-	public void getState() {
-		
-	}
+	public  getState() {
+		return null;
 }
+	
+	
+}
+

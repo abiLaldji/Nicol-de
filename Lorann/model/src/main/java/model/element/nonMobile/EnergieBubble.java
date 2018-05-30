@@ -1,5 +1,7 @@
 package model.element.nonMobile;
 
-public class EnergieBubble {
+import model.element.Sprite;
 
+public class EnergieBubble extends Sprite {
+private static String IMAGE="crystal_ball.png";
 }
