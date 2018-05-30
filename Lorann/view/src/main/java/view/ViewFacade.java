@@ -1,13 +1,5 @@
 package view;
 
-import java.awt.Dimension;
-import java.awt.Rectangle;
-import java.util.Observer;
-
-import showboard.BoardFrame;
-import showboard.IPawn;
-import showboard.ISquare;
-
 /**
  * <h1>The Class ViewFacade provides a facade of the View component.</h1>
  *
@@ -21,7 +13,6 @@ public class ViewFacade implements IView {
      */
     public ViewFacade() {
         super();
-        init();
     	System.out.println("view");
     }
 
@@ -34,9 +25,5 @@ public class ViewFacade implements IView {
         JOptionPane.showMessageDialog(null, message);
     }*/
     
-    public void init(){
-    	BoardFrame board = new BoardFrame("Lorann", false);
-
-    }
 }
 
