@@ -9,12 +9,7 @@ import java.util.Observable;
 import model.element.Element;
 import model.element.nonMobile.NonMobileFactory;;
 
-/**
- * <h1>The Road Class.</h1>
- *
- * @author Jade
- * @version 0.3
- */
+
 class Map extends Observable {
 
     private int width;

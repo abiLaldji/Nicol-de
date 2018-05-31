@@ -1,6 +1,8 @@
 package model.element.mobile;
 
-public interface IMobile {
+import showboard.IPawn;
+
+public interface IMobile extends IPawn {
 
 	public void moveUp();
 
