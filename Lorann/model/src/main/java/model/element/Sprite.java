@@ -14,38 +14,14 @@ public class Sprite {
 	private Position position;
 	private Dimension dimension;
 	private Penetrability penetrability;
-	private int imageHeight = 90;
-	private int imageWidth = 96;
 	
 	
-	public Sprite(Direction direction, Position position, Penetrability penetrability, Dimension dimension, String imageLink) {
-		
-	}
+	public Sprite(final char character, final String imageName) {
+        this.setConsoleImage(character);
+        this.setImageName(imageName);
+    }
+
 	
-	
-	public Direction getDirection() {
-		return direction;
-	}
-	
-	public void setDirection(Direction direction) {
-		this.direction = direction;
-	}
-	
-	public Position getPosition() {
-		return position;
-	}
-	
-	public void setPosition(Position position) {
-		this.position = position;
-	}
-	
-	public Dimension getDimension() {
-		return dimension;
-	}
-	
-	public void setDimension(Dimension dimension) {
-		this.dimension = dimension;
-	}
 	
 	public Penetrability getPenetrability() {
 		return penetrability;
@@ -62,6 +38,7 @@ public class Sprite {
 	public void setConsoleImage(char consoleImage) {
 		this.consoleImage = consoleImage;
 	}
+	
 	public boolean isVisible() {
 		return visible;
 	}
@@ -71,13 +48,15 @@ public class Sprite {
 	}
 	
 	public Image getImage() {
-		return image;
+		return this.image;
 	}
 
 	public void setImage(Image image) {
 		this.image = image;
 	}
 	
-	
+	public setLoaded(boolean loaded) {
+		this.loaded = loaded;
+	}
 
 }

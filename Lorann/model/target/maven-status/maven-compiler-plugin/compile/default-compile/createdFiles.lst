@@ -1,16 +1,4 @@
-model/element/Kill.class
-model/element/mobile/ve.class
-model/dao/LorannBDDConnector.class
 model/element/Dimension.class
-model/element/Penetrability.class
-model/element/Rebound.class
-model/element/Position.class
 model/element/Block.class
 model/element/ICollision.class
 model/ModelFacade.class
-model/element/Sprite.class
-model/element/Collision.class
-model/dao/ExampleDAO.class
-model/dao/AbstractDAO.class
-model/element/Loot.class
-model/element/Direction.class
