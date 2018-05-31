@@ -1,6 +1,10 @@
 package model.element;
 
 import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 public class Sprite {
 	private boolean loaded;
@@ -16,7 +20,9 @@ public class Sprite {
         this.setImageLink(imageName);
     }
 
-	
+	public final void loadImage() throws IOException {
+        this.setImage(ImageIO.read(new File(this.getImageLink())));
+    }
 	
 	public Penetrability getPenetrability() {
 		return penetrability;
