@@ -1,30 +1,3 @@
-
-Skip to content
-
-    Pull requests
-    Issues
-    Marketplace
-    Explore
-
-    @abiLaldji
-
-0
-0
-
-    0
-
-abiLaldji/Nicol-de
-Code
-Issues 0
-Pull requests 0
-Projects 0
-Wiki
-Insights
-Settings
-Nicol-de/Lorann/view/src/main/java/view/ViewFacade.java
-c56c967 5 minutes ago
-abi ?
-66 lines (50 sloc) 1.66 KB
 package view;
 
 import java.awt.Dimension;
@@ -61,20 +34,12 @@ public class ViewFacade implements IView {
     	System.out.println("view");
     }
 
-    /*
-     * (non-Javadoc)
-     * @see view.IView#displayMessage(java.lang.String)
-     */
-    /*@Override
-    public final void displayMessage(final String message) {
-        JOptionPane.showMessageDialog(null, message);
-    }*/
-    
     public void init(){
     	BoardFrame boardFrame = new BoardFrame("Lorann", false);
         boardFrame.setSize(new Dimension(sizeFrameWidth, sizeFrameHeight));
         boardFrame.setDimension(new Dimension(width, height));
         boardFrame.setDisplayFrame(gameFrame);
+        boardFrame.setHeightLooped(true);
         boardFrame.setLocationRelativeTo(null);
         frameAddSquare(boardFrame);
     }

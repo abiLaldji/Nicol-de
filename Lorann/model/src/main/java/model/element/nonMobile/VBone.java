@@ -1,9 +1,14 @@
 package model.element.nonMobile;
 
-import model.element.Position;
+import model.element.Penetrability;
+import model.element.Sprite;
 
-public class VBone implements Wall{
-	
-	public void draw (Position position) {
-	}
+class VBone extends NonMobile {
+
+    private static final Sprite SPRITE = new Sprite('[', "images/vertical_bone.png");
+
+   
+    VBone() {
+        super(SPRITE, Penetrability.BLOCKING);
+    }
 }

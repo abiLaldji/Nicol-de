@@ -2,23 +2,18 @@ package model.element;
 
 import java.awt.Image;
 
-import showboard.BoardFrame;
-
 public class Sprite {
 	private boolean loaded;
 	private String imageLink;
 	private Image image;
 	private char consoleImage;
 	private boolean visible;
-	private Direction direction;
-	private Position position;
-	private Dimension dimension;
 	private Penetrability penetrability;
 	
 	
 	public Sprite(final char character, final String imageName) {
         this.setConsoleImage(character);
-        this.setImageName(imageName);
+        this.setImageLink(imageName);
     }
 
 	
@@ -55,7 +50,26 @@ public class Sprite {
 		this.image = image;
 	}
 	
-	public setLoaded(boolean loaded) {
+
+
+	public String getImageLink() {
+		return imageLink;
+	}
+
+
+	public void setImageLink(String imageLink) {
+		this.imageLink = imageLink;
+	}
+
+
+
+	public boolean isLoaded() {
+		return loaded;
+	}
+
+
+
+	public void setLoaded(boolean loaded) {
 		this.loaded = loaded;
 	}
 
