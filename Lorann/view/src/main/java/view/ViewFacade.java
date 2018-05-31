@@ -16,6 +16,18 @@ import showboard.ISquare;
  */
 public class ViewFacade implements IView {
 
+	private static final int width = 20;
+	
+	private static final int height = 12;
+	
+	private static final int sizeFrameWidth = 1280;
+	
+	private static final int sizeFrameHeight = 768;
+	
+	private static final Rectangle lorannGame = new Rectangle(0 ,0 ,width ,height);
+	
+	private final Obstacle bone = new Obstacle("images/bone.png");
+	
     /**
      * Instantiates a new view facade.
      */
@@ -35,8 +47,20 @@ public class ViewFacade implements IView {
     }*/
     
     public void init(){
-    	BoardFrame board = new BoardFrame("Lorann", false);
-
+    	BoardFrame boardFrame = new BoardFrame("Lorann", false);
+        boardFrame.setSize(sizeFrameWidth, sizeFrameHeight);
+    	boardFrame.setDimension(new Dimension(width, height));
+        boardFrame.setDisplayFrame(lorannGame);
+        boardFrame.setLocationRelativeTo(null);
+        frameConfigure(boardFrame);
+    }
+    
+    public final void frameConfigure(final BoardFrame frame) {
+    
+      frame.addSquare(bone, 1, 1);
+        
+      frame.setVisible(true);
+   
     }
 }
 
