@@ -19,20 +19,16 @@ public interface IBoard {
     /**
      * Adds the square.
      *
-     * @param square
-     *            the square
-     * @param x
-     *            the x
-     * @param y
-     *            the y
+     * @param square the square
+     * @param x the x
+     * @param y the y
      */
     void addSquare(ISquare square, int x, int y);
 
     /**
      * Adds the pawn.
      *
-     * @param pawn
-     *            the pawn
+     * @param pawn the pawn
      */
     void addPawn(IPawn pawn);
 
@@ -46,8 +42,7 @@ public interface IBoard {
     /**
      * Sets the dimension.
      *
-     * @param dimension
-     *            the new dimension
+     * @param dimension the new dimension
      */
     void setDimension(Dimension dimension);
 
@@ -61,8 +56,7 @@ public interface IBoard {
     /**
      * Sets the display frame.
      *
-     * @param displayFrame
-     *            the new display frame
+     * @param displayFrame the new display frame
      */
-    void setDisplayFrame(Rectangle displayFrame);
+    void setDisplayFrame(final Rectangle displayFrame);
 }
