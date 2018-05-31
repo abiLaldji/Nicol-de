@@ -2,11 +2,8 @@ package view;
 
 import java.awt.Dimension;
 import java.awt.Rectangle;
-import java.util.Observer;
 
 import showboard.BoardFrame;
-import showboard.IPawn;
-import showboard.ISquare;
 
 /**
  * <h1>The Class ViewFacade provides a facade of the View component.</h1>
@@ -19,14 +16,14 @@ public class ViewFacade implements IView {
 	private static final int width = 20;
 	
 	private static final int height = 12;
-	
+		
 	private static final int sizeFrameWidth = 1280;
 	
 	private static final int sizeFrameHeight = 768;
 	
-	private static final Rectangle lorannGame = new Rectangle(0 ,0 ,width ,height);
+	private static final Rectangle gameFrame = new Rectangle(0 ,0 ,sizeFrameWidth ,sizeFrameHeight);
 	
-	private final Obstacle bone = new Obstacle("images/bone.png");
+	private Obstacle bone = new Obstacle("images/bone.png");
 	
     /**
      * Instantiates a new view facade.
@@ -48,19 +45,21 @@ public class ViewFacade implements IView {
     
     public void init(){
     	BoardFrame boardFrame = new BoardFrame("Lorann", false);
-        boardFrame.setSize(sizeFrameWidth, sizeFrameHeight);
-    	boardFrame.setDimension(new Dimension(width, height));
-        boardFrame.setDisplayFrame(lorannGame);
+        boardFrame.setSize(new Dimension(sizeFrameWidth, sizeFrameHeight));
+        boardFrame.setDimension(new Dimension(width, height));
+        boardFrame.setDisplayFrame(gameFrame);
         boardFrame.setLocationRelativeTo(null);
-        frameConfigure(boardFrame);
+        frameAddSquare(boardFrame);
     }
     
-    public final void frameConfigure(final BoardFrame frame) {
-    
-      frame.addSquare(bone, 1, 1);
-        
-      frame.setVisible(true);
-   
+    public final void frameAddSquare(final BoardFrame frame) {
+    	
+    	for (int x = 0; x < width; x +=1) {
+    		for (int y = 0; y < height; y +=1) {
+    			frame.addSquare(bone, x, y);
+    	    	frame.setVisible(true);
+    		}
+    	}
     }
 }
 
