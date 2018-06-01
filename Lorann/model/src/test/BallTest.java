@@ -1,4 +1,4 @@
-package model.element.nonMobile;
+package model.src.test;
 
 import static org.junit.Assert.*;
 
