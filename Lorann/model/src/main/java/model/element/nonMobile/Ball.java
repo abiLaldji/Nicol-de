@@ -3,12 +3,12 @@ package model.element.nonMobile;
 import model.element.Penetrability;
 import model.element.Sprite;
 
-class Bone extends NonMobile {
+class Ball extends NonMobile {
 
-    private static final Sprite SPRITE = new Sprite('[', "images/Bone.png");
+    private static final Sprite SPRITE = new Sprite('[', "images/crystal_ball.png");
 
    
-    Bone() {
+    Ball() {
         super(SPRITE, Penetrability.BLOCKING);
     }
 }

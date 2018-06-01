@@ -1,14 +1,18 @@
 package model.element.mobile;
 
+import java.io.IOException;
+
+import model.IMap;
+import model.element.Penetrability;
+import model.element.Sprite;
+
 public class Monster extends Mobile{
-
-	private MonsterType type;
-
-	public MonsterType getType() {
-		return type;
-	}
-
-	public void setType(MonsterType type) {
-		this.type = type;
-	}
+	
+    private static final Sprite spriteM = new Sprite('#', "images/monster_1.png");
+    
+   
+    public Monster(final int x, final int y, final IMap map) throws IOException {
+        super(x, y, spriteM, map, Penetrability.BLOCKING);
+        spriteM.loadImage();   
+    }
 }

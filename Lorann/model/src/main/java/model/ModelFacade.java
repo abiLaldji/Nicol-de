@@ -1,10 +1,5 @@
 package model;
 
-import java.sql.SQLException;
-import java.util.List;
-
-import model.dao.ExampleDAO;
-
 /**
  * <h1>The Class ModelFacade provides a facade of the Model component.</h1>
  *
