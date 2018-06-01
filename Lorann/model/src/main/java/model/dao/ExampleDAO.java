@@ -3,6 +3,12 @@ package model.dao;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.util.Observable;
+
+import model.element.Element;
+import model.element.Penetrability;
+import model.element.Sprite;
+import model.element.nonMobile.NonMobileFactory;
 
 /**
  * <h1>The Class ExampleDAO.</h1>
@@ -12,8 +18,9 @@ import java.sql.ResultSet;
  */
 public abstract class ExampleDAO extends AbstractDAO {
 
-
-	private String[][] emplacement;
+	private final int WIDTH = 20;
+	private final int HEIGHT = 12;
+	private Element[][] onTheMap = new Element[WIDTH][HEIGHT];
  
     private static String sql  = "{call print_decor}";
 
@@ -41,25 +48,37 @@ public void semer() {
 	    			if(levelNumber == levelNumberBdd) {
 		    			switch(type) {
 		    			case "HWall" :
-		    				this.emplacement[x][y] = "_"; 
+		    				this.setOnTheMapXY(NonMobileFactory.getFromFileSymbol('H'), x, y);  
 		    				break;
 		    			case "VWall" :
-		    				this.emplacement[x][y] = "|"; 
+		    				 this.setOnTheMapXY(NonMobileFactory.getFromFileSymbol('V'), x, y);  
 		    				break;
 		    			case "CWall" :
-		    				this.emplacement[x][y] = "o"; 
+		    				this.setOnTheMapXY(NonMobileFactory.getFromFileSymbol('C'), x, y);   
 		    				break;
 		    			case "Lorann" :
-		    				this.emplacement[x][y] = "L"; 
+		    				this.setOnTheMapXY(NonMobileFactory.getFromFileSymbol('L'), x, y);  
 		    				break;
 		    			case "Door" :
-		    				this.emplacement[x][y] = "D"; 
+		    				this.setOnTheMapXY(NonMobileFactory.getFromFileSymbol('D'), x, y);  
 		    				break;
 		    			case "Bubble" :
-		    				this.emplacement[x][y] = "B"; 
+		    				this.setOnTheMapXY(NonMobileFactory.getFromFileSymbol('B'), x, y);  
 		    				break;
-		    			case "Ennemi" :
-		    				this.emplacement[x][y] = "E"; 
+		    			case "Monster_1" :
+		    				this.setOnTheMapXY(NonMobileFactory.getFromFileSymbol('Y'), x, y);  
+		    				break;
+		    			case "Monster_2" :
+		    				this.setOnTheMapXY(NonMobileFactory.getFromFileSymbol('U'), x, y);   
+		    				break;
+		    			case "Monster_3" :
+		    				this.setOnTheMapXY(NonMobileFactory.getFromFileSymbol('I'), x, y);  
+		    				break;
+		    			case "Monster_4" :
+		    				this.setOnTheMapXY(NonMobileFactory.getFromFileSymbol('O'), x, y);    
+		    				break;
+		    			case "Purse" :
+		    				this.setOnTheMapXY(NonMobileFactory.getFromFileSymbol('P'), x, y);   
 		    				break;
 		    			}
 		            }
@@ -77,7 +96,46 @@ public void semer() {
     
     
     
-    
-    
-    
+	public final int getWidth() {
+	    return this.WIDTH;
+	}
+	
+	/*private void setWidth(final int width) {
+	    this.WIDTH = width;
+	}*/
+	
+	
+	public final int getHeight() {
+	    return this.HEIGHT;
+	}
+	
+	
+	/*private void setHeight(final int height) {
+	    this.HEIGHT = height;
+	}*/
+	
+	
+	
+	public final Element getOnTheMapXY(final int x, final int y) {
+	    return this.onTheMap[x][y];
+	}
+	
+	
+	private void setOnTheMapXY(final Element element, final int x, final int y) {
+	    this.onTheMap[x][y] = element;
+	}
+	
+	
+	/*public final void setMobileHasChanged() {
+	    this.setChanged();
+	    this.notifyObservers();
+	}
+	
+	public Observable getObservable() {
+	    return this;
+	}*/
 }
+
+    
+    
+
