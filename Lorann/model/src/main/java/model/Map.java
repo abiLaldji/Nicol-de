@@ -1,6 +1,5 @@
 package model;
 
-import java.io.IOException;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -10,29 +9,25 @@ import model.element.Element;
 import model.element.nonMobile.NonMobileFactory;;
 
 
-class Map extends Observable {
+class Map extends Observable implements IMap {
 
 
 	private final int WIDTH = 20;
+	
 	private final int HEIGHT = 12;
+
 	private Element[][] onTheMap = new Element[WIDTH][HEIGHT];
  
     private static String sql  = "{call print_decor}";
 
-   
-
 
     Map() {
-        super();      
+        super();
+        semer();
     }
 
-
-
-
     public void semer() {
-    		
-    	
-    		
+
     		try {
     			Connection cnx = model.dao.LorannBDDConnector.connecterDB();			
     			CallableStatement  cs;
@@ -129,6 +124,24 @@ class Map extends Observable {
     	private void setOnTheMapXY(final Element element, final int x, final int y) {
     	    this.onTheMap[x][y] = element;
     	}
+
+    
+    	//public void loadFile(String fileName) {
+			// TODO Auto-generated method stub
+			
+		//}
+
+		@Override
+		public Observable getObservable() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public void setMobileHasChanged() {
+			// TODO Auto-generated method stub
+			
+		}
     	
     	
     	/*public final void setMobileHasChanged() {

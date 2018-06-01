@@ -3,7 +3,9 @@ package main;
 import java.sql.SQLException;
 
 import controller.ControllerFacade;
+import model.IModel;
 import model.ModelFacade;
+import view.IView;
 import view.ViewFacade;
 
 /**
@@ -20,8 +22,16 @@ public abstract class Main {
      * @param args
      *            the arguments
      */
+	   private static final int startX = 5;
+
+	    /** The Constant startY. */
+	    private static final int startY = 0;
+	
+	
     public static void main(final String[] args) {
-        final ControllerFacade controller = new ControllerFacade(new ViewFacade(), new ModelFacade());
+    	final ModelFacade model = new ModelFacade(startX, startY);
+        final IView view = new ViewFacade(model.getMap(), model.getLorann());
+        final ControllerFacade controller = new ControllerFacade(view, model);
 
         try {
             controller.start();

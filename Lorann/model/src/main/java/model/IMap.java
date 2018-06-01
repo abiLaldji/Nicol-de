@@ -7,17 +7,13 @@ import model.element.Element;;
 
 public interface IMap {
 
-
-   void loadFile(final String fileName);
-
-   int getWidth();
-
+	void semer();
+	
+	int getWidth();
 
     int getHeight() ;
 
-
     Element getOnTheMapXY(final int x, final int y);
-
 
     Observable getObservable();
 

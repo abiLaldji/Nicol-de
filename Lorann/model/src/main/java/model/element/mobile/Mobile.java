@@ -1,7 +1,6 @@
 package model.element.mobile;
 
 import java.awt.Point;
-import java.util.Map;
 
 import model.IMap;
 import model.element.Element;
