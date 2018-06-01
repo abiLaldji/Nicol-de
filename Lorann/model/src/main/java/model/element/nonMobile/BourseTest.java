@@ -10,9 +10,8 @@ import org.junit.Test;
 
 import model.element.Penetrability;
 
-public class HBoneTest {
-	HBone hbone = new HBone();
-	
+public class BourseTest {
+	Bourse bourse = new Bourse();
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -31,13 +30,16 @@ public class HBoneTest {
 	}
 
 	@Test
-	public void testHBone() {
-		final Penetrability expected = Penetrability.BLOCKING;
-		assertEquals(expected, hbone.getPenetrability());
-	}
-	@Test
-	public void testHBoneFaux() {
+	public void testBourse() {
 		final Penetrability expected = Penetrability.PENETRABLE;
-		assertEquals(expected, hbone.getPenetrability());
+		assertEquals(expected, bourse.getPenetrability());
 	}
+	
+	@Test
+	public void testBourseFaux() {
+		final Penetrability expected = Penetrability.BLOCKING;
+		assertEquals(expected, bourse.getPenetrability());
+	}
+	
+
 }

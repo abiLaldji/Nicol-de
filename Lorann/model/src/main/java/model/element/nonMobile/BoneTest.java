@@ -33,5 +33,9 @@ public class BoneTest {
 		final Penetrability expected = Penetrability.BLOCKING;
 		assertEquals(expected, bone.getPenetrability());
 	}
-
+	@Test
+	public void testBoneFaux() {
+		final Penetrability expected = Penetrability.PENETRABLE;
+		assertEquals(expected, bone.getPenetrability());
+	}
 }

@@ -30,19 +30,19 @@ public abstract class NonMobileFactory {
     }
     
     public NonMobile createHBone() {
-        return vBone;
+        return hBone;
     }
     
     public NonMobile createBone() {
-        return vBone;
+        return bone;
     }
     
     public NonMobile createBourse() {
-        return vBone;
+        return bourse;
     }
     
     public NonMobile createOpenDoor() {
-        return vBone;
+        return openDoor;
     }
     
     public NonMobile createClosedDoor() {
