@@ -6,7 +6,10 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-public class Sprite {
+import model.ISprite;
+import model.Penetrability;
+
+public class Sprite implements ISprite{
 	private boolean loaded;
 	private String imageLink;
 	private Image image;

@@ -1,6 +1,5 @@
-package model.element.mobile;
+package model;
 
-import model.element.IElement;
 import showboard.IPawn;
 
 public interface IMobile extends IPawn, IElement {

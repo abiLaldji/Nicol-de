@@ -2,11 +2,14 @@ package model.element;
 
 import java.awt.Image;
 
+import model.IElement;
+import model.ISprite;
+import model.Penetrability;
 import showboard.ISquare;
 
 
 
-public abstract class Element implements ISquare{
+public abstract class Element implements ISquare, IElement{
 	
 	private Sprite sprite;
 	
@@ -17,7 +20,7 @@ public abstract class Element implements ISquare{
         this.setPenetrability(penetrability);
 	}
 	
-    public final Sprite getSprite() {
+    public final ISprite getSprite() {
         return this.sprite;
     }
 

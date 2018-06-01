@@ -1,6 +1,6 @@
 package model.element.nonMobile;
 
-import model.element.Penetrability;
+import model.Penetrability;
 import model.element.Sprite;
 
 class Ball extends NonMobile {
