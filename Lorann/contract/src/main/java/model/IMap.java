@@ -1,8 +1,6 @@
 package model;
 
-import java.util.Observable;
-
-import model.element.Element;;
+import java.util.Observable;;
 
 
 public interface IMap {
@@ -13,7 +11,7 @@ public interface IMap {
 
     int getHeight() ;
 
-    Element getOnTheMapXY(final int x, final int y);
+    IElement getOnTheMapXY(final int x, final int y);
 
     Observable getObservable();
 

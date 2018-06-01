@@ -3,7 +3,7 @@ package model.element.mobile;
 import java.io.IOException;
 
 import model.IMap;
-import model.element.Penetrability;
+import model.Penetrability;
 import model.element.Sprite;
 
 public class Monster extends Mobile{

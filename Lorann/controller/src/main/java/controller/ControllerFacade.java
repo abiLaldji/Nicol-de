@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 import model.IModel;
 import view.IView;
@@ -27,7 +26,7 @@ public class ControllerFacade implements IController,IOrderPerformer {
     }
 
  
-    public void start(){
+    public void start() throws InterruptedException{
             while (this.getModel().getLorann().isAlive()) {
                 Thread.sleep(SPEED);
                 switch (this.getStackOrder()) {

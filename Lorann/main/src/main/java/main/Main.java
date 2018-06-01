@@ -1,11 +1,11 @@
 package main;
 
-import java.sql.SQLException;
+import java.io.IOException;
 
 import controller.ControllerFacade;
+import controller.IController;
 import model.IModel;
 import model.ModelFacade;
-import view.IView;
 import view.ViewFacade;
 
 /**
@@ -22,22 +22,17 @@ public abstract class Main {
      * @param args
      *            the arguments
      */
-	   private static final int startX = 5;
+	private static final int startX = 5;
 
 	    /** The Constant startY. */
-	    private static final int startY = 0;
+	private static final int startY = 0;
 	
-	
-    public static void main(final String[] args) {
-    	final ModelFacade model = new ModelFacade(startX, startY);
-        final IView view = new ViewFacade(model.getMap(), model.getLorann());
-        final ControllerFacade controller = new ControllerFacade(view, model);
+    public static void main(final String[] args) throws InterruptedException, IOException {
+    	final IModel model = new ModelFacade(startX, startY);
+        final ViewFacade view = new ViewFacade(model.getMap(), model.getLorann());
+        final IController controller = new ControllerFacade(view, model);
 
-        try {
-            controller.start();
-        } catch (final SQLException exception) {
-            exception.printStackTrace();
-        }
+        controller.start();
     }
 
 }

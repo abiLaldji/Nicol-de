@@ -2,7 +2,6 @@ package model;
 
 import java.io.IOException;
 
-import model.element.mobile.IMobile;
 import model.element.mobile.Lorann;
 
 

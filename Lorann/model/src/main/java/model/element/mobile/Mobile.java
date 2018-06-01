@@ -3,8 +3,9 @@ package model.element.mobile;
 import java.awt.Point;
 
 import model.IMap;
+import model.IMobile;
+import model.Penetrability;
 import model.element.Element;
-import model.element.Penetrability;
 import model.element.Sprite;
 import showboard.IBoard;
 

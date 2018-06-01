@@ -7,7 +7,7 @@ import java.io.IOException;
 import javax.swing.SwingUtilities;
 
 import model.IMap;
-import model.element.mobile.IMobile;
+import model.IMobile;
 import showboard.BoardFrame;
 
 /**
