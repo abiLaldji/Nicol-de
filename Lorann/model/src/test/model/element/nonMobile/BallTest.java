@@ -39,5 +39,6 @@ public class BallTest {
 		final Penetrability expected = Penetrability.BLOCKING;
 		assertEquals(expected, ball.getPenetrability());
 	}
+	}
 
-}
+
