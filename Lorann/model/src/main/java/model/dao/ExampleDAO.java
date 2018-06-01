@@ -3,20 +3,6 @@ package model.dao;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-
-/*import decorBDD.Bubble;
-import decorBDD.CWall;
-import decorBDD.Connexion;
-import decorBDD.Door;
-import decorBDD.Emplacement;
-import decorBDD.Ennemi;
-import decorBDD.HWall;
-import decorBDD.Lorann;
-import decorBDD.VWall;*/
-import model.Example;
 
 /**
  * <h1>The Class ExampleDAO.</h1>
@@ -27,7 +13,7 @@ import model.Example;
 public abstract class ExampleDAO extends AbstractDAO {
 
 
-
+	private String[][] emplacement;
  
     private static String sql  = "{call print_decor}";
 
@@ -55,25 +41,25 @@ public void semer() {
 	    			if(levelNumber == levelNumberBdd) {
 		    			switch(type) {
 		    			case "HWall" :
-		    				//this.emplacement[x][y] = new Emplacement(new HWall()); 
+		    				this.emplacement[x][y] = "_"; 
 		    				break;
 		    			case "VWall" :
-		    				//this.emplacement[x][y] = new Emplacement(new VWall()); 
+		    				this.emplacement[x][y] = "|"; 
 		    				break;
 		    			case "CWall" :
-		    				//this.emplacement[x][y] = new Emplacement(new CWall()); 
+		    				this.emplacement[x][y] = "o"; 
 		    				break;
 		    			case "Lorann" :
-		    				//this.emplacement[x][y] = new Emplacement(new Lorann()); 
+		    				this.emplacement[x][y] = "L"; 
 		    				break;
 		    			case "Door" :
-		    				//this.emplacement[x][y] = new Emplacement(new Door()); 
+		    				this.emplacement[x][y] = "D"; 
 		    				break;
 		    			case "Bubble" :
-		    				//this.emplacement[x][y] = new Emplacement(new Bubble()); 
+		    				this.emplacement[x][y] = "B"; 
 		    				break;
 		    			case "Ennemi" :
-		    				//this.emplacement[x][y] = new Emplacement(new Ennemi()); 
+		    				this.emplacement[x][y] = "E"; 
 		    				break;
 		    			}
 		            }
