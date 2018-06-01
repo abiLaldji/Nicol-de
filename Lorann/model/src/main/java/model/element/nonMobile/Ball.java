@@ -9,6 +9,6 @@ class Ball extends NonMobile {
 
    
     Ball() {
-        super(SPRITE, Penetrability.BLOCKING);
+        super(SPRITE, Penetrability.PENETRABLE);
     }
 }
