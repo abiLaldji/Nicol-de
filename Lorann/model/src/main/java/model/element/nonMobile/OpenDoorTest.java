@@ -1,6 +1,6 @@
 package model.element.nonMobile;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -8,11 +8,10 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import model.element.Penetrability;
+import model.Penetrability;
 
-public class HBoneTest {
-	HBone hbone = new HBone();
-	
+public class OpenDoorTest {
+	OpenDoor opendoor = new OpenDoor();
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -31,13 +30,13 @@ public class HBoneTest {
 	}
 
 	@Test
-	public void testHBone() {
+	public void testOpenDoor() {
 		final Penetrability expected = Penetrability.BLOCKING;
-		assertEquals(expected, hbone.getPenetrability());
+		assertEquals(expected, opendoor.getPenetrability());
 	}
 	@Test
-	public void testHBoneFaux() {
+	public void testOpenDoorFaux() {
 		final Penetrability expected = Penetrability.PENETRABLE;
-		assertEquals(expected, hbone.getPenetrability());
+		assertEquals(expected, opendoor.getPenetrability());
 	}
 }

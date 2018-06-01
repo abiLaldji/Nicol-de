@@ -1,6 +1,6 @@
-package model.src.test;
+package model.element.nonMobile;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -8,11 +8,10 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import model.element.Penetrability;
+import model.Penetrability;
 
-public class BallTest {
-	Ball ball = new Ball();
-
+public class BoneTest {
+	Bone bone = new Bone();
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 	}
@@ -30,13 +29,13 @@ public class BallTest {
 	}
 
 	@Test
-	public void testBall() {
-		final Penetrability expected = Penetrability.PENETRABLE;
-		assertEquals(expected, ball.getPenetrability());
+	public void testBone() {
+		final Penetrability expected = Penetrability.BLOCKING;
+		assertEquals(expected, bone.getPenetrability());
 	}
 	@Test
-	public void testBallFaux() {
-		final Penetrability expected = Penetrability.BLOCKING;
-		assertEquals(expected, ball.getPenetrability());
+	public void testBoneFaux() {
+		final Penetrability expected = Penetrability.PENETRABLE;
+		assertEquals(expected, bone.getPenetrability());
 	}
 }

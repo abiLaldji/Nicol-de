@@ -8,10 +8,10 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import model.element.Penetrability;
+import model.Penetrability;
 
-public class BourseTest {
-	Bourse bourse = new Bourse();
+public class BallTest {
+	Ball ball = new Ball();
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -30,16 +30,14 @@ public class BourseTest {
 	}
 
 	@Test
-	public void testBourse() {
+	public void testBall() {
 		final Penetrability expected = Penetrability.PENETRABLE;
-		assertEquals(expected, bourse.getPenetrability());
+		assertEquals(expected, ball.getPenetrability());
 	}
-	
 	@Test
-	public void testBourseFaux() {
+	public void testBallFaux() {
 		final Penetrability expected = Penetrability.BLOCKING;
-		assertEquals(expected, bourse.getPenetrability());
+		assertEquals(expected, ball.getPenetrability());
 	}
-	
 
 }
