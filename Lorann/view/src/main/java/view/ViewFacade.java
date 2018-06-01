@@ -2,7 +2,11 @@ package view;
 
 import java.awt.Dimension;
 import java.awt.Rectangle;
+import java.io.IOException;
 
+import javax.swing.SwingUtilities;
+
+import model.IMap;
 import model.element.mobile.IMobile;
 import showboard.BoardFrame;
 
@@ -25,14 +29,24 @@ public class ViewFacade implements IView, Runnable {
 	private static final Rectangle gameFrame = new Rectangle(0 ,0 ,sizeFrameWidth ,sizeFrameHeight);
 	
 	private Obstacle bone = new Obstacle("images/bone.png");
+	
+	private IMap map;
+	
+	private IMobile lorann;
 			
 	/**
      * Instantiates a new view facade.
+	 * @throws IOException 
      */
-    public ViewFacade() {
+    public ViewFacade(final IMap map, final IMobile lorann) throws IOException {
         super();
         run();
     	System.out.println("view");
+    	this.setMap(map);
+    	this.setLorann(lorann);
+    	this.getLorann().getSprite().loadImage();
+    	SwingUtilities.invokeLater(this);
+    	   
     }
 
     public void run(){
@@ -49,18 +63,32 @@ public class ViewFacade implements IView, Runnable {
     	        boardFrame.addSquare(bone, x, y);
     	    }
     	}
-    	boardFrame.addPawn(this.getLorran());
+    	
+    	boardFrame.addPawn(this.getLorann());
 
     	//this.getRoad().getObservable().addObserver(boardFrame.getObserver());
     	//this.followMyVehicle();
     }
     
     private IMobile getLorann() {
-        return this.Lorann;
+        return this.lorann;
     }
 
   
-    private void setMyVehicle(final IMobile myVehicle) {
-        this.myVehicle = myVehicle;
+    private void setLorann(final IMobile lorann) {
+        this.lorann = lorann;
+    }
+    
+    private IMap getMap() {
+        return this.map;
+    }
+
+    private void setMap(final IMap map) throws IOException {
+        this.map = map;
+        for (int x = 0; x < this.getMap().getWidth(); x++) {
+            for (int y = 0; y < this.getMap().getHeight(); y++) {
+                this.getMap().getOnTheMapXY(x, y).getSprite().loadImage();
+            }
+        }
     }
 }

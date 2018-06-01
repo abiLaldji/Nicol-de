@@ -1,8 +1,9 @@
 package model.element.mobile;
 
+import model.element.IElement;
 import showboard.IPawn;
 
-public interface IMobile extends IPawn {
+public interface IMobile extends IPawn, IElement {
 
 	public void moveUp();
 
@@ -23,4 +24,8 @@ public interface IMobile extends IPawn {
 	public boolean isAlive();
 
 	public void doNothing();
+	
+	public int getX();
+	
+	public int getY();
 }

@@ -1,76 +1,113 @@
 package controller;
 
+import java.io.IOException;
 import java.sql.SQLException;
-import java.util.List;
 
-import model.Example;
 import model.IModel;
 import view.IView;
 
-/**
- * <h1>The Class ControllerFacade provides a facade of the Controller component.</h1>
- *
- * @author Jean-Aymeric DIET jadiet@cesi.fr
- * @version 1.0
- */
-public class ControllerFacade implements IController {
 
-    /** The view. */
-    private final IView  view;
+public class ControllerFacade implements IController,IOrderPerformer {
 
-    /** The model. */
-    private final IModel model;
 
-    /**
-     * Instantiates a new controller facade.
-     *
-     * @param view
-     *            the view
-     * @param model
-     *            the model
-     */
+    private IView  view;
+
+
+    private IModel model;
+    
+    private final int SPEED = 300;
+    
+    private UserOrder stackOrder;
+
+
     public ControllerFacade(final IView view, final IModel model) {
         super();
         this.view = view;
         this.model = model;
     }
 
-    /**
-     * Start.
-     *
-     * @throws SQLException
-     *             the SQL exception
-     */
-    public void start() throws SQLException {
-       /* this.getView().displayMessage(this.getModel().getExampleById(1).toString());
-
-        this.getView().displayMessage(this.getModel().getExampleByName("Example 2").toString());
-
-        final List<Example> examples = this.getModel().getAllExamples();
-        final StringBuilder message = new StringBuilder();
-        for (final Example example : examples) {
-            message.append(example);
-            message.append('\n');
-        }
-        this.getView().displayMessage(message.toString()); */
+ 
+    public void start(){
+            while (this.getModel().getLorann().isAlive()) {
+                Thread.sleep(SPEED);
+                switch (this.getStackOrder()) {
+                    case RIGHT:
+                        this.getModel().getLorann().moveRight();
+                        break;
+                    case LEFT:
+                        this.getModel().getLorann().moveLeft();
+                        break;
+                    case UP:
+                        this.getModel().getLorann().moveUp();
+                        break;
+                    case DOWN:
+                        this.getModel().getLorann().moveDown();
+                        break;
+                    case UPLEFT:
+                        this.getModel().getLorann().moveUpLeft();
+                        break;
+                    case DOWNLEFT:
+                        this.getModel().getLorann().moveDownLeft();
+                        break;
+                    case UPRIGHT:
+                        this.getModel().getLorann().moveUpRight();
+                        break;
+                    case DOWNRIGHT:
+                        this.getModel().getLorann().moveDownRight();
+                        break;
+                    case NOP:
+                    default:
+                        this.getModel().getLorann().doNothing();
+                        break;
+                }
+                this.clearStackOrder();
+            }
+        }   	
     	
+   
+    	
+    
+    public final void orderPerform(final UserOrder userOrder) throws IOException {
+        this.setStackOrder(userOrder);
     }
 
-    /**
-     * Gets the view.
-     *
-     * @return the view
-     */
-    public IView getView() {
+ 
+    private IView getView() {
         return this.view;
     }
 
-    /**
-     * Gets the model.
-     *
-     * @return the model
-     */
-    public IModel getModel() {
+  
+    private void setView(final IView view) {
+        this.view = view;
+    }
+
+ 
+    private IModel getModel() {
         return this.model;
+    }
+
+    
+    private void setModel(final IModel model) {
+        this.model = model;
+    }
+
+ 
+    private UserOrder getStackOrder() {
+        return this.stackOrder;
+    }
+
+
+    private void setStackOrder(final UserOrder stackOrder) {
+        this.stackOrder = stackOrder;
+    }
+
+
+    private void clearStackOrder() {
+        this.stackOrder = UserOrder.NOP;
+    }
+
+
+    public IOrderPerformer getOrderPeformer() {
+        return this;
     }
 }

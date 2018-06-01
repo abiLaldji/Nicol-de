@@ -2,9 +2,6 @@ package model.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 
 /**
  * <h1>The Class BoulderDashBDDConnector.</h1>
@@ -12,7 +9,7 @@ import java.sql.Statement;
  * @author Jean-Aymeric DIET jadiet@cesi.fr
  * @version 1.0
  */
-final class LorannBDDConnector {
+public final class LorannBDDConnector {
 
 public static Connection connecterDB() {
 		
