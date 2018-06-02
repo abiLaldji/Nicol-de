@@ -5,7 +5,7 @@ import model.element.Sprite;
 
 class ClosedDoor extends NonMobile {
 
-    private static final Sprite SPRITE = new Sprite('[', "images/");
+    private static final Sprite SPRITE = new Sprite(']', "image/gate_closed");
 
    
     ClosedDoor() {

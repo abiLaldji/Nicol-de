@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 import model.ISprite;
 import model.Penetrability;
@@ -24,7 +25,11 @@ public class Sprite implements ISprite{
     }
 
 	public final void loadImage() throws IOException {
-        this.setImage(ImageIO.read(new File(this.getImageLink())));
+		ImageIcon ii = new ImageIcon(this.getImageLink());
+		setImage(ii.getImage());
+        //this.setImage(ImageIO.read(new File(this.getImageLink())));
+        this.setLoaded(true);
+        this.setVisible(true);
     }
 	
 	public Penetrability getPenetrability() {

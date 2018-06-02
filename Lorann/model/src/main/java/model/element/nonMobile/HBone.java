@@ -5,7 +5,7 @@ import model.element.Sprite;
 
 class HBone extends NonMobile {
 
-    private static final Sprite SPRITE = new Sprite('[', "images/horizontal_bone.png");
+    private static final Sprite SPRITE = new Sprite('_', "image/horizontal_bone.png");
 
    
     HBone() {

@@ -5,7 +5,7 @@ import model.element.Sprite;
 
 class VBone extends NonMobile {
 
-    private static final Sprite SPRITE = new Sprite('[', "images/vertical_bone.png");
+    private static final Sprite SPRITE = new Sprite('|', "image/vertical_bone.png");
 
    
     VBone() {

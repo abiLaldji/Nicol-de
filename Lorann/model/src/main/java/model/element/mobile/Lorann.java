@@ -8,21 +8,21 @@ import model.element.Sprite;
 
 public class Lorann extends Mobile{
 	
-    private static final Sprite spriteU = new Sprite('L', "images/lorann_u.png");
+    private static final Sprite spriteU = new Sprite('L', "image/lorann_u.png");
     
-    private static final Sprite spriteBL = new Sprite('L', "images/lorann_bl.png");
+    private static final Sprite spriteBL = new Sprite('L', "image/lorann_bl.png");
     
-    private static final Sprite spriteBR = new Sprite('L', "images/lorann_br.png");
+    private static final Sprite spriteBR = new Sprite('L', "image/lorann_br.png");
     
-    private static final Sprite spriteL = new Sprite('L', "images/lorann_l.png");
+    private static final Sprite spriteL = new Sprite('L', "image/lorann_l.png");
     
-    private static final Sprite spriteB = new Sprite('L', "images/lorann_b.png");
+    private static final Sprite spriteB = new Sprite('L', "image/lorann_b.png");
     
-    private static final Sprite spriteR = new Sprite('L', "images/lorann_br.png");
+    private static final Sprite spriteR = new Sprite('L', "image/lorann_br.png");
     
-    private static final Sprite spriteUL = new Sprite('L', "images/lorann_ul.png");
+    private static final Sprite spriteUL = new Sprite('L', "image/lorann_ul.png");
     
-    private static final Sprite spriteUR = new Sprite('L', "images/lorann_up.png");
+    private static final Sprite spriteUR = new Sprite('L', "image/lorann_up.png");
      
    
     public Lorann(final int x, final int y, final IMap map) throws IOException {

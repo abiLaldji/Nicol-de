@@ -5,7 +5,7 @@ import model.element.Sprite;
 
 class Ball extends NonMobile {
 
-    private static final Sprite SPRITE = new Sprite('[', "images/crystal_ball.png");
+    private static final Sprite SPRITE = new Sprite('B', "image/crystal_ball.png");
 
    
     Ball() {

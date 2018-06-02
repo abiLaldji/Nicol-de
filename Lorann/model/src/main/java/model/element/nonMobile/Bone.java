@@ -5,7 +5,7 @@ import model.element.Sprite;
 
 class Bone extends NonMobile {
 
-    private static final Sprite SPRITE = new Sprite('[', "images/Bone.png");
+    private static final Sprite SPRITE = new Sprite('o', "image/bone.png");
 
    
     Bone() {

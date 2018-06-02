@@ -20,9 +20,10 @@ public class ControllerFacade implements IController,IOrderPerformer {
 
 
     public ControllerFacade(final IView view, final IModel model) {
-        super();
         this.view = view;
         this.model = model;
+        this.clearStackOrder();
+        System.out.println("controller");
     }
 
  

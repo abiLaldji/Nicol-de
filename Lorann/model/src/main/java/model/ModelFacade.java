@@ -12,6 +12,7 @@ public class ModelFacade implements IModel {
     private IMobile lorann;
 
     public ModelFacade(final int lorannStartX, final int lorannStartY) throws IOException {
+    	System.out.println("model");
         this.setMap(new Map());
         this.setLorann(new Lorann(lorannStartX, lorannStartY, this.getMap()));
     }

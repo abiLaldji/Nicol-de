@@ -10,20 +10,24 @@ public abstract class NonMobileFactory {
 
     private static final Ball ball = new Ball();
 
-    private static final Bourse bourse = new Bourse();
+    private static final Purse purse = new Purse();
     
     private static final OpenDoor openDoor = new OpenDoor();
     
     private static final ClosedDoor closedDoor = new ClosedDoor();
     
+    private static final Empty empty = new Empty();
+    
     private static NonMobile[] nonMobile  = {
             hBone,
             vBone,
             bone,
-            bourse,
+            purse,
             ball,
             openDoor,
-            closedDoor}; 
+            closedDoor, 
+            empty
+            }; 
 
     public NonMobile createVBone() {
         return vBone;
@@ -37,8 +41,8 @@ public abstract class NonMobileFactory {
         return bone;
     }
     
-    public NonMobile createBourse() {
-        return bourse;
+    public NonMobile createPurse() {
+        return purse;
     }
     
     public NonMobile createOpenDoor() {
@@ -53,12 +57,16 @@ public abstract class NonMobileFactory {
         return ball;
     }
     
+    public NonMobile createEmpty() {
+        return empty;
+    }
+    
     public static NonMobile getFromFileSymbol(final char fileSymbol) {
         for (final NonMobile nonMobile : nonMobile) {
             if (nonMobile.getSprite().getConsoleImage() == fileSymbol) {
                 return nonMobile;
             }
         }
-        return vBone;
+        return empty;
     }
 }

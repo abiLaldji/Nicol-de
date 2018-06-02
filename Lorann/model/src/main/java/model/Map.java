@@ -16,7 +16,7 @@ class Map extends Observable implements IMap {
 	
 	private final int HEIGHT = 12;
 
-	private Element[][] onTheMap = new Element[WIDTH][HEIGHT];
+	private IElement[][] onTheMap = new Element[WIDTH][HEIGHT];
  
     private static String sql  = "{call print_decor}";
 
@@ -48,45 +48,46 @@ class Map extends Observable implements IMap {
     	    			if(levelNumber == levelNumberBdd) {
     		    			switch(type) {
     		    			case "HWall" :
-    		    				this.setOnTheMapXY(NonMobileFactory.getFromFileSymbol('H'), x, y);  
+    		    				this.setOnTheMapXY(NonMobileFactory.getFromFileSymbol('_'), x, y);  
     		    				break;
     		    			case "VWall" :
-    		    				this.setOnTheMapXY(NonMobileFactory.getFromFileSymbol('V'), x, y);  
+    		    				this.setOnTheMapXY(NonMobileFactory.getFromFileSymbol('|'), x, y);  
     		    				break;
     		    			case "CWall" :
-    		    				this.setOnTheMapXY(NonMobileFactory.getFromFileSymbol('C'), x, y);   
+    		    				this.setOnTheMapXY(NonMobileFactory.getFromFileSymbol('o'), x, y);   
     		    				break;
-    		    			case "Lorann" :
-    		    				this.setOnTheMapXY(NonMobileFactory.getFromFileSymbol('L'), x, y);  
-    		    				break;
+    		    			//case "Lorann" :
+    		    				//this.setOnTheMapXY(NonMobileFactory.getFromFileSymbol('L'), x, y);  
+    		    				//break;
     		    			case "Door" :
-    		    				this.setOnTheMapXY(NonMobileFactory.getFromFileSymbol('D'), x, y);  
+    		    				this.setOnTheMapXY(NonMobileFactory.getFromFileSymbol('['), x, y);  
     		    				break;
     		    			case "Bubble" :
     		    				this.setOnTheMapXY(NonMobileFactory.getFromFileSymbol('B'), x, y);  
     		    				break;
-    		    			case "Monster_1" :
-    		    				this.setOnTheMapXY(NonMobileFactory.getFromFileSymbol('Y'), x, y);  
-    		    				break;
-    		    			case "Monster_2" :
-    		    				this.setOnTheMapXY(NonMobileFactory.getFromFileSymbol('U'), x, y);   
-    		    				break;
-    		    			case "Monster_3" :
-    		    				this.setOnTheMapXY(NonMobileFactory.getFromFileSymbol('I'), x, y);  
-    		    				break;
-    		    			case "Monster_4" :
-    		    				this.setOnTheMapXY(NonMobileFactory.getFromFileSymbol('O'), x, y);    
-    		    				break;
+    		    			//case "Monster_1" :
+    		    				//this.setOnTheMapXY(NonMobileFactory.getFromFileSymbol('Y'), x, y);  
+    		    				//break;
+    		    			//case "Monster_2" :
+    		    				//this.setOnTheMapXY(NonMobileFactory.getFromFileSymbol('U'), x, y);   
+    		    				//break;
+    		    			//case "Monster_3" :
+    		    				//this.setOnTheMapXY(NonMobileFactory.getFromFileSymbol('I'), x, y);  
+    		    				//break;
+    		    			//case "Monster_4" :
+    		    				//this.setOnTheMapXY(NonMobileFactory.getFromFileSymbol('O'), x, y);    
+    		    				//break;
     		    			case "Purse" :
     		    				this.setOnTheMapXY(NonMobileFactory.getFromFileSymbol('P'), x, y);   
+    		    				break;
+    		    			default : 
+    		    				this.setOnTheMapXY(NonMobileFactory.getFromFileSymbol(' '), x, y);
     		    				break;
     		    			}
     		            }
     	            }
     	            rst.close();
     	        }
-    			
-    		
     			
     		} catch (Exception ex) {
     			ex.printStackTrace();
@@ -116,13 +117,17 @@ class Map extends Observable implements IMap {
     	
     	
     	
-    	public final Element getOnTheMapXY(final int x, final int y) {
+    	public final IElement getOnTheMapXY(final int x, final int y) {
     	    return this.onTheMap[x][y];
     	}
     	
     	
-    	private void setOnTheMapXY(final Element element, final int x, final int y) {
+    	private void setOnTheMapXY(final IElement element, final int x, final int y) {
     	    this.onTheMap[x][y] = element;
+    	}
+    	
+    	public void setEmptyXY(final int x, final int y) {
+    		this.onTheMap[x][y] = NonMobileFactory.getFromFileSymbol(' ');
     	}
 
     

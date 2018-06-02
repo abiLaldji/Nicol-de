@@ -3,12 +3,12 @@ package model.element.nonMobile;
 import model.Penetrability;
 import model.element.Sprite;
 
-class Bourse extends NonMobile {
+public class Purse extends NonMobile {
 
-    private static final Sprite SPRITE = new Sprite('[', "images/");
+    private static final Sprite SPRITE = new Sprite('[', "image/purse.png");
 
    
-    Bourse() {
+    Purse() {
         super(SPRITE, Penetrability.PENETRABLE);
     }
 }
