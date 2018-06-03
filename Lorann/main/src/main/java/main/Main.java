@@ -22,10 +22,10 @@ public abstract class Main {
      * @param args
      *            the arguments
      */
-	private static final int startX = 5;
+	private static final int startX = 2;
 
 	    /** The Constant startY. */
-	private static final int startY = 0;
+	private static final int startY = 2;
 	
     public static void main(final String[] args) throws InterruptedException, IOException {
     	final IModel model = new ModelFacade(startX, startY);

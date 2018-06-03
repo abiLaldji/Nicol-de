@@ -1,6 +1,7 @@
 package model.element.mobile;
 
 import java.awt.Point;
+import java.io.IOException;
 
 import model.IMap;
 import model.IMobile;
@@ -29,23 +30,44 @@ public abstract class Mobile extends Element implements IMobile{
     }
 	
 	public void moveUp() {
-		 this.setY(this.getY() - 1);
-	     this.setHasMoved();
+		if (this.getY() != 0) {
+			if (this.getMap().getOnTheMapXY(this.getX(), this.getY() - 1)
+					.getPenetrability() == Penetrability.PENETRABLE) {
+				this.setY(this.getY() - 1);
+				this.setHasMoved();
+			}
+		}
 	}
 	
 	public void moveDown() {
-		 this.setY(this.getY() + 1);
-	     this.setHasMoved();
+		if (this.getY() != this.getMap().getHeight()) {
+			if (this.getMap().getOnTheMapXY(this.getX(), this.getY() + 1)
+					.getPenetrability() == Penetrability.PENETRABLE) {
+				this.setY(this.getY() + 1);
+				this.setHasMoved();
+			}
+		}
+		
 	}
 	
 	public void moveLeft() {
-		this.setX(this.getX() - 1);
-        this.setHasMoved();
+		if (this.getX() != 0) {
+			if (this.getMap().getOnTheMapXY(this.getX() - 1, this.getY())
+					.getPenetrability() == Penetrability.PENETRABLE) {
+				this.setX(this.getX() - 1);
+				this.setHasMoved();
+			}
+		}
 	}
 	
 	public void moveRight() {
-		this.setX(this.getX() + 1);
-        this.setHasMoved();
+		if (this.getX() != this.getMap().getWidth()) {
+			if (this.getMap().getOnTheMapXY(this.getX() + 1, this.getY())
+					.getPenetrability() == Penetrability.PENETRABLE) {
+				this.setX(this.getX() + 1);
+				this.setHasMoved();
+			}
+		}
 	}
 	
 	public void moveUpRight() {
@@ -139,6 +161,11 @@ public abstract class Mobile extends Element implements IMobile{
 	    public IMap getMap() {
 	        return this.map;
 	    }
+
+		public IBoard getBoard() {
+			return board;
+		}
+
 }
 
 

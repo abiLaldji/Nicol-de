@@ -1,10 +1,14 @@
 package view;
 
 import java.awt.Dimension;
+import java.awt.Image;
+import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.IOException;
 
+import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
 import controller.IOrderPerformer;
@@ -12,6 +16,7 @@ import controller.UserOrder;
 import model.IMap;
 import model.IMobile;
 import showboard.BoardFrame;
+import showboard.IPawn;
 
 /**
  * <h1>The Class ViewFacade provides a facade of the View component.</h1>
@@ -19,13 +24,15 @@ import showboard.BoardFrame;
  * @author Jean-Aymeric DIET jadiet@cesi.fr
  * @version 1.0
  */
-public class ViewFacade implements IView, Runnable {
+public class ViewFacade implements IView, Runnable, KeyListener, IPawn {
 		
-	private static final int sizeFrameWidth = 1280;
+	//private static final int sizeFrameWidth = 1280;
 	
-	private static final int sizeFrameHeight = 768;
+	//private static final int sizeFrameHeight = 768;
 	
-	private static final Rectangle gameFrame = new Rectangle(0 ,0 , sizeFrameHeight ,sizeFrameWidth);
+	private static final int squareSize = 90;
+	
+	private final Rectangle gameFrame = new Rectangle(0 ,0 , this.getMap().getWidth(), this.getMap().getHeight());
 		
 	private IMap map;
 	
@@ -44,13 +51,15 @@ public class ViewFacade implements IView, Runnable {
     }
 
     public void run(){
-    	final BoardFrame boardFrame = new BoardFrame("Lorann Game");
+    	final BoardFrame boardFrame = new BoardFrame(" Game");
     	boardFrame.setDimension(new Dimension(this.getMap().getWidth(), this.getMap().getHeight()));
     	boardFrame.setDisplayFrame(gameFrame);
-    	boardFrame.setSize(sizeFrameWidth, sizeFrameHeight);
-    	boardFrame.setHeightLooped(true);
+    	boardFrame.setSize(this.map.getWidth() * squareSize, this.map.getHeight() * squareSize);
     	boardFrame.setFocusable(true);
     	boardFrame.setFocusTraversalKeysEnabled(false);
+    	boardFrame.setLocationRelativeTo(null);
+    	boardFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+    	boardFrame.addKeyListener(this);
 
     	for (int x = 0; x < this.getMap().getWidth(); x++) {
     	    for (int y = 0; y < this.getMap().getHeight(); y++) {
@@ -62,15 +71,15 @@ public class ViewFacade implements IView, Runnable {
     	
     	boardFrame.setVisible(true);
 
-    	//this.getMap().getObservable().addObserver(boardFrame.getObserver());
+    	this.getMap().getObservable().addObserver(boardFrame.getObserver());
     	//this.followMyVehicle();
-    	show(0);
+    	show();
     }
     
-    public final void show(final int yStart) {
+    public final void show() {
             for (int x = 0; x < this.getMap().getWidth(); x++) {
-            	for(int y = yStart % this.getMap().getHeight(); y < this.getMap().getHeight(); y++) {
-                if ((x == this.getLorann().getX()) && (y == yStart)) {
+            	for(int y = 0; y < this.getMap().getHeight(); y++) {
+                if (x == this.getLorann().getX()) {
                     System.out.print(this.getLorann().getSprite().getConsoleImage());
                 } else {
                     System.out.print(this.getMap().getOnTheMapXY(x, y).getSprite().getConsoleImage());
@@ -147,5 +156,41 @@ public class ViewFacade implements IView, Runnable {
     public final void setOrderPerformer(final IOrderPerformer orderPerformer) {
         this.orderPerformer = orderPerformer;
     }
+
+	@Override
+	public void keyReleased(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Image getImage() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getX() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getY() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public Point getPosition() {
+		// TODO Auto-generated method stub
+		return null;
+	}
     
 }
