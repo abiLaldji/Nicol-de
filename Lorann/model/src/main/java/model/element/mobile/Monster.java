@@ -12,7 +12,7 @@ public class Monster extends Mobile{
     
    
     public Monster(final int x, final int y, final IMap map) throws IOException {
-        super(x, y, spriteM, map, Penetrability.BLOCKING);
+        super(x, y, spriteM, map, Penetrability.KILL);
         spriteM.loadImage();   
     }
 }

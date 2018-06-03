@@ -136,25 +136,12 @@ class Map extends Observable implements IMap {
 			
 		//}
 
-		@Override
-		public Observable getObservable() {
-			// TODO Auto-generated method stub
-			return null;
-		}
-
-		@Override
-		public void setMobileHasChanged() {
-			// TODO Auto-generated method stub
-			
-		}
-    	
-    	
-    	/*public final void setMobileHasChanged() {
+    	public final void setMobileHasChanged() {
     	    this.setChanged();
     	    this.notifyObservers();
     	}
     	
     	public Observable getObservable() {
     	    return this;
-    	}*/
+    	}
     }

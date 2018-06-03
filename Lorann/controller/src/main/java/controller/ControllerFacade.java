@@ -27,7 +27,7 @@ public class ControllerFacade implements IController,IOrderPerformer {
     }
 
  
-    public void start() throws InterruptedException{
+    public void play() throws InterruptedException{
             while (this.getModel().getLorann().isAlive()) {
                 Thread.sleep(SPEED);
                 switch (this.getStackOrder()) {
@@ -43,7 +43,7 @@ public class ControllerFacade implements IController,IOrderPerformer {
                     case DOWN:
                         this.getModel().getLorann().moveDown();
                         break;
-                    case UPLEFT:
+                    /*case UPLEFT:
                         this.getModel().getLorann().moveUpLeft();
                         break;
                     case DOWNLEFT:
@@ -55,7 +55,7 @@ public class ControllerFacade implements IController,IOrderPerformer {
                     case DOWNRIGHT:
                         this.getModel().getLorann().moveDownRight();
                         break;
-                    case NOP:
+                    case NOP:*/
                     default:
                         this.getModel().getLorann().doNothing();
                         break;

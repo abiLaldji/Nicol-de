@@ -7,14 +7,15 @@ import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.IOException;
+import java.util.ArrayList;
 
-import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
 import controller.IOrderPerformer;
 import controller.UserOrder;
 import model.IMap;
 import model.IMobile;
+import model.element.mobile.Monster;
 import showboard.BoardFrame;
 import showboard.IPawn;
 
@@ -25,40 +26,40 @@ import showboard.IPawn;
  * @version 1.0
  */
 public class ViewFacade implements IView, Runnable, KeyListener, IPawn {
-		
-	//private static final int sizeFrameWidth = 1280;
-	
-	//private static final int sizeFrameHeight = 768;
 	
 	private static final int squareSize = 90;
-	
-	private final Rectangle gameFrame = new Rectangle(0 ,0 , this.getMap().getWidth(), this.getMap().getHeight());
-		
+			
 	private IMap map;
 	
 	private IMobile lorann;
 	
+	private ArrayList<Monster> monster;
+	
     private IOrderPerformer  orderPerformer;
 			
 
-    public ViewFacade(final IMap map, final IMobile lorann) throws IOException {
+    public ViewFacade(final IMap map, final IMobile lorann, ArrayList<Monster> monster) throws IOException {
     	System.out.println("view");
     	this.setMap(map);
     	this.setLorann(lorann);
     	this.getLorann().getSprite().loadImage();
+    	this.setMonster(monster);
+    	for (Monster monster1 : monster) {
+        	monster1.getSprite().loadImage();
+    	}
     	SwingUtilities.invokeLater(this);
     	   
     }
 
     public void run(){
-    	final BoardFrame boardFrame = new BoardFrame(" Game");
+    	final BoardFrame boardFrame = new BoardFrame("Lorann Game");
     	boardFrame.setDimension(new Dimension(this.getMap().getWidth(), this.getMap().getHeight()));
-    	boardFrame.setDisplayFrame(gameFrame);
+    	boardFrame.setDisplayFrame(new Rectangle(0 ,0 , this.getMap().getWidth(), this.getMap().getHeight()));
     	boardFrame.setSize(this.map.getWidth() * squareSize, this.map.getHeight() * squareSize);
+    	boardFrame.setHeightLooped(true);
     	boardFrame.setFocusable(true);
     	boardFrame.setFocusTraversalKeysEnabled(false);
     	boardFrame.setLocationRelativeTo(null);
-    	boardFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
     	boardFrame.addKeyListener(this);
 
     	for (int x = 0; x < this.getMap().getWidth(); x++) {
@@ -69,10 +70,13 @@ public class ViewFacade implements IView, Runnable, KeyListener, IPawn {
     	
     	boardFrame.addPawn(this.getLorann());
     	
+    	for (Monster monster1 : monster) {
+			boardFrame.addPawn(monster1);
+		}
+    	
     	boardFrame.setVisible(true);
 
     	this.getMap().getObservable().addObserver(boardFrame.getObserver());
-    	//this.followMyVehicle();
     	show();
     }
     
@@ -122,6 +126,7 @@ public class ViewFacade implements IView, Runnable, KeyListener, IPawn {
         UserOrder userOrder;
         switch (keyCode) {
             case KeyEvent.VK_RIGHT:
+            	System.out.println("droite");
                 userOrder = UserOrder.RIGHT;
                 break;
             case KeyEvent.VK_LEFT:
@@ -193,4 +198,11 @@ public class ViewFacade implements IView, Runnable, KeyListener, IPawn {
 		return null;
 	}
     
+	public ArrayList<Monster> getMonster() {
+		return monster;
+	}
+
+	public void setMonster(ArrayList<Monster> monster) {
+		this.monster = monster;
+	}
 }

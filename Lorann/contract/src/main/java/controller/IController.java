@@ -3,7 +3,7 @@ package controller;
 
 public interface IController {
 	
-    void start() throws InterruptedException;
+    void play() throws InterruptedException;
     
     IOrderPerformer getOrderPeformer();
 }

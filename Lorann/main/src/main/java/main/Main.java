@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import controller.ControllerFacade;
 import controller.IController;
-import model.IModel;
 import model.ModelFacade;
 import view.ViewFacade;
 
@@ -16,23 +15,24 @@ import view.ViewFacade;
  */
 public abstract class Main {
 
-    /**
-     * The main method.
-     *
-     * @param args
-     *            the arguments
-     */
-	private static final int startX = 2;
+   
+	private static final int startX = 3;
 
-	    /** The Constant startY. */
 	private static final int startY = 2;
 	
-    public static void main(final String[] args) throws InterruptedException, IOException {
-    	final IModel model = new ModelFacade(startX, startY);
-        final ViewFacade view = new ViewFacade(model.getMap(), model.getLorann());
-        final IController controller = new ControllerFacade(view, model);
+	private static final int startXM = 3;
 
-        controller.start();
+	private static final int startYM = 2;
+	
+	
+    public static void main(final String[] args) throws InterruptedException, IOException {
+    	final ModelFacade model = new ModelFacade(startX, startY, startXM, startYM);
+        final ViewFacade view = new ViewFacade(model.getMap(), model.getLorann(), model.getMonster());
+        final IController controller = new ControllerFacade(view, model);
+        view.setOrderPerformer(controller.getOrderPeformer());
+
+
+        controller.play();
     }
 
 }
