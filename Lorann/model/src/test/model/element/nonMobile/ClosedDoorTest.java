@@ -37,11 +37,7 @@ public class ClosedDoorTest {
 		final Penetrability expected = Penetrability.BLOCKING;
 		assertEquals(expected, closeddoor.getPenetrability());
 	}
-	@Test
-	public void testClosedDoorFaux() {
-		final Penetrability expected = Penetrability.PENETRABLE;
-		assertEquals(expected, closeddoor.getPenetrability());
-	}
+	
 
 
 }

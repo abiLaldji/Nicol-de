@@ -1,0 +1,11 @@
+model\ISprite.class
+model\Penetrability.class
+view\IView.class
+model\Example.class
+model\IMobile.class
+model\IModel.class
+controller\IController.class
+model\IElement.class
+controller\IOrderPerformer.class
+controller\UserOrder.class
+model\IMap.class

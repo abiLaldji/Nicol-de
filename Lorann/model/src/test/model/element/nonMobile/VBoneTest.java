@@ -34,9 +34,5 @@ public class VBoneTest {
 		final Penetrability expected = Penetrability.BLOCKING;
 		assertEquals(expected, vbone.getPenetrability());
 	}
-	@Test
-	public void testVBoneFaux() {
-		final Penetrability expected = Penetrability.PENETRABLE;
-		assertEquals(expected, vbone.getPenetrability());
-	}
+	
 }

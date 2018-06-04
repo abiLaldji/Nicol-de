@@ -9,8 +9,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import model.Penetrability;
-import model.element.Element;
-import model.element.Sprite;
 
 public class BoneTest {
 	Bone bone = new Bone();
@@ -37,11 +35,7 @@ public class BoneTest {
 		assertEquals(expected, bone.getPenetrability());
 		
 	}
-	@Test
-	public void testBoneFaux() {
-		final Penetrability expected = Penetrability.PENETRABLE;
-		assertEquals(expected, bone.getPenetrability());
-	}
+	
 
 		
 	}
