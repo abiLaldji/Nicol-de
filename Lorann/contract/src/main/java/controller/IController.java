@@ -5,5 +5,5 @@ public interface IController {
 	
     void play() throws InterruptedException;
     
-    IOrderPerformer getOrderPeformer();
+    IOrderPerformer getOrderPerformer();
 }
