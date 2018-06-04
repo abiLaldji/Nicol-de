@@ -87,4 +87,10 @@ public class ControllerFacade implements IController, IOrderPerformer {
 	public IOrderPerformer getOrderPeformer() {
 		return this;
 	}
+
+	@Override
+	public IOrderPerformer getOrderPerformer() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
