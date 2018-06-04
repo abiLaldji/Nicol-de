@@ -14,7 +14,7 @@ import model.ModelFacade;
 public class LorannTest {
 	
 	
-	Lorann lorann= new Lorann(0, 0, );
+	
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
