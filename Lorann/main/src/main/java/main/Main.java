@@ -29,7 +29,7 @@ public abstract class Main {
     	final ModelFacade model = new ModelFacade(startX, startY, startXM, startYM);
         final ViewFacade view = new ViewFacade(model.getMap(), model.getLorann(), model.getMonster());
         final IController controller = new ControllerFacade(view, model);
-        view.setOrderPerformer(controller.getOrderPeformer());
+        view.setOrderPerformer(controller.getOrderPerformer());
 
         controller.play();
     }
