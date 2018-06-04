@@ -36,6 +36,7 @@ public abstract class Mobile extends Element implements IMobile{
 				this.setHasMoved();
 			}
 		}
+		System.out.println(this.getY());
 	}
 	
 	public void moveDown() {
@@ -46,7 +47,7 @@ public abstract class Mobile extends Element implements IMobile{
 				this.setHasMoved();
 			}
 		}
-		
+		System.out.println(this.getY());
 	}
 	
 	public void moveLeft() {
@@ -57,6 +58,7 @@ public abstract class Mobile extends Element implements IMobile{
 				this.setHasMoved();
 			}
 		}
+		System.out.println(this.getX());
 	}
 	
 	public void moveRight() {
@@ -67,6 +69,7 @@ public abstract class Mobile extends Element implements IMobile{
 				this.setHasMoved();
 			}
 		}
+		System.out.println(this.getX());
 	}
 	
 	public void moveUpRight() {

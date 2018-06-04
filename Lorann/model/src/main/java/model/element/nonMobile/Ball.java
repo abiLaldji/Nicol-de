@@ -9,6 +9,6 @@ class Ball extends NonMobile {
 
    
     Ball() {
-        super(SPRITE, Penetrability.PENETRABLE);
+        super(SPRITE, Penetrability.OPENDOOR);
     }
 }

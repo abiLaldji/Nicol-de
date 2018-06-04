@@ -1,10 +1,8 @@
 package model.element;
 
 import java.awt.Image;
-import java.io.File;
 import java.io.IOException;
 
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 import model.ISprite;
@@ -16,8 +14,7 @@ public class Sprite implements ISprite{
 	private Image image;
 	private char consoleImage;
 	private boolean visible;
-	private Penetrability penetrability;
-	
+	private Penetrability penetrability;	
 	
 	public Sprite(final char character, final String imageName) {
         this.setConsoleImage(character);

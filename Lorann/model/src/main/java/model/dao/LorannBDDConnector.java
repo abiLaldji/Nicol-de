@@ -11,7 +11,7 @@ import java.sql.DriverManager;
  */
 public final class LorannBDDConnector {
 
-public static Connection connecterDB() {
+public static Connection connectorDB() {
 		
 		try {
 			
