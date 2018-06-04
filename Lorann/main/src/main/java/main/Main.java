@@ -16,11 +16,11 @@ import view.ViewFacade;
 public abstract class Main {
 
    
-	private static final int startX = 3;
+	private static final int startX = 1;
 
-	private static final int startY = 2;
+	private static final int startY = 1;
 	
-	private static final int startXM = 3;
+	private static final int startXM =15;
 
 	private static final int startYM = 2;
 	
@@ -30,7 +30,6 @@ public abstract class Main {
         final ViewFacade view = new ViewFacade(model.getMap(), model.getLorann(), model.getMonster());
         final IController controller = new ControllerFacade(view, model);
         view.setOrderPerformer(controller.getOrderPeformer());
-
 
         controller.play();
     }

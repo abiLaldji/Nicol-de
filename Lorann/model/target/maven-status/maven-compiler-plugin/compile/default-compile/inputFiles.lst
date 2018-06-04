@@ -1,6 +1,5 @@
 /home/abi/git/Nicol-de/Lorann/model/src/main/java/model/ModelFacade.java
 /home/abi/git/Nicol-de/Lorann/model/src/main/java/model/element/ICollision.java
-/home/abi/git/Nicol-de/Lorann/model/src/main/java/model/element/nonMobile/Bourse.java
 /home/abi/git/Nicol-de/Lorann/model/src/main/java/model/element/nonMobile/OpenDoor.java
 /home/abi/git/Nicol-de/Lorann/model/src/main/java/model/element/Block.java
 /home/abi/git/Nicol-de/Lorann/model/src/main/java/model/element/mobile/MonsterType.java
@@ -19,15 +18,13 @@
 /home/abi/git/Nicol-de/Lorann/model/src/main/java/model/element/nonMobile/VBone.java
 /home/abi/git/Nicol-de/Lorann/model/src/main/java/model/dao/LorannBDDConnector.java
 /home/abi/git/Nicol-de/Lorann/model/src/main/java/model/element/mobile/Mobile.java
-/home/abi/git/Nicol-de/Lorann/model/src/main/java/model/element/Penetrability.java
 /home/abi/git/Nicol-de/Lorann/model/src/main/java/model/element/nonMobile/Bone.java
-/home/abi/git/Nicol-de/Lorann/model/src/main/java/model/IMap.java
-/home/abi/git/Nicol-de/Lorann/model/src/main/java/model/dao/ExampleDAO.java
 /home/abi/git/Nicol-de/Lorann/model/src/main/java/model/element/nonMobile/NonMobileFactory.java
 /home/abi/git/Nicol-de/Lorann/model/src/main/java/model/package-info.java
 /home/abi/git/Nicol-de/Lorann/model/src/main/java/model/element/Collision.java
+/home/abi/git/Nicol-de/Lorann/model/src/main/java/model/element/nonMobile/Purse.java
 /home/abi/git/Nicol-de/Lorann/model/src/main/java/model/Map.java
+/home/abi/git/Nicol-de/Lorann/model/src/main/java/model/element/nonMobile/Empty.java
 /home/abi/git/Nicol-de/Lorann/model/src/main/java/model/element/Element.java
-/home/abi/git/Nicol-de/Lorann/model/src/main/java/model/element/mobile/IMobile.java
 /home/abi/git/Nicol-de/Lorann/model/src/main/java/model/element/mobile/Lorann.java
 /home/abi/git/Nicol-de/Lorann/model/src/main/java/model/element/Sprite.java

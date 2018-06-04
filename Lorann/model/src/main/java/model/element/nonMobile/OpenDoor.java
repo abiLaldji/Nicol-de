@@ -9,6 +9,6 @@ class OpenDoor extends NonMobile {
 
    
     OpenDoor() {
-        super(SPRITE, Penetrability.BLOCKING);
+        super(SPRITE, Penetrability.WIN);
     }
 }

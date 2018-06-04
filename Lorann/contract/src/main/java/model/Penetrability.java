@@ -2,6 +2,6 @@ package model;
 
 public enum Penetrability {
 	PENETRABLE,
-	BLOCKING, KILL;
+	BLOCKING, KILL, COLLECTABLE, WIN, OPENDOOR;
 
 }

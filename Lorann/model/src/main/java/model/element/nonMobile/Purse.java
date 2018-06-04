@@ -9,6 +9,6 @@ public class Purse extends NonMobile {
 
    
     Purse() {
-        super(SPRITE, Penetrability.PENETRABLE);
+        super(SPRITE, Penetrability.COLLECTABLE);
     }
 }

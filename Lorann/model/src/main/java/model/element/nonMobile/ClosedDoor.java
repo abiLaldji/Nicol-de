@@ -9,6 +9,6 @@ class ClosedDoor extends NonMobile {
 
    
     ClosedDoor() {
-        super(SPRITE, Penetrability.BLOCKING);
+        super(SPRITE, Penetrability.KILL);
     }
 }
