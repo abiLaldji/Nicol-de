@@ -40,7 +40,7 @@ class Map extends Observable implements IMap {
 				rst = cs.getResultSet();
 
 				while (rst.next()) {
-					int levelNumber = 0;
+					int levelNumber = 1;
 					int levelNumberBdd = rst.getInt("level_number");
 					String type = rst.getString("type");
 					int x = rst.getInt("x");
@@ -57,28 +57,12 @@ class Map extends Observable implements IMap {
 						case "CWall":
 							this.setOnTheMapXY(NonMobileFactory.getFromFileSymbol('o'), x, y);
 							break;
-						// case "Lorann" :
-						// this.setOnTheMapXY(NonMobileFactory.getFromFileSymbol('L'), x, y);
-						// break;
 						case "Door":
-							this.setOnTheMapXY(NonMobileFactory.getFromFileSymbol('['), x, y);
+							this.setOnTheMapXY(NonMobileFactory.getFromFileSymbol(']'), x, y);
 							break;
 						case "Bubble":
 							this.setOnTheMapXY(NonMobileFactory.getFromFileSymbol('B'), x, y);
 							break;
-						// case "Monster_1" :
-						// this.setOnTheMappXY(NonMobileFactory.getFromFileSymbol('Y'),
-						// x, y);
-						// break;
-						// case "Monster_2" :
-						// this.setOnTheMapXY(NonMobileFactory.getFromFileSymbol('U'), x, y);
-						// break;
-						// case "Monster_3" :
-						// this.setOnTheMapXY(NonMobileFactory.getFromFileSymbol('I'), x, y);
-						// break;
-						// case "Monster_4" :
-						// this.setOnTheMapXY(NonMobileFactory.getFromFileSymbol('O'), x, y);
-						// break;
 						case "Purse":
 							this.setOnTheMapXY(NonMobileFactory.getFromFileSymbol('P'), x, y);
 							break;

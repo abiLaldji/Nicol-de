@@ -11,18 +11,18 @@ public class ControllerFacade implements IController, IOrderPerformer {
 
 	private IModel model;
 
-	private final int SPEED = 300;
+	private final int SPEED = 200;
 
 	private UserOrder stackOrder;
 
 	public ControllerFacade(final IView view, final IModel model) {
-		this.view = view;
-		this.model = model;
+		setModel(model);
+		setView(view);
 		this.clearStackOrder();
 		System.out.println("controller");
 	}
 
-	public void play() throws InterruptedException {
+	public void play() throws InterruptedException, IOException {
 		while (this.getModel().getLorann().isAlive()) {
 			Thread.sleep(SPEED);
 			switch (this.getStackOrder()) {
@@ -84,13 +84,8 @@ public class ControllerFacade implements IController, IOrderPerformer {
 		this.stackOrder = UserOrder.NOP;
 	}
 
-	public IOrderPerformer getOrderPeformer() {
+	public IOrderPerformer getOrderPerformer() {
 		return this;
 	}
 
-	@Override
-	public IOrderPerformer getOrderPerformer() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

@@ -10,7 +10,7 @@ public interface ISprite {
 
 	public void loadImage() throws IOException;
 	
-	public Penetrability getPenetrability();
+	public Collision getCollision();
 
 	public char getConsoleImage();
 

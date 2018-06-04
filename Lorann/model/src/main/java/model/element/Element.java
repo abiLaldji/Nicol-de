@@ -2,36 +2,36 @@ package model.element;
 
 import java.awt.Image;
 
+import model.Collision;
 import model.IElement;
 import model.ISprite;
-import model.Penetrability;
 import showboard.ISquare;
 
 public abstract class Element implements ISquare, IElement {
 
-	private Sprite sprite;
+	private ISprite sprite;
 
-	private Penetrability penetrability;
+	private Collision collision;
 
-	public Element(Sprite sprite, Penetrability penetrability) {
+	public Element(Sprite sprite, Collision collision) {
 		this.setSprite(sprite);
-		this.setPenetrability(penetrability);
+		this.setCollision(collision);
 	}
 
 	public final ISprite getSprite() {
 		return this.sprite;
 	}
 
-	protected final void setSprite(final Sprite sprite) {
+	public void setSprite(final ISprite sprite) {
 		this.sprite = sprite;
 	}
 
-	public final Penetrability getPenetrability() {
-		return this.penetrability;
+	public final Collision getCollision() {
+		return this.collision;
 	}
 
-	private void setPenetrability(final Penetrability penetrability) {
-		this.penetrability = penetrability;
+	public void setCollision(final Collision collision) {
+		this.collision = collision;
 	}
 
 	public final Image getImage() {

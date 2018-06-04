@@ -1,14 +1,14 @@
 package model.element.nonMobile;
 
-import model.Penetrability;
+import model.Collision;
 import model.element.Sprite;
 
 class HBone extends NonMobile {
 
-    private static final Sprite SPRITE = new Sprite('_', "image/horizontal_bone.png");
+    private static final Sprite SPRITE = new Sprite('_', "horizontal_bone.png");
 
    
     HBone() {
-        super(SPRITE, Penetrability.BLOCKING);
+        super(SPRITE, Collision.BLOCKING);
     }
 }

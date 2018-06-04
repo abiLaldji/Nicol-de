@@ -3,16 +3,16 @@ package model.element.mobile;
 
 import java.io.IOException;
 
+import model.Collision;
 import model.IMap;
-import model.Penetrability;
 import model.element.Sprite;
 
 public class Spell extends Mobile{
 	
-    private static final Sprite spriteS = new Sprite('S', "images/monster_1.png");
+    private static final Sprite spriteS = new Sprite('S', "fireball_1");
 
     public Spell(final int x, final int y, final IMap map) throws IOException {
-        super(x, y, spriteS, map, Penetrability.BLOCKING);
+        super(x, y, spriteS, map, Collision.BLOCKING);
         spriteS.loadImage();   
     }
 }

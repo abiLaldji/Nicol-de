@@ -1,14 +1,14 @@
 package model.element.nonMobile;
 
-import model.Penetrability;
+import model.Collision;
 import model.element.Sprite;
 
 class ClosedDoor extends NonMobile {
 
-    private static final Sprite SPRITE = new Sprite(']', "image/gate_closed");
+    private static final Sprite SPRITE = new Sprite(']', "gate_closed.png");
 
    
     ClosedDoor() {
-        super(SPRITE, Penetrability.KILL);
+        super(SPRITE, Collision.KILL);
     }
 }

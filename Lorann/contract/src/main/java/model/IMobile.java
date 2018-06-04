@@ -1,16 +1,18 @@
 package model;
 
+import java.io.IOException;
+
 import showboard.IPawn;
 
 public interface IMobile extends IPawn, IElement {
 
-	public void moveUp();
+	public void moveUp() throws IOException;
 
-	public void moveDown();
+	public void moveDown() throws IOException;
 
-	public void moveLeft();
+	public void moveLeft() throws IOException;
 
-	public void moveRight();
+	public void moveRight() throws IOException;
 
 	public void moveUpRight();
 

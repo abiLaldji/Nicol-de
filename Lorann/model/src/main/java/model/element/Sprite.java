@@ -5,8 +5,8 @@ import java.io.IOException;
 
 import javax.swing.ImageIcon;
 
+import model.Collision;
 import model.ISprite;
-import model.Penetrability;
 
 public class Sprite implements ISprite{
 	private boolean loaded;
@@ -14,7 +14,8 @@ public class Sprite implements ISprite{
 	private Image image;
 	private char consoleImage;
 	private boolean visible;
-	private Penetrability penetrability;	
+	private Collision collision;	
+	private String chemin = "/home/abi/git/Nicol-de/Lorann/image/";
 	
 	public Sprite(final char character, final String imageName) {
         this.setConsoleImage(character);
@@ -22,19 +23,19 @@ public class Sprite implements ISprite{
     }
 
 	public final void loadImage() throws IOException {
-		ImageIcon ii = new ImageIcon(this.getImageLink());
+		ImageIcon ii = new ImageIcon(chemin + this.getImageLink());
 		setImage(ii.getImage());
         //this.setImage(ImageIO.read(new File(this.getImageLink())));
         this.setLoaded(true);
         this.setVisible(true);
     }
 	
-	public Penetrability getPenetrability() {
-		return penetrability;
+	public Collision getCollision() {
+		return this.collision;
 	}
 
-	public void setPenetrability(Penetrability penetrability) {
-		this.penetrability = penetrability;
+	public void setCollision(Collision collision) {
+		this.collision = collision;
 	}
 	
 	public char getConsoleImage() {

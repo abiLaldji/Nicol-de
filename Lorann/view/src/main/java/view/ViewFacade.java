@@ -35,10 +35,9 @@ public class ViewFacade implements IView, Runnable, KeyListener, IPawn {
 		boardFrame.setDimension(new Dimension(model.getMap().getWidth(), model.getMap().getHeight()));
 		boardFrame.setDisplayFrame(new Rectangle(0, 0, model.getMap().getWidth(), model.getMap().getHeight()));
 		boardFrame.setSize(model.getMap().getWidth() * SQUARE_SIZE, model.getMap().getHeight() * SQUARE_SIZE);
-//		boardFrame.setHeightLooped(true);
 		boardFrame.setFocusable(true);
 		boardFrame.setFocusTraversalKeysEnabled(false);
-//		boardFrame.setLocationRelativeTo(null);
+		boardFrame.setLocationRelativeTo(null);
 		boardFrame.addKeyListener(this);
 
 		for (int x = 0; x < model.getMap().getWidth(); x++) {

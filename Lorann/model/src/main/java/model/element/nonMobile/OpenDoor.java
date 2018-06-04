@@ -1,14 +1,14 @@
 package model.element.nonMobile;
 
-import model.Penetrability;
+import model.Collision;
 import model.element.Sprite;
 
 class OpenDoor extends NonMobile {
 
-    private static final Sprite SPRITE = new Sprite('[', "image/gate_open.png");
+    private static final Sprite SPRITE = new Sprite('[', "gate_open.png");
 
    
     OpenDoor() {
-        super(SPRITE, Penetrability.WIN);
+        super(SPRITE, Collision.WIN);
     }
 }
