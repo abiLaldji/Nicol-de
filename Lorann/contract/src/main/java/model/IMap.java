@@ -2,20 +2,17 @@ package model;
 
 import java.util.Observable;;
 
-
 public interface IMap {
 
-	void semer();
-	
 	int getWidth();
 
-    int getHeight() ;
+	int getHeight();
 
-    IElement getOnTheMapXY(final int x, final int y);
+	IElement getOnTheMapXY(final int x, final int y);
 
-    Observable getObservable();
+	Observable getObservable();
 
 	void setMobileHasChanged();
-	
+
 	void setEmptyXY(final int x, final int y);
 }

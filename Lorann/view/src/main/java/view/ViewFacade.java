@@ -12,8 +12,7 @@ import javax.swing.SwingUtilities;
 
 import controller.IOrderPerformer;
 import controller.UserOrder;
-import model.IMap;
-import model.IMobile;
+import model.IModel;
 import showboard.BoardFrame;
 import showboard.IPawn;
 
@@ -21,94 +20,58 @@ public class ViewFacade implements IView, Runnable, KeyListener, IPawn {
 
 	private static final int SQUARE_SIZE = 70;
 
-	private IMap map;
-
-	private IMobile lorann;
-
-	private IMobile monster;
+	private IModel model;
 
 	private IOrderPerformer orderPerformer;
 
-	public ViewFacade(final IMap map, final IMobile lorann, IMobile monster) throws IOException {
+	public ViewFacade(IModel model) throws IOException {
 		System.out.println("view");
-		this.setMap(map);
-		this.setLorann(lorann);
-		this.getLorann().getSprite().loadImage();
-		this.setMonster(monster);
-
-		monster.getSprite().loadImage();
-
+		this.model = model;
 		SwingUtilities.invokeLater(this);
 	}
 
 	public void run() {
 		final BoardFrame boardFrame = new BoardFrame("Lorann Game");
-		boardFrame.setDimension(new Dimension(this.getMap().getWidth(), this.getMap().getHeight()));
-		boardFrame.setDisplayFrame(new Rectangle(0, 0, this.getMap().getWidth(), this.getMap().getHeight()));
-		boardFrame.setSize(this.map.getWidth() * SQUARE_SIZE, this.map.getHeight() * SQUARE_SIZE);
-		boardFrame.setHeightLooped(true);
+		boardFrame.setDimension(new Dimension(model.getMap().getWidth(), model.getMap().getHeight()));
+		boardFrame.setDisplayFrame(new Rectangle(0, 0, model.getMap().getWidth(), model.getMap().getHeight()));
+		boardFrame.setSize(model.getMap().getWidth() * SQUARE_SIZE, model.getMap().getHeight() * SQUARE_SIZE);
+//		boardFrame.setHeightLooped(true);
 		boardFrame.setFocusable(true);
 		boardFrame.setFocusTraversalKeysEnabled(false);
-		boardFrame.setLocationRelativeTo(null);
+//		boardFrame.setLocationRelativeTo(null);
 		boardFrame.addKeyListener(this);
 
-		for (int x = 0; x < this.getMap().getWidth(); x++) {
-			for (int y = 0; y < this.getMap().getHeight(); y++) {
-				boardFrame.addSquare(this.map.getOnTheMapXY(x, y), x, y);
+		for (int x = 0; x < model.getMap().getWidth(); x++) {
+			for (int y = 0; y < model.getMap().getHeight(); y++) {
+				boardFrame.addSquare(model.getMap().getOnTheMapXY(x, y), x, y);
 			}
 		}
 
-		boardFrame.addPawn(this.getLorann());
+		boardFrame.addPawn(model.getLorann());
 
-		boardFrame.addPawn(monster);
+		boardFrame.addPawn(model.getLorann());
 
 		boardFrame.setVisible(true);
 
-		this.getMap().getObservable().addObserver(boardFrame.getObserver());
+		model.getMap().getObservable().addObserver(boardFrame.getObserver());
 		show();
 	}
 
 	public final void show() {
-		for (int x = 0; x < this.getMap().getWidth(); x++) {
-			for (int y = 0; y < this.getMap().getHeight(); y++) {
-				if (x == this.getLorann().getX() && y == this.getLorann().getY()) {
-					System.out.print(this.getLorann().getSprite().getConsoleImage());
+		for (int x = 0; x < model.getMap().getWidth(); x++) {
+			for (int y = 0; y < model.getMap().getHeight(); y++) {
+				if (x == model.getLorann().getX() && y == model.getLorann().getY()) {
+					System.out.print(model.getLorann().getSprite().getConsoleImage());
 				}
-				if (x == this.getMonster().getX() && y == this.getMonster().getY()) {
-					System.out.print(this.getMonster().getSprite().getConsoleImage());
+				if (x == model.getMonster().getX() && y == model.getMonster().getY()) {
+					System.out.print(model.getMonster().getSprite().getConsoleImage());
 				} else {
-					System.out.print(this.getMap().getOnTheMapXY(x, y).getSprite().getConsoleImage());
+					System.out.print(model.getMap().getOnTheMapXY(x, y).getSprite().getConsoleImage());
 				}
 			}
-			// y = (y + 1) % this.getMap().getHeight();
 			System.out.print("\n");
 		}
 
-	}
-
-	private IMobile getLorann() {
-		return this.lorann;
-	}
-
-	private void setLorann(final IMobile lorann) {
-		this.lorann = lorann;
-	}
-
-	private IMap getMap() {
-		return this.map;
-	}
-
-	private void setMap(final IMap map) throws IOException {
-		this.map = map;
-		for (int x = 0; x < this.getMap().getWidth(); x++) {
-			for (int y = 0; y < this.getMap().getHeight(); y++) {
-				if (this.getMap().getOnTheMapXY(x, y) == null) {
-					this.getMap().setEmptyXY(x, y);
-				} else {
-					this.getMap().getOnTheMapXY(x, y).getSprite().loadImage();
-				}
-			}
-		}
 	}
 
 	private static UserOrder keyCodeToUserOrder(final int keyCode) {
@@ -147,14 +110,6 @@ public class ViewFacade implements IView, Runnable, KeyListener, IPawn {
 
 	public final void setOrderPerformer(final IOrderPerformer orderPerformer) {
 		this.orderPerformer = orderPerformer;
-	}
-
-	public IMobile getMonster() {
-		return monster;
-	}
-
-	public void setMonster(IMobile monster) {
-		this.monster = monster;
 	}
 
 	@Override

@@ -8,7 +8,7 @@ import model.element.Sprite;
 
 public class Monster extends Mobile{
 	
-    private static final Sprite spriteM = new Sprite('#', "images/monster_1.png");
+    private static final Sprite spriteM = new Sprite('#', "image/monster_1.png");
     
    
     public Monster(final int x, final int y, final IMap map) throws IOException {

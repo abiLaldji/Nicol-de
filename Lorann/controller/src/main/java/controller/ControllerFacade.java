@@ -45,7 +45,7 @@ public class ControllerFacade implements IController, IOrderPerformer {
 			 * this.getModel().getLorann().moveDownRight(); break; case NOP:
 			 */
 			default:
-				this.getModel().getLorann().doNothing();
+//				this.getModel().getLorann().doNothing();
 				break;
 			}
 			this.clearStackOrder();

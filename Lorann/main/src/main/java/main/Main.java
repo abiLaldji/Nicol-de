@@ -15,23 +15,13 @@ import view.ViewFacade;
  */
 public abstract class Main {
 
-   
-	private static final int startX = 1;
+	public static void main(final String[] args) throws InterruptedException, IOException {
+		final ModelFacade model = new ModelFacade();
+		final ViewFacade view = new ViewFacade(model);
+		final IController controller = new ControllerFacade(view, model);
+		view.setOrderPerformer(controller.getOrderPeformer());
 
-	private static final int startY = 1;
-	
-	private static final int startXM =15;
-
-	private static final int startYM = 2;
-	
-	
-    public static void main(final String[] args) throws InterruptedException, IOException {
-    	final ModelFacade model = new ModelFacade(startX, startY, startXM, startYM);
-        final ViewFacade view = new ViewFacade(model.getMap(), model.getLorann(), model.getMonster());
-        final IController controller = new ControllerFacade(view, model);
-        view.setOrderPerformer(controller.getOrderPeformer());
-
-        controller.play();
-    }
+		controller.play();
+	}
 
 }

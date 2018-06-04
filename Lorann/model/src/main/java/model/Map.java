@@ -1,5 +1,6 @@
 package model;
 
+import java.io.IOException;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -18,12 +19,16 @@ class Map extends Observable implements IMap {
 
 	private static String sql = "{call print_decor}";
 
-	Map() {
+	private IMap map;
+
+	public Map() throws IOException {
 		super();
-		semer();
+		setupMap(this.map);
+		loadDB();
+		fillMap(this.map);
 	}
 
-	public void semer() {
+	public void loadDB() {
 
 		try {
 			Connection cnx = model.dao.LorannBDDConnector.connectorDB();
@@ -92,21 +97,37 @@ class Map extends Observable implements IMap {
 
 	}
 
+	private void setupMap(IMap map) {
+		this.map = map;
+		for (int x = 0; x < this.getWidth(); x++) {
+			for (int y = 0; y < this.getHeight(); y++) {
+				this.setEmptyXY(x, y);
+			}
+		}
+	}
+
+	private void fillMap(final IMap map) throws IOException {
+		this.map = map;
+		for (int x = 0; x < this.getWidth(); x++) {
+			for (int y = 0; y < this.getHeight(); y++) {
+
+				this.getOnTheMapXY(x, y).getSprite().loadImage();
+			}
+		}
+
+	}
+
+	public IMap getMap() {
+		return this.map;
+	}
+
 	public final int getWidth() {
 		return this.WIDTH;
 	}
 
-	/*
-	 * private void setWidth(final int width) { this.WIDTH = width; }
-	 */
-
 	public final int getHeight() {
 		return this.HEIGHT;
 	}
-
-	/*
-	 * private void setHeight(final int height) { this.HEIGHT = height; }
-	 */
 
 	public final IElement getOnTheMapXY(final int x, final int y) {
 		return this.onTheMap[x][y];
@@ -117,13 +138,8 @@ class Map extends Observable implements IMap {
 	}
 
 	public void setEmptyXY(final int x, final int y) {
-		this.onTheMap[x][y] = NonMobileFactory.getFromFileSymbol(' ');
+		setOnTheMapXY(NonMobileFactory.getFromFileSymbol(' '), x, y);
 	}
-
-	// public void loadFile(String fileName) {
-	// TODO Auto-generated method stub
-
-	// }
 
 	public final void setMobileHasChanged() {
 		this.setChanged();
@@ -133,4 +149,5 @@ class Map extends Observable implements IMap {
 	public Observable getObservable() {
 		return this;
 	}
+
 }

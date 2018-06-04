@@ -87,7 +87,7 @@ class BoardPanel extends JPanel implements Observer {
         this.pawns = new ArrayList<>();
         this.noImage = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
         final Graphics2D graphics = this.noImage.createGraphics();
-        graphics.setColor(Color.darkGray);
+        graphics.setColor(Color.RED);
         graphics.fillRect(0, 0, 2, 2);
     }
 
@@ -120,6 +120,7 @@ class BoardPanel extends JPanel implements Observer {
      */
     @Override
     public final void update(final Observable observable, final Object object) {
+    	System.out.println("repaint!");
         this.repaint();
     }
 
