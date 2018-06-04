@@ -1,6 +1,6 @@
 package model.element.nonMobile;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -10,9 +10,9 @@ import org.junit.Test;
 
 import model.Penetrability;
 
-public class BourseTest {
-	Bourse bourse = new Bourse();
+public class PurseTest {
 
+	Purse purse = new Purse();
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 	}
@@ -30,16 +30,13 @@ public class BourseTest {
 	}
 
 	@Test
-	public void testBourse() {
-		final Penetrability expected = Penetrability.PENETRABLE;
-		assertEquals(expected, bourse.getPenetrability());
-	}
-	
-	@Test
-	public void testBourseFaux() {
+	public void testBone() {
 		final Penetrability expected = Penetrability.BLOCKING;
-		assertEquals(expected, bourse.getPenetrability());
+		assertEquals(expected, purse.getPenetrability());
 	}
-	
-
+	@Test
+	public void testBoneFaux() {
+		final Penetrability expected = Penetrability.PENETRABLE;
+		assertEquals(expected, purse.getPenetrability());
+	}
 }
