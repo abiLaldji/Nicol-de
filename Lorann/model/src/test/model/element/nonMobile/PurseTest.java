@@ -31,7 +31,7 @@ public class PurseTest {
 
 	@Test
 	public void testBone() {
-		final Penetrability expected = Penetrability.PENETRABLE;
+		final Penetrability expected = Penetrability.COLLECTABLE;
 		assertEquals(expected, purse.getPenetrability());
 	}
 	

@@ -31,7 +31,7 @@ public class BallTest {
 
 	@Test
 	public void testBall() {
-		final Penetrability expected = Penetrability.PENETRABLE;
+		final Penetrability expected = Penetrability.OPENDOOR;
 		assertEquals(expected, ball.getPenetrability());
 	}
 

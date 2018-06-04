@@ -31,7 +31,7 @@ public class OpenDoorTest {
 
 	@Test
 	public void testOpenDoor() {
-		final Penetrability expected = Penetrability.BLOCKING;
+		final Penetrability expected = Penetrability.WIN;
 		assertEquals(expected, opendoor.getPenetrability());
 	}
 	

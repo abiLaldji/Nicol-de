@@ -1,8 +1,6 @@
 package model.element.nonMobile;
 
-
-
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -12,9 +10,8 @@ import org.junit.Test;
 
 import model.Penetrability;
 
-
-public class ClosedDoorTest {
-	ClosedDoor closeddoor = new ClosedDoor();
+public class EmptyTest {
+	Empty empty = new Empty();
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -33,11 +30,9 @@ public class ClosedDoorTest {
 	}
 
 	@Test
-	public void testClosedDoor() {
-		final Penetrability expected = Penetrability.KILL;
-		assertEquals(expected, closeddoor.getPenetrability());
+	public void test() {
+		final Penetrability expected = Penetrability.PENETRABLE;
+		assertEquals(expected, empty.getPenetrability());
 	}
-	
-
 
 }
