@@ -48,7 +48,7 @@ public class ViewFacade implements IView, Runnable, KeyListener, IPawn {
 
 		boardFrame.addPawn(model.getLorann());
 
-		boardFrame.addPawn(model.getLorann());
+		boardFrame.addPawn(model.getMonster());
 
 		boardFrame.setVisible(true);
 
@@ -87,6 +87,9 @@ public class ViewFacade implements IView, Runnable, KeyListener, IPawn {
 			break;
 		case KeyEvent.VK_DOWN:
 			userOrder = UserOrder.DOWN;
+			break;
+		case KeyEvent.VK_SPACE:
+			userOrder = UserOrder.FIRE;
 			break;
 		default:
 			userOrder = UserOrder.NOP;

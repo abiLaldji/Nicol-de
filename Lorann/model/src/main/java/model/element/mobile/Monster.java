@@ -13,7 +13,6 @@ public class Monster extends Mobile{
    
     public Monster(final int x, final int y, final IMap map) throws IOException {
         super(x, y, spriteM, map, Collision.KILL);
-        spriteM.loadImage();   
-        
+        spriteM.loadImage();      
     }
 }

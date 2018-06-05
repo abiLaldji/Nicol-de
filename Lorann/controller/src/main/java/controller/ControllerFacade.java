@@ -11,7 +11,7 @@ public class ControllerFacade implements IController, IOrderPerformer {
 
 	private IModel model;
 
-	private final int SPEED = 200;
+	private final int SPEED = 100;
 
 	private UserOrder stackOrder;
 
@@ -44,6 +44,9 @@ public class ControllerFacade implements IController, IOrderPerformer {
 			 * this.getModel().getLorann().moveUpRight(); break; case DOWNRIGHT:
 			 * this.getModel().getLorann().moveDownRight(); break; case NOP:
 			 */
+			case FIRE:
+				this.getModel().getLorann().fire(1,1);
+				break;
 			default:
 //				this.getModel().getLorann().doNothing();
 				break;

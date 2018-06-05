@@ -2,8 +2,10 @@ package model;
 
 import java.io.IOException;
 
+import model.element.Element;
 import model.element.mobile.Lorann;
 import model.element.mobile.Monster;
+import model.element.mobile.Spell;
 
 public class ModelFacade implements IModel {
 

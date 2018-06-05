@@ -12,7 +12,7 @@ public class Spell extends Mobile{
     private static final Sprite spriteS = new Sprite('S', "fireball_1");
 
     public Spell(final int x, final int y, final IMap map) throws IOException {
-        super(x, y, spriteS, map, Collision.BLOCKING);
+        super(x, y, spriteS, map, Collision.POWER);
         spriteS.loadImage();   
     }
 }

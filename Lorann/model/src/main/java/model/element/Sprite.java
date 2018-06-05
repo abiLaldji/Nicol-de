@@ -15,7 +15,7 @@ public class Sprite implements ISprite{
 	private char consoleImage;
 	private boolean visible;
 	private Collision collision;	
-	private String chemin = "C:/Users/tille/git/Nicol-de/Lorann/image/lorann_u.png";
+	private String chemin = "/home/abi/git/Nicol-de/Lorann/image/";
 	
 	public Sprite(final char character, final String imageName) {
         this.setConsoleImage(character);
@@ -25,7 +25,6 @@ public class Sprite implements ISprite{
 	public final void loadImage() throws IOException {
 		ImageIcon ii = new ImageIcon(chemin + this.getImageLink());
 		setImage(ii.getImage());
-        //this.setImage(ImageIO.read(new File(this.getImageLink())));
         this.setLoaded(true);
         this.setVisible(true);
     }
