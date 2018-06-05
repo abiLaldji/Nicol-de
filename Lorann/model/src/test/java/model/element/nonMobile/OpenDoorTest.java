@@ -1,6 +1,6 @@
 package model.element.nonMobile;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -8,11 +8,11 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import model.Penetrability;
+import model.Collision;
 
-public class PurseTest {
+public class OpenDoorTest {
+	OpenDoor opendoor = new OpenDoor();
 
-	Purse purse = new Purse();
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 	}
@@ -30,9 +30,10 @@ public class PurseTest {
 	}
 
 	@Test
-	public void testBone() {
-		final Collision expected = Collision.COLLECTABLE;
-		assertEquals(expected, purse.getCollision());
+	public void testOpenDoor() {
+		final Collision expected = Collision.WIN;
+		assertEquals(expected, opendoor.getCollision());
 	}
+	
 	
 }

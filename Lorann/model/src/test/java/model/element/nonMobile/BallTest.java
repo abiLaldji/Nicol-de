@@ -10,11 +10,10 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import model.Penetrability;
+import model.Collision;
 
-
-public class ClosedDoorTest {
-	ClosedDoor closeddoor = new ClosedDoor();
+public class BallTest {
+	Ball ball = new Ball();
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -33,11 +32,11 @@ public class ClosedDoorTest {
 	}
 
 	@Test
-	public void testClosedDoor() {
-		final Collision expected = Collision.KILL;
-		assertEquals(expected, closeddoor.getCollision());
+	public void testBall() {
+		final Collision expected = Collision.OPENDOOR;
+		assertEquals(expected, ball.getCollision());
 	}
+
 	
-
-
+	
 }

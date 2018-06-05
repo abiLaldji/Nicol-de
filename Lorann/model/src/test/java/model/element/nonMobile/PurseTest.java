@@ -1,6 +1,6 @@
 package model.element.nonMobile;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -8,11 +8,10 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import model.Penetrability;
+import model.Collision;
+public class PurseTest {
 
-public class EmptyTest {
-	Empty empty = new Empty();
-
+	Purse purse = new Purse();
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 	}
@@ -30,9 +29,9 @@ public class EmptyTest {
 	}
 
 	@Test
-	public void test() {
-		final Collision expected = Collision.PENETRABLE;
-		assertEquals(expected, empty.getCollision());
+	public void testBone() {
+		final Collision expected = Collision.COLLECTABLE;
+		assertEquals(expected, purse.getCollision());
 	}
-
+	
 }

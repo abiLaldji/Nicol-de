@@ -8,10 +8,10 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import model.Penetrability;
+import model.Collision;
 
-public class VBoneTest {
-	VBone vbone = new VBone();
+public class BoneTest {
+	Bone bone = new Bone();
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -30,9 +30,13 @@ public class VBoneTest {
 	}
 
 	@Test
-	public void testVBone() {
+	public void testBone() {
 		final Collision expected = Collision.BLOCKING;
-		assertEquals(expected, vbone.getCollision());
+		assertEquals(expected, bone.getCollision());
+		
 	}
 	
-}
+
+		
+	}
+
