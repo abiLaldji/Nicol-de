@@ -15,7 +15,7 @@ public class Sprite implements ISprite{
 	private char consoleImage;
 	private boolean visible;
 	private Collision collision;	
-	private String chemin = "/home/abi/git/Nicol-de/Lorann/image/";
+	private String chemin = "C:/Users/tille/git/Nicol-de/Lorann/image/lorann_u.png";
 	
 	public Sprite(final char character, final String imageName) {
         this.setConsoleImage(character);
