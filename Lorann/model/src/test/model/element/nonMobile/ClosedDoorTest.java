@@ -34,8 +34,8 @@ public class ClosedDoorTest {
 
 	@Test
 	public void testClosedDoor() {
-		final Penetrability expected = Penetrability.KILL;
-		assertEquals(expected, closeddoor.getPenetrability());
+		final Collision expected = Collision.KILL;
+		assertEquals(expected, closeddoor.getCollision());
 	}
 	
 

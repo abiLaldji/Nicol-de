@@ -31,8 +31,8 @@ public class VBoneTest {
 
 	@Test
 	public void testVBone() {
-		final Penetrability expected = Penetrability.BLOCKING;
-		assertEquals(expected, vbone.getPenetrability());
+		final Collision expected = Collision.BLOCKING;
+		assertEquals(expected, vbone.getCollision());
 	}
 	
 }

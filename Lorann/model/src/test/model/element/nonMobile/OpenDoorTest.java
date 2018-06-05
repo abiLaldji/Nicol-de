@@ -31,8 +31,8 @@ public class OpenDoorTest {
 
 	@Test
 	public void testOpenDoor() {
-		final Penetrability expected = Penetrability.WIN;
-		assertEquals(expected, opendoor.getPenetrability());
+		final Collision expected = Collision.WIN;
+		assertEquals(expected, opendoor.getCollision());
 	}
 	
 	

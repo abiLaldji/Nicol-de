@@ -31,8 +31,8 @@ public class BoneTest {
 
 	@Test
 	public void testBone() {
-		final Penetrability expected = Penetrability.BLOCKING;
-		assertEquals(expected, bone.getPenetrability());
+		final Collision expected = Collision.BLOCKING;
+		assertEquals(expected, bone.getCollision());
 		
 	}
 	

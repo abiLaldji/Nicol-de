@@ -31,8 +31,8 @@ public class BallTest {
 
 	@Test
 	public void testBall() {
-		final Penetrability expected = Penetrability.OPENDOOR;
-		assertEquals(expected, ball.getPenetrability());
+		final Collision expected = Collision.OPENDOOR;
+		assertEquals(expected, ball.getCollision());
 	}
 
 	

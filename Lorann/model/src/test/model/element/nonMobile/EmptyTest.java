@@ -31,8 +31,8 @@ public class EmptyTest {
 
 	@Test
 	public void test() {
-		final Penetrability expected = Penetrability.PENETRABLE;
-		assertEquals(expected, empty.getPenetrability());
+		final Collision expected = Collision.PENETRABLE;
+		assertEquals(expected, empty.getCollision());
 	}
 
 }
