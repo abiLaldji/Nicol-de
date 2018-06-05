@@ -14,13 +14,13 @@ public interface IMobile extends IPawn, IElement {
 
 	public void moveRight() throws IOException;
 
-	public void moveUpRight();
+	public void moveUpRight() throws IOException;
 
-	public void moveUpLeft();
+	public void moveUpLeft() throws IOException;
 	
-	public void moveDownRight();
+	public void moveDownRight() throws IOException;
 	
-	public void moveDownLeft();
+	public void moveDownLeft() throws IOException;
 
 	public boolean isAlive();
 

@@ -19,11 +19,19 @@ import showboard.IPawn;
 public class ViewFacade implements IView, Runnable, KeyListener, IPawn {
 
 	private static final int SQUARE_SIZE = 70;
+<<<<<<< HEAD
 
 	public static int up = 0;
 	public static int down = 0;
 	public static int right = 0;
 	public static int left = 0;
+=======
+	
+	public static boolean up = false;
+	public static boolean down = false;
+	public static boolean right = false;
+	public static boolean left = false;
+>>>>>>> branch 'master' of https://github.com/abiLaldji/Nicol-de.git
 
 	private IModel model;
 
@@ -81,22 +89,47 @@ public class ViewFacade implements IView, Runnable, KeyListener, IPawn {
 
 	private static UserOrder keyCodeToUserOrder(final int keyCode) {
 		UserOrder userOrder;
+<<<<<<< HEAD
+=======
+		
+>>>>>>> branch 'master' of https://github.com/abiLaldji/Nicol-de.git
 		switch (keyCode) {
 		case KeyEvent.VK_RIGHT:
 			userOrder = UserOrder.RIGHT;
+<<<<<<< HEAD
+=======
+			right = true;
+>>>>>>> branch 'master' of https://github.com/abiLaldji/Nicol-de.git
 			break;
 		case KeyEvent.VK_LEFT:
 			userOrder = UserOrder.LEFT;
+<<<<<<< HEAD
+=======
+			left = true;
+>>>>>>> branch 'master' of https://github.com/abiLaldji/Nicol-de.git
 			break;
 		case KeyEvent.VK_UP:
 			userOrder = UserOrder.UP;
+<<<<<<< HEAD
+=======
+			 up = true;
+>>>>>>> branch 'master' of https://github.com/abiLaldji/Nicol-de.git
 			break;
 		case KeyEvent.VK_DOWN:
 			userOrder = UserOrder.DOWN;
+<<<<<<< HEAD
+=======
+			down = true;
+>>>>>>> branch 'master' of https://github.com/abiLaldji/Nicol-de.git
 			break;
 		case KeyEvent.VK_SPACE:
 			userOrder = UserOrder.FIRE;
+<<<<<<< HEAD
 			break;
+=======
+			break;				
+
+>>>>>>> branch 'master' of https://github.com/abiLaldji/Nicol-de.git
 		default:
 			userOrder = UserOrder.NOP;
 			break;
@@ -106,12 +139,49 @@ public class ViewFacade implements IView, Runnable, KeyListener, IPawn {
 
 	public final void keyPressed(final KeyEvent keyEvent) {
 		UserOrder userOrder;
+		
 		try {
+<<<<<<< HEAD
 			this.getOrderPerformer().orderPerform(keyCodeToUserOrder(keyEvent.getKeyCode()));
 
 		} catch (final IOException exception) {
 			exception.printStackTrace();
+=======
+			if(right == true && left == false && up == false && down == false) {
+				this.getOrderPerformer().orderPerform(keyCodeToUserOrder(keyEvent.getKeyCode()));
+				}
+			if(left == true && right == false && up == false && down == false) {
+				this.getOrderPerformer().orderPerform(keyCodeToUserOrder(keyEvent.getKeyCode()));
+				}
+			if(up == true && down == false && right == false && left == false) {
+				this.getOrderPerformer().orderPerform(keyCodeToUserOrder(keyEvent.getKeyCode()));
+				}
+			if(down == true && right == false && left == false && up == false) {
+				this.getOrderPerformer().orderPerform(keyCodeToUserOrder(keyEvent.getKeyCode()));
+				}
+			if(right == true && down == true && left == false && up == false ) {
+				userOrder = UserOrder.DOWNRIGHT;
+				this.getOrderPerformer().orderPerform(userOrder);
+				}
+			if(left == true && down == true && right == false && up == false) {
+				userOrder = UserOrder.DOWNLEFT;
+				this.getOrderPerformer().orderPerform(userOrder);
+				}
+			if(right == true && up == true && left == false && down == false) {
+				userOrder = UserOrder.UPRIGHT;
+				this.getOrderPerformer().orderPerform(userOrder);
+				}
+			if(left == true && up == true && right == false && down == false) {
+				userOrder = UserOrder.UPLEFT;
+				this.getOrderPerformer().orderPerform(userOrder);
+				}
+			
+		}catch (IOException e) {
+
+			e.printStackTrace();
+>>>>>>> branch 'master' of https://github.com/abiLaldji/Nicol-de.git
 		}
+			
 	}
 
 	private IOrderPerformer getOrderPerformer() {
@@ -122,11 +192,7 @@ public class ViewFacade implements IView, Runnable, KeyListener, IPawn {
 		this.orderPerformer = orderPerformer;
 	}
 
-	@Override
-	public void keyReleased(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-
-	}
+		
 
 	@Override
 	public void keyTyped(KeyEvent arg0) {
@@ -157,5 +223,30 @@ public class ViewFacade implements IView, Runnable, KeyListener, IPawn {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	public void keyReleased(KeyEvent e) {
+
+        int key = e.getKeyCode();
+
+        if (key == KeyEvent.VK_UP) {
+            up = false;
+            
+        }
+
+        if (key == KeyEvent.VK_RIGHT) {
+        	right= false;
+            
+        }
+
+        if (key == KeyEvent.VK_DOWN) {
+        	down= false;
+           
+        }
+
+        if (key == KeyEvent.VK_LEFT) {
+        	left= false;
+            
+        }
+    }
 
 }

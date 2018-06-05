@@ -155,31 +155,160 @@ public abstract class Mobile extends Element implements IMobile {
 		}
 	}
 
+<<<<<<< HEAD
 	public void moveUpRight() {
 
 		this.setX(this.getX() + 1);
 		this.setY(this.getY() - 1);
 		this.setHasMoved();
+=======
+	public void moveUpRight() throws IOException {
+		
+			if (this.getX() != this.getMap().getWidth()) {
+				switch (this.getMap().getOnTheMapXY(this.getX() + 1, this.getY() - 1).getCollision()) {
+				case PENETRABLE:
+					this.setX(this.getX() + 1);
+					this.setY(this.getY() - 1);
+					this.setHasMoved();
+					break;
+				case COLLECTABLE:
+					this.collect(this.getX() + 1, this.getY() - 1);
+					this.setX(this.getX() + 1);
+					this.setY(this.getY() - 1);
+					this.setHasMoved();
+					break;
+				case KILL:
+					die();
+
+					break;
+				case WIN:
+					win();
+					this.setX(this.getX() + 1);
+					this.setY(this.getY() - 1);
+					this.setHasMoved();
+					break;
+				case OPENDOOR:
+					openTheDoor(this.getX() + 1, this.getY() - 1);
+					this.setX(this.getX() + 1);
+					this.setY(this.getY() - 1);
+					this.setHasMoved();
+					break;
+				default:
+					break;
+				}
+			}
+		}
+
+	public void moveUpLeft() throws IOException {
+		
+		if (this.getX() != this.getMap().getWidth()) {
+			switch (this.getMap().getOnTheMapXY(this.getX() - 1, this.getY() - 1).getCollision()) {
+			case PENETRABLE:
+				this.setX(this.getX() - 1);
+				this.setY(this.getY() - 1);
+				this.setHasMoved();
+				break;
+			case COLLECTABLE:
+				this.collect(this.getX() - 1, this.getY() - 1);
+				this.setX(this.getX() - 1);
+				this.setY(this.getY() - 1);
+				this.setHasMoved();
+				break;
+			case KILL:
+				die();
+
+				break;
+			case WIN:
+				win();
+				this.setX(this.getX() - 1);
+				this.setY(this.getY() - 1);
+				this.setHasMoved();
+				break;
+			case OPENDOOR:
+				openTheDoor(this.getX() - 1, this.getY() - 1);
+				this.setX(this.getX() - 1);
+				this.setY(this.getY() - 1);
+				this.setHasMoved();
+				break;
+			default:
+				break;
+			}
+		}
+>>>>>>> branch 'master' of https://github.com/abiLaldji/Nicol-de.git
 	}
 
-	public void moveUpLeft() {
-		this.setX(this.getX() - 1);
-		this.setY(this.getY() - 1);
-		this.setHasMoved();
+	public void moveDownRight() throws IOException {
+		
+		if (this.getX() != this.getMap().getWidth()) {
+			switch (this.getMap().getOnTheMapXY(this.getX() + 1, this.getY() + 1).getCollision()) {
+			case PENETRABLE:
+				this.setX(this.getX() + 1);
+				this.setY(this.getY() + 1);
+				this.setHasMoved();
+				break;
+			case COLLECTABLE:
+				this.collect(this.getX() + 1, this.getY() + 1);
+				this.setX(this.getX() + 1);
+				this.setY(this.getY() + 1);
+				this.setHasMoved();
+				break;
+			case KILL:
+				die();
 
+				break;
+			case WIN:
+				win();
+				this.setX(this.getX() + 1);
+				this.setY(this.getY() + 1);
+				this.setHasMoved();
+				break;
+			case OPENDOOR:
+				openTheDoor(this.getX() + 1, this.getY() + 1);
+				this.setX(this.getX() + 1);
+				this.setY(this.getY() + 1);
+				this.setHasMoved();
+				break;
+			default:
+				break;
+			}
+		}
 	}
 
-	public void moveDownRight() {
-		this.setX(this.getX() + 1);
-		this.setY(this.getY() + 1);
-		this.setHasMoved();
+	public void moveDownLeft() throws IOException {
+		
+		if (this.getX() != this.getMap().getWidth()) {
+			switch (this.getMap().getOnTheMapXY(this.getX() - 1, this.getY() + 1).getCollision()) {
+			case PENETRABLE:
+				this.setX(this.getX() - 1);
+				this.setY(this.getY() + 1);
+				this.setHasMoved();
+				break;
+			case COLLECTABLE:
+				this.collect(this.getX() - 1, this.getY() + 1);
+				this.setX(this.getX() - 1);
+				this.setY(this.getY() + 1);
+				this.setHasMoved();
+				break;
+			case KILL:
+				die();
 
-	}
-
-	public void moveDownLeft() {
-		this.setX(this.getX() - 1);
-		this.setY(this.getY() + 1);
-		this.setHasMoved();
+				break;
+			case WIN:
+				win();
+				this.setX(this.getX() - 1);
+				this.setY(this.getY() + 1);
+				this.setHasMoved();
+				break;
+			case OPENDOOR:
+				openTheDoor(this.getX() - 1, this.getY() + 1);
+				this.setX(this.getX() - 1);
+				this.setY(this.getY() + 1);
+				this.setHasMoved();
+				break;
+			default:
+				break;
+			}
+		}
 	}
 
 	public void doNothing() {
