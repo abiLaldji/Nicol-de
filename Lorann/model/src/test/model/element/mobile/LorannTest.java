@@ -13,12 +13,7 @@ import model.ModelFacade;
 
 public class LorannTest {
 	
-	
-<<<<<<< HEAD
-	Lorann lorann;
-=======
-	
->>>>>>> branch 'master' of https://github.com/abiLaldji/Nicol-de.git
+
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {

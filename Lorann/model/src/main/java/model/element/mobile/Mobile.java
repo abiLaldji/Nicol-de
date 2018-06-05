@@ -39,12 +39,12 @@ public abstract class Mobile extends Element implements IMobile {
 				this.setY(this.getY() - 1);
 				this.setHasMoved();
 			}
-			if (this.getY() != 0) {
-				if (this.getMap().getOnTheMapXY(this.getX(), this.getY() - 1).getCollision() == Collision.OPENDOOR) {
-					// gate change
-				}
+
+			if (this.getMap().getOnTheMapXY(this.getX(), this.getY() - 1).getCollision() == Collision.OPENDOOR) {
+				// gate change
 			}
 		} else if (this.getMap().getOnTheMapXY(this.getX(), this.getY() - 1).getCollision() == Collision.COLLECTABLE) {
+			System.out.println("collect");
 			collect(this.getX(), this.getY() - 1);
 		} else if (this.getMap().getOnTheMapXY(this.getX(), this.getY() - 1).getCollision() == Collision.WIN) {
 			win();
@@ -60,20 +60,21 @@ public abstract class Mobile extends Element implements IMobile {
 			if (this.getMap().getOnTheMapXY(this.getX(), this.getY() + 1).getCollision() == Collision.PENETRABLE) {
 				this.setY(this.getY() + 1);
 				this.setHasMoved();
-			}
-			if (this.getY() != 0) {
-				if (this.getMap().getOnTheMapXY(this.getX(), this.getY() + 1).getCollision() == Collision.OPENDOOR) {
-					// gate change
-				}
-			}
-		} else if (this.getMap().getOnTheMapXY(this.getX(), this.getY() + 1).getCollision() == Collision.COLLECTABLE) {
-			collect(this.getX(), this.getY() + 1);
-		} else if (this.getMap().getOnTheMapXY(this.getX(), this.getY() + 1).getCollision() == Collision.WIN) {
-			win();
-		} else if (this.getMap().getOnTheMapXY(this.getX(), this.getY() + 1).getCollision() == Collision.KILL) {
-			die();
+			} else if (this.getMap().getOnTheMapXY(this.getX(), this.getY() + 1).getCollision() == Collision.OPENDOOR) {
+				// gate change
 
+			} else if (this.getMap().getOnTheMapXY(this.getX(), this.getY() + 1)
+					.getCollision() == Collision.COLLECTABLE) {
+				System.out.println("collect");
+				collect(this.getX(), this.getY() + 1);
+			} else if (this.getMap().getOnTheMapXY(this.getX(), this.getY() + 1).getCollision() == Collision.WIN) {
+				win();
+			} else if (this.getMap().getOnTheMapXY(this.getX(), this.getY() + 1).getCollision() == Collision.KILL) {
+				die();
+
+			}
 		}
+
 	}
 
 	public void moveLeft() throws IOException {
@@ -82,12 +83,10 @@ public abstract class Mobile extends Element implements IMobile {
 				this.setX(this.getX() - 1);
 				this.setHasMoved();
 			}
-			if (this.getY() != 0) {
-				if (this.getMap().getOnTheMapXY(this.getX() - 1, this.getY()).getCollision() == Collision.OPENDOOR) {
-					System.out.println("opendoor");
-					// gate change
-				}
-			}
+				else if (this.getMap().getOnTheMapXY(this.getX() - 1, this.getY()).getCollision() == Collision.OPENDOOR) {
+				System.out.println("opendoor");
+				// gate change
+			
 		} else if (this.getMap().getOnTheMapXY(this.getX() - 1, this.getY()).getCollision() == Collision.COLLECTABLE) {
 			System.out.println("collect");
 			collect(this.getX() - 1, this.getY());
@@ -95,6 +94,7 @@ public abstract class Mobile extends Element implements IMobile {
 			win();
 		} else if (this.getMap().getOnTheMapXY(this.getX() - 1, this.getY()).getCollision() == Collision.KILL) {
 			die();
+		}
 		}
 	}
 
@@ -104,12 +104,11 @@ public abstract class Mobile extends Element implements IMobile {
 				this.setX(this.getX() + 1);
 				this.setHasMoved();
 			}
-			if (this.getY() != 0) {
-				if (this.getMap().getOnTheMapXY(this.getX() + 1, this.getY()).getCollision() == Collision.OPENDOOR) {
-					// gate change
-				}
+			if (this.getMap().getOnTheMapXY(this.getX() + 1, this.getY()).getCollision() == Collision.OPENDOOR) {
+				// gate change
 			}
 		} else if (this.getMap().getOnTheMapXY(this.getX() + 1, this.getY()).getCollision() == Collision.COLLECTABLE) {
+			System.out.println("collect");
 			this.collect(this.getX() + 1, this.getY());
 		} else if (this.getMap().getOnTheMapXY(this.getX() + 1, this.getY()).getCollision() == Collision.WIN) {
 			win();
