@@ -18,7 +18,7 @@ public abstract class Mobile extends Element implements IMobile {
 	private Point position;
 	private IMap map;
 	private IBoard board;
-	
+
 	private IMobile spell;
 
 	private int score;
@@ -138,7 +138,6 @@ public abstract class Mobile extends Element implements IMobile {
 				break;
 			case KILL:
 				die();
-
 				break;
 			case WIN:
 				win();
@@ -157,8 +156,7 @@ public abstract class Mobile extends Element implements IMobile {
 	}
 
 	public void moveUpRight() {
-		
-		
+
 		this.setX(this.getX() + 1);
 		this.setY(this.getY() - 1);
 		this.setHasMoved();
@@ -224,17 +222,15 @@ public abstract class Mobile extends Element implements IMobile {
 			}
 		}
 	}
-	
-	public void fire(int x, int y) throws IOException {
-		this.setSpell(new Spell(this.getX() + x, this.getY() + y, this.getMap()));
-		this.getMap().getOnTheMapXY(this.getX() + x, this.getY() + y).getSprite().loadImage();
-		//this.getMap().getOnTheMapXY(this.getX() + x, this.getY() + y).move();
+
+	public void fire() throws IOException {
+		this.setSpell(new Spell(this.getX() + 1, this.getY(), this.getMap()));
+		// this.getMap().getOnTheMapXY(this.getX() + x, this.getY() + y).move();
 	}
 
-	private void setSpell (Spell spell) {
+	private void setSpell(Spell spell) {
 		this.spell = spell;
 	}
-
 
 	public final int getX() {
 		return this.getPosition().x;

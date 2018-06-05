@@ -2,7 +2,6 @@ package model;
 
 import java.io.IOException;
 
-import model.element.Element;
 import model.element.mobile.Lorann;
 import model.element.mobile.Monster;
 import model.element.mobile.Spell;
@@ -14,6 +13,8 @@ public class ModelFacade implements IModel {
 	private IMobile lorann;
 
 	private IMobile monster;
+	
+	private IMobile spell;
 
 	private static final int startX = 1;
 
@@ -28,8 +29,10 @@ public class ModelFacade implements IModel {
 		this.setMap(new Map());
 		this.setLorann(new Lorann(startX, startY, this.getMap()));
 		this.setMonster(new Monster(startXM, startYM, this.getMap()));
+		this.setSpell(new Spell(2,2, this.getMap()));
 		this.getLorann().getSprite().loadImage();
 		this.getMonster().getSprite().loadImage();
+		this.getSpell().getSprite().loadImage();
 	}
 
 	private void setMonster(Monster monster) {
@@ -55,6 +58,14 @@ public class ModelFacade implements IModel {
 
 	private void setLorann(final IMobile lorann) {
 		this.lorann = lorann;
+	}
+
+	public IMobile getSpell() {
+		return spell;
+	}
+
+	public void setSpell(IMobile spell) {
+		this.spell = spell;
 	}
 
 }

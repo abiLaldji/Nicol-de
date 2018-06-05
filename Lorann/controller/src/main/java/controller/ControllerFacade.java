@@ -1,6 +1,9 @@
 package controller;
 
+import java.awt.Point;
 import java.io.IOException;
+
+import javax.swing.JOptionPane;
 
 import model.IModel;
 import view.IView;
@@ -27,29 +30,45 @@ public class ControllerFacade implements IController, IOrderPerformer {
 			Thread.sleep(SPEED);
 			switch (this.getStackOrder()) {
 			case RIGHT:
+				if ((model.getMonster().getPosition()
+						.equals(new Point(model.getLorann().getX() + 1, model.getLorann().getY())))) {
+					hitMonstre();
+				}
 				this.getModel().getLorann().moveRight();
 				break;
 			case LEFT:
+				if ((model.getMonster().getPosition()
+						.equals(new Point(model.getLorann().getX() - 1, model.getLorann().getY())))) {
+					hitMonstre();
+				}
 				this.getModel().getLorann().moveLeft();
 				break;
 			case UP:
+				if ((model.getMonster().getPosition()
+						.equals(new Point(model.getLorann().getX(), model.getLorann().getY() - 1)))) {
+					hitMonstre();
+				}
 				this.getModel().getLorann().moveUp();
 				break;
 			case DOWN:
+				if ((model.getMonster().getPosition()
+						.equals(new Point(model.getLorann().getX(), model.getLorann().getY() + 1)))) {
+					hitMonstre();
+				}
 				this.getModel().getLorann().moveDown();
 				break;
-			case UPLEFT:
-				this.getModel().getLorann().moveUpLeft();
-				break;
-			case UPRIGHT:
-				this.getModel().getLorann().moveUpRight();
-				break;
-			case DOWNLEFT:
-				this.getModel().getLorann().moveDownLeft();
-				break;
-			case DOWNRIGHT:
-				this.getModel().getLorann().moveDownRight();
-				break;
+			// case UPLEFT:
+			// this.getModel().getLorann().moveUpLeft();
+			// break;
+			// case UPRIGHT:
+			// this.getModel().getLorann().moveUpRight();
+			// break;
+			// case DOWNLEFT:
+			// this.getModel().getLorann().moveDownLeft();
+			// break;
+			// case DOWNRIGHT:
+			// this.getModel().getLorann().moveDownRight();
+			// break;
 			/*
 			 * case UPLEFT: this.getModel().getLorann().moveUpLeft(); break; case DOWNLEFT:
 			 * this.getModel().getLorann().moveDownLeft(); break; case UPRIGHT:
@@ -57,10 +76,10 @@ public class ControllerFacade implements IController, IOrderPerformer {
 			 * this.getModel().getLorann().moveDownRight(); break; case NOP:
 			 */
 			case FIRE:
-				this.getModel().getLorann().fire(1,1);
+				this.getModel().getLorann().fire();
 				break;
 			default:
-//				this.getModel().getLorann().doNothing();
+				// this.getModel().getLorann().doNothing();
 				break;
 			}
 			this.clearStackOrder();
@@ -101,6 +120,11 @@ public class ControllerFacade implements IController, IOrderPerformer {
 
 	public IOrderPerformer getOrderPerformer() {
 		return this;
+	}
+
+	private void hitMonstre() {
+		JOptionPane.showMessageDialog(null, "YOU DIED");
+		System.exit(0);
 	}
 
 }

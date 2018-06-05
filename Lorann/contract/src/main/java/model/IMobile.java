@@ -30,5 +30,6 @@ public interface IMobile extends IPawn, IElement {
 	
 	public int getY();
 	
-	public void fire(int x, int y) throws IOException;
+	public void fire() throws IOException;
+
 }

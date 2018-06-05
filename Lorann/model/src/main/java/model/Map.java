@@ -40,7 +40,7 @@ class Map extends Observable implements IMap {
 				rst = cs.getResultSet();
 
 				while (rst.next()) {
-					int levelNumber = 1;
+					int levelNumber = 0;
 					int levelNumberBdd = rst.getInt("level_number");
 					String type = rst.getString("type");
 					int x = rst.getInt("x");

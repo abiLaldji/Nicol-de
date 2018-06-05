@@ -19,7 +19,7 @@ import showboard.IPawn;
 public class ViewFacade implements IView, Runnable, KeyListener, IPawn {
 
 	private static final int SQUARE_SIZE = 70;
-	
+
 	public static int up = 0;
 	public static int down = 0;
 	public static int right = 0;
@@ -56,6 +56,8 @@ public class ViewFacade implements IView, Runnable, KeyListener, IPawn {
 		boardFrame.addPawn(model.getMonster());
 
 		boardFrame.setVisible(true);
+		
+		boardFrame.addPawn(model.getSpell());
 
 		model.getMap().getObservable().addObserver(boardFrame.getObserver());
 		show();
@@ -75,39 +77,26 @@ public class ViewFacade implements IView, Runnable, KeyListener, IPawn {
 			}
 			System.out.print("\n");
 		}
-
 	}
 
 	private static UserOrder keyCodeToUserOrder(final int keyCode) {
 		UserOrder userOrder;
-		up = 0;
-		right = 0;
-		down = 0;
-		left = 0;
 		switch (keyCode) {
 		case KeyEvent.VK_RIGHT:
 			userOrder = UserOrder.RIGHT;
-			right = 1;
 			break;
 		case KeyEvent.VK_LEFT:
 			userOrder = UserOrder.LEFT;
-			left = 1;
 			break;
 		case KeyEvent.VK_UP:
 			userOrder = UserOrder.UP;
-			 up = 1;
 			break;
 		case KeyEvent.VK_DOWN:
 			userOrder = UserOrder.DOWN;
-<<<<<<< HEAD
 			break;
 		case KeyEvent.VK_SPACE:
 			userOrder = UserOrder.FIRE;
 			break;
-=======
-			down = 1;
-			break;		
->>>>>>> branch 'master' of https://github.com/abiLaldji/Nicol-de.git
 		default:
 			userOrder = UserOrder.NOP;
 			break;
@@ -118,29 +107,7 @@ public class ViewFacade implements IView, Runnable, KeyListener, IPawn {
 	public final void keyPressed(final KeyEvent keyEvent) {
 		UserOrder userOrder;
 		try {
-			if((up== 1 && down == 0 && left == 0 && right == 0) || (up== 0 && down == 1 && left == 0 && right == 0) || (up== 0 && down == 0 && left == 1 && right == 0) || (up== 0 && down == 0 && left == 0 && right == 1)) {
-				this.getOrderPerformer().orderPerform(keyCodeToUserOrder(keyEvent.getKeyCode()));
-			}
-			if(up == 1 && left == 1) {
-				userOrder = UserOrder.UPLEFT;
-				this.getOrderPerformer().orderPerform(userOrder);
-			}
-			
-			if(up == 1 && right == 1) {
-				userOrder = UserOrder.UPRIGHT;
-				this.getOrderPerformer().orderPerform(userOrder);
-			}
-			
-			if(down == 1 && right == 1) {
-				userOrder = UserOrder.DOWNLEFT;
-				this.getOrderPerformer().orderPerform(userOrder);
-			}
-
-			if(down == 1 && left == 1) {
-				userOrder = UserOrder.DOWNRIGHT;
-				this.getOrderPerformer().orderPerform(userOrder);
-			}
-
+			this.getOrderPerformer().orderPerform(keyCodeToUserOrder(keyEvent.getKeyCode()));
 
 		} catch (final IOException exception) {
 			exception.printStackTrace();

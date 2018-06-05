@@ -7,5 +7,7 @@ public interface IModel {
 	public IMobile getLorann();
 
 	public IMobile getMonster();
+	
+	public IMobile getSpell();
 
 }
