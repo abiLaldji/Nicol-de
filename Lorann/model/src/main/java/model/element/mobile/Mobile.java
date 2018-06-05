@@ -157,6 +157,8 @@ public abstract class Mobile extends Element implements IMobile {
 	}
 
 	public void moveUpRight() {
+		
+		
 		this.setX(this.getX() + 1);
 		this.setY(this.getY() - 1);
 		this.setHasMoved();
