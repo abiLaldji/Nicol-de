@@ -38,6 +38,18 @@ public class ControllerFacade implements IController, IOrderPerformer {
 			case DOWN:
 				this.getModel().getLorann().moveDown();
 				break;
+			case UPLEFT:
+				this.getModel().getLorann().moveUpLeft();
+				break;
+			case UPRIGHT:
+				this.getModel().getLorann().moveUpRight();
+				break;
+			case DOWNLEFT:
+				this.getModel().getLorann().moveDownLeft();
+				break;
+			case DOWNRIGHT:
+				this.getModel().getLorann().moveDownRight();
+				break;
 			/*
 			 * case UPLEFT: this.getModel().getLorann().moveUpLeft(); break; case DOWNLEFT:
 			 * this.getModel().getLorann().moveDownLeft(); break; case UPRIGHT:
