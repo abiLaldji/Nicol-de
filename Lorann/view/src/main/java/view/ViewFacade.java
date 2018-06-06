@@ -89,7 +89,7 @@ public class ViewFacade implements IView, Runnable, KeyListener, IPawn, ActionLi
 		}
 	}
 
-	private static UserOrder keyCodeToUserOrder(final int keyCode) {
+	protected static UserOrder keyCodeToUserOrder(final int keyCode) {
 		UserOrder userOrder = UserOrder.NOP;
 
 		switch (keyCode) {
@@ -156,7 +156,7 @@ public class ViewFacade implements IView, Runnable, KeyListener, IPawn, ActionLi
 
 	}
 
-	private IOrderPerformer getOrderPerformer() {
+	public IOrderPerformer getOrderPerformer() {
 		return this.orderPerformer;
 	}
 

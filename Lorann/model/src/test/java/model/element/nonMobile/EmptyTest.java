@@ -11,7 +11,7 @@ import org.junit.Test;
 import model.Collision;
 
 public class EmptyTest {
-	Empty empty = new Empty();
+	Empty empty; 
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -23,6 +23,7 @@ public class EmptyTest {
 
 	@Before
 	public void setUp() throws Exception {
+		empty = new Empty();
 	}
 
 	@After

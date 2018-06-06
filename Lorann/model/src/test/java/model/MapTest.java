@@ -1,4 +1,4 @@
-package model.element.mobile;
+package model;
 
 import static org.junit.Assert.*;
 
@@ -8,13 +8,11 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class MobileTest {
-	
+public class MapTest {
+	Map mp;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		Lorann lorann = new Lorann(0,0,null);
-		
 	}
 
 	@AfterClass
@@ -23,7 +21,7 @@ public class MobileTest {
 
 	@Before
 	public void setUp() throws Exception {
-		
+		mp = new Map();
 	}
 
 	@After
@@ -31,9 +29,16 @@ public class MobileTest {
 	}
 
 	@Test
-	public void test() {
-		int expected = 0;
-		assertEquals(expected,lorann.getScore());
+	public void testGetWidth() {
+		int expected = 20;
+		assertEquals(expected,mp.getWidth());
 	}
 
+	@Test
+	public void testGetHeight() {
+		int expected = 12;
+		assertEquals(expected,mp.getHeight());
+	}
+	
+	
 }

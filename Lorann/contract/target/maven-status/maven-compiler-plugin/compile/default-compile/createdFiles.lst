@@ -1,0 +1,11 @@
+model\ISprite.class
+model\Example.class
+model\IModel.class
+view\IView.class
+model\IMobile.class
+controller\IController.class
+model\Collision.class
+model\IElement.class
+controller\IOrderPerformer.class
+controller\UserOrder.class
+model\IMap.class

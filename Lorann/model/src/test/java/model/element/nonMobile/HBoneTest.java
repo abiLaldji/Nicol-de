@@ -1,6 +1,6 @@
 package model.element.nonMobile;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -10,9 +10,8 @@ import org.junit.Test;
 
 import model.Collision;
 
-public class OpenDoorTest {
-	OpenDoor opendoor; 
-
+public class HBoneTest {
+	HBone hbone; 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 	}
@@ -23,7 +22,7 @@ public class OpenDoorTest {
 
 	@Before
 	public void setUp() throws Exception {
-		opendoor = new OpenDoor();
+		hbone = new HBone();
 	}
 
 	@After
@@ -31,10 +30,9 @@ public class OpenDoorTest {
 	}
 
 	@Test
-	public void testOpenDoor() {
-		final Collision expected = Collision.WIN;
-		assertEquals(expected, opendoor.getCollision());
+	public void test() {
+		final Collision expected = Collision.BLOCKING;
+		assertEquals(expected, hbone.getCollision());
 	}
-	
-	
+
 }

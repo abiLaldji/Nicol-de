@@ -11,7 +11,7 @@ import org.junit.Test;
 import model.Collision;
 public class PurseTest {
 
-	Purse purse = new Purse();
+	Purse purse; 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 	}
@@ -22,6 +22,7 @@ public class PurseTest {
 
 	@Before
 	public void setUp() throws Exception {
+		purse= new Purse();
 	}
 
 	@After

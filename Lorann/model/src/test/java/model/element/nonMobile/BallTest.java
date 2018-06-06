@@ -13,7 +13,7 @@ import org.junit.Test;
 import model.Collision;
 
 public class BallTest {
-	Ball ball = new Ball();
+	Ball ball;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -25,6 +25,7 @@ public class BallTest {
 
 	@Before
 	public void setUp() throws Exception {
+		ball  = new Ball();
 	}
 
 	@After
