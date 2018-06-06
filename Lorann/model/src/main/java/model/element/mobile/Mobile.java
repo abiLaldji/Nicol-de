@@ -21,7 +21,7 @@ public abstract class Mobile extends Element implements IMobile {
 
 	private IMobile spell;
 
-	private int score;
+	private int score = 0;
 
 	Mobile(final Sprite sprite, final IMap map, final Collision collision) {
 		super(sprite, collision);
