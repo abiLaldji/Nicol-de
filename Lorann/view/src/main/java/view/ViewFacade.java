@@ -27,25 +27,27 @@ public class ViewFacade implements IView, Runnable, KeyListener, IPawn, ActionLi
 	public static boolean down = false;
 	public static boolean right = false;
 	public static boolean left = false;
-	
-	private final int DELAY = 400;
+
+	private final int DELAY = 1000;
 	Timer timer;
 
 	private IModel model;
 
 	private IOrderPerformer orderPerformer;
+	
+	final BoardFrame boardFrame = new BoardFrame("Lorann Game");
+
 
 	public ViewFacade(IModel model) throws IOException {
 		System.out.println("view");
 		this.model = model;
 		SwingUtilities.invokeLater(this);
-		timer = new Timer(DELAY, this);
-
+//		timer = new Timer(DELAY, this);
+//		timer.start();
 	}
 
 	public void run() {
-		
-		final BoardFrame boardFrame = new BoardFrame("Lorann Game");
+
 		boardFrame.setDimension(new Dimension(model.getMap().getWidth(), model.getMap().getHeight()));
 		boardFrame.setDisplayFrame(new Rectangle(0, 0, model.getMap().getWidth(), model.getMap().getHeight()));
 		boardFrame.setSize(model.getMap().getWidth() * SQUARE_SIZE, model.getMap().getHeight() * SQUARE_SIZE);
@@ -66,11 +68,13 @@ public class ViewFacade implements IView, Runnable, KeyListener, IPawn, ActionLi
 
 		boardFrame.setVisible(true);
 
-		boardFrame.addPawn(model.getSpell());
-
 		model.getMap().getObservable().addObserver(boardFrame.getObserver());
 		show();
 
+	}
+	
+	public void addSpell() {
+		boardFrame.addPawn(model.getSpell());
 	}
 
 	public final void show() {
@@ -96,24 +100,27 @@ public class ViewFacade implements IView, Runnable, KeyListener, IPawn, ActionLi
 		case KeyEvent.VK_RIGHT:
 			right = true;
 			break;
-			
+
 		case KeyEvent.VK_LEFT:
 			left = true;
 			break;
-		
+
 		case KeyEvent.VK_UP:
 			up = true;
 			break;
-			
+
 		case KeyEvent.VK_DOWN:
 			down = true;
 			break;
-			
+
 		case KeyEvent.VK_SPACE:
 			break;
-			
+
 		default:
-			down = false; up = false; right = false; left = false;
+			down = false;
+			up = false;
+			right = false;
+			left = false;
 			break;
 		}
 		if (right == true && left == false && up == false && down == false) {
@@ -163,7 +170,7 @@ public class ViewFacade implements IView, Runnable, KeyListener, IPawn, ActionLi
 	public final void setOrderPerformer(final IOrderPerformer orderPerformer) {
 		this.orderPerformer = orderPerformer;
 	}
-	
+
 	public void keyReleased(KeyEvent e) {
 
 		int key = e.getKeyCode();
@@ -191,14 +198,12 @@ public class ViewFacade implements IView, Runnable, KeyListener, IPawn, ActionLi
 
 	public void actionPerformed(ActionEvent arg0) {
 		try {
+			System.out.println("refresh");
 			orderPerformer.orderPerform(UserOrder.NOP);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-	
-	
-	
 
 	@Override
 	public void keyTyped(KeyEvent arg0) {
@@ -229,7 +234,5 @@ public class ViewFacade implements IView, Runnable, KeyListener, IPawn, ActionLi
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	
 
 }

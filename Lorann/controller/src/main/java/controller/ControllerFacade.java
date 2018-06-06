@@ -24,8 +24,9 @@ public class ControllerFacade implements IController, IOrderPerformer {
 	}
 
 	public void play() throws InterruptedException, IOException {
-		// Thread.sleep(100);
 		while (this.getModel().getLorann().isAlive()) {
+			Thread.sleep(300);
+			this.getModel().getMonster().move();
 			switch (this.getStackOrder()) {
 			case RIGHT:
 				if ((model.getMonster().getPosition()
