@@ -32,4 +32,11 @@ public interface IMobile extends IPawn, IElement {
 	
 	public void fire() throws IOException;
 
+	public void move(int i, int j) throws IOException;
+
+	public void setXY(int i, int j);
+
+	public void collect(int i, int j) throws IOException;
+
+	public void setAlive(boolean alive);
 }

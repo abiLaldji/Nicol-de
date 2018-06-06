@@ -19,9 +19,7 @@ public abstract class Mobile extends Element implements IMobile {
 	private IMap map;
 	private IBoard board;
 
-	private IMobile spell;
-
-	private int score;
+	private int score = 0;
 
 	Mobile(final Sprite sprite, final IMap map, final Collision collision) {
 		super(sprite, collision);
@@ -31,285 +29,39 @@ public abstract class Mobile extends Element implements IMobile {
 
 	Mobile(final int x, final int y, final Sprite sprite, final IMap map, final Collision collision) {
 		this(sprite, map, collision);
-		this.setX(x);
-		this.setY(y);
+		this.setXY(x, y);
 	}
-
-	public void moveUp() throws IOException {
-		if (this.getY() != 0) {
-			switch (this.getMap().getOnTheMapXY(this.getX(), this.getY() - 1).getCollision()) {
-			case PENETRABLE:
-				this.setY(this.getY() - 1);
-				this.setHasMoved();
-				break;
-			case COLLECTABLE:
-				this.collect(this.getX(), this.getY() - 1);
-				this.setY(this.getY() - 1);
-				this.setHasMoved();
-				break;
-			case KILL:
-				die();
-				break;
-			case WIN:
-				win();
-				break;
-			case OPENDOOR:
-				openTheDoor(this.getX(), this.getY() - 1);
-				break;
-			default:
-				break;
-			}
-		}
-	}
-
-	public void moveDown() throws IOException {
-		if (this.getY() != this.getMap().getHeight()) {
-			switch (this.getMap().getOnTheMapXY(this.getX(), this.getY() + 1).getCollision()) {
-			case PENETRABLE:
-				this.setY(this.getY() + 1);
-				this.setHasMoved();
-				break;
-			case COLLECTABLE:
-				this.collect(this.getX(), this.getY() + 1);
-				this.setY(this.getY() + 1);
-				this.setHasMoved();
-				break;
-			case KILL:
-				die();
-				this.setY(this.getY() + 1);
-				this.setHasMoved();
-				break;
-			case WIN:
-				win();
-				this.setY(this.getY() + 1);
-				this.setHasMoved();
-				break;
-			case OPENDOOR:
-				openTheDoor(this.getX(), this.getY() + 1);
-				break;
-			default:
-				break;
-			}
-		}
-	}
-
-	public void moveLeft() throws IOException {
-		if (this.getX() != 0) {
-			switch (this.getMap().getOnTheMapXY(this.getX() - 1, this.getY()).getCollision()) {
-			case PENETRABLE:
-				this.setX(this.getX() - 1);
-				this.setHasMoved();
-				break;
-			case COLLECTABLE:
-				this.collect(this.getX() - 1, this.getY());
-				this.setX(this.getX() - 1);
-				this.setHasMoved();
-				break;
-			case KILL:
-				die();
-				break;
-			case WIN:
-				win();
-				this.setX(this.getX() - 1);
-				this.setHasMoved();
-				break;
-			case OPENDOOR:
-				openTheDoor(this.getX() - 1, this.getY());
-				this.setX(this.getX() - 1);
-				this.setHasMoved();
-				break;
-			default:
-				break;
-			}
-		}
-	}
-
-	public void moveRight() throws IOException {
-		if (this.getX() != this.getMap().getWidth()) {
-			switch (this.getMap().getOnTheMapXY(this.getX() + 1, this.getY()).getCollision()) {
-			case PENETRABLE:
-				this.setX(this.getX() + 1);
-				this.setHasMoved();
-				break;
-			case COLLECTABLE:
-				this.collect(this.getX() + 1, this.getY());
-				this.setX(this.getX() + 1);
-				this.setHasMoved();
-				break;
-			case KILL:
-				die();
-				break;
-			case WIN:
-				win();
-				this.setX(this.getX() + 1);
-				this.setHasMoved();
-				break;
-			case OPENDOOR:
-				openTheDoor(this.getX() + 1, this.getY());
-				this.setX(this.getX() + 1);
-				this.setHasMoved();
-				break;
-			default:
-				break;
-			}
-		}
-	}
-
-<<<<<<< HEAD
-	public void moveUpRight() {
-
-		this.setX(this.getX() + 1);
-		this.setY(this.getY() - 1);
-		this.setHasMoved();
-=======
-	public void moveUpRight() throws IOException {
-		
-			if (this.getX() != this.getMap().getWidth()) {
-				switch (this.getMap().getOnTheMapXY(this.getX() + 1, this.getY() - 1).getCollision()) {
-				case PENETRABLE:
-					this.setX(this.getX() + 1);
-					this.setY(this.getY() - 1);
-					this.setHasMoved();
-					break;
-				case COLLECTABLE:
-					this.collect(this.getX() + 1, this.getY() - 1);
-					this.setX(this.getX() + 1);
-					this.setY(this.getY() - 1);
-					this.setHasMoved();
-					break;
-				case KILL:
-					die();
-
-					break;
-				case WIN:
-					win();
-					this.setX(this.getX() + 1);
-					this.setY(this.getY() - 1);
-					this.setHasMoved();
-					break;
-				case OPENDOOR:
-					openTheDoor(this.getX() + 1, this.getY() - 1);
-					this.setX(this.getX() + 1);
-					this.setY(this.getY() - 1);
-					this.setHasMoved();
-					break;
-				default:
-					break;
-				}
-			}
-		}
-
-	public void moveUpLeft() throws IOException {
-		
-		if (this.getX() != this.getMap().getWidth()) {
-			switch (this.getMap().getOnTheMapXY(this.getX() - 1, this.getY() - 1).getCollision()) {
-			case PENETRABLE:
-				this.setX(this.getX() - 1);
-				this.setY(this.getY() - 1);
-				this.setHasMoved();
-				break;
-			case COLLECTABLE:
-				this.collect(this.getX() - 1, this.getY() - 1);
-				this.setX(this.getX() - 1);
-				this.setY(this.getY() - 1);
-				this.setHasMoved();
-				break;
-			case KILL:
-				die();
-
-				break;
-			case WIN:
-				win();
-				this.setX(this.getX() - 1);
-				this.setY(this.getY() - 1);
-				this.setHasMoved();
-				break;
-			case OPENDOOR:
-				openTheDoor(this.getX() - 1, this.getY() - 1);
-				this.setX(this.getX() - 1);
-				this.setY(this.getY() - 1);
-				this.setHasMoved();
-				break;
-			default:
-				break;
-			}
-		}
->>>>>>> branch 'master' of https://github.com/abiLaldji/Nicol-de.git
-	}
-
-	public void moveDownRight() throws IOException {
-		
-		if (this.getX() != this.getMap().getWidth()) {
-			switch (this.getMap().getOnTheMapXY(this.getX() + 1, this.getY() + 1).getCollision()) {
-			case PENETRABLE:
-				this.setX(this.getX() + 1);
-				this.setY(this.getY() + 1);
-				this.setHasMoved();
-				break;
-			case COLLECTABLE:
-				this.collect(this.getX() + 1, this.getY() + 1);
-				this.setX(this.getX() + 1);
-				this.setY(this.getY() + 1);
-				this.setHasMoved();
-				break;
-			case KILL:
-				die();
-
-				break;
-			case WIN:
-				win();
-				this.setX(this.getX() + 1);
-				this.setY(this.getY() + 1);
-				this.setHasMoved();
-				break;
-			case OPENDOOR:
-				openTheDoor(this.getX() + 1, this.getY() + 1);
-				this.setX(this.getX() + 1);
-				this.setY(this.getY() + 1);
-				this.setHasMoved();
-				break;
-			default:
-				break;
-			}
-		}
-	}
-
-	public void moveDownLeft() throws IOException {
-		
-		if (this.getX() != this.getMap().getWidth()) {
-			switch (this.getMap().getOnTheMapXY(this.getX() - 1, this.getY() + 1).getCollision()) {
-			case PENETRABLE:
-				this.setX(this.getX() - 1);
-				this.setY(this.getY() + 1);
-				this.setHasMoved();
-				break;
-			case COLLECTABLE:
-				this.collect(this.getX() - 1, this.getY() + 1);
-				this.setX(this.getX() - 1);
-				this.setY(this.getY() + 1);
-				this.setHasMoved();
-				break;
-			case KILL:
-				die();
-
-				break;
-			case WIN:
-				win();
-				this.setX(this.getX() - 1);
-				this.setY(this.getY() + 1);
-				this.setHasMoved();
-				break;
-			case OPENDOOR:
-				openTheDoor(this.getX() - 1, this.getY() + 1);
-				this.setX(this.getX() - 1);
-				this.setY(this.getY() + 1);
-				this.setHasMoved();
-				break;
-			default:
-				break;
-			}
-		}
-	}
+	
+	public void move(int moveX, int moveY) throws IOException {
+        if (this.getY() != 0) {
+            switch (this.getMap().getOnTheMapXY(this.getX()+ moveX, this.getY() + moveY).getCollision()) {
+            case FREE:
+                this.setXY(this.getX() + moveX, this.getY() + moveY);                
+                this.setHasMoved();
+                break;
+            case COLLECTABLE:
+                this.collect(this.getX() + moveX , this.getY() + moveY);
+                this.setXY(this.getX() + moveX, this.getY() + moveY);    
+                this.setHasMoved();
+                break;
+            case KILL:
+                die();
+                break;
+            case WIN:
+                this.setXY(this.getX() + moveX, this.getY() + moveY);    
+                this.setHasMoved();
+                win();
+                break;
+            case OPENDOOR:
+                openTheDoor(this.getX() + moveX, this.getY() + moveY);
+                this.setXY(this.getX() + moveX, this.getY() + moveY);    
+                this.setHasMoved();
+                break;
+            default:
+                break;
+            }
+        }
+    }
 
 	public void doNothing() {
 		this.setHasMoved();
@@ -325,9 +77,9 @@ public abstract class Mobile extends Element implements IMobile {
 		System.exit(0);
 	}
 
-	private void collect(int x, int y) throws IOException {
+	public void collect(int x, int y) throws IOException {
 		this.getMap().getOnTheMapXY(x, y).setSprite(new Sprite(' ', "empty.png"));
-		this.getMap().getOnTheMapXY(x, y).setCollision(Collision.PENETRABLE);
+		this.getMap().getOnTheMapXY(x, y).setCollision(Collision.FREE);
 		this.getMap().getOnTheMapXY(x, y).getSprite().loadImage();
 		score = score + 1;
 		System.out.print("Your score : ");
@@ -336,7 +88,7 @@ public abstract class Mobile extends Element implements IMobile {
 
 	private void openTheDoor(int x, int y) throws IOException {
 		this.getMap().getOnTheMapXY(x, y).setSprite(new Sprite(' ', "empty.png"));
-		this.getMap().getOnTheMapXY(x, y).setCollision(Collision.PENETRABLE);
+		this.getMap().getOnTheMapXY(x, y).setCollision(Collision.FREE);
 		this.getMap().getOnTheMapXY(x, y).getSprite().loadImage();
 
 		for (int a = 0; a < this.getMap().getWidth(); a++) {
@@ -353,13 +105,16 @@ public abstract class Mobile extends Element implements IMobile {
 	}
 
 	public void fire() throws IOException {
-		this.setSpell(new Spell(this.getX() + 1, this.getY(), this.getMap()));
+		System.out.println("fire");
+		// this.setSpell(new Spell(this.getX() + 1, this.getY(), this.getMap()));
 		// this.getMap().getOnTheMapXY(this.getX() + x, this.getY() + y).move();
 	}
+	
+	public final void setXY(final int x, final int y) {
+        this.getPosition().x = x;
+        this.getPosition().y = y;
+    }
 
-	private void setSpell(Spell spell) {
-		this.spell = spell;
-	}
 
 	public final int getX() {
 		return this.getPosition().x;
@@ -383,6 +138,10 @@ public abstract class Mobile extends Element implements IMobile {
 
 	public boolean isAlive() {
 		return this.alive;
+	}
+	
+	public void setAlive(boolean alive) {
+		this.alive = alive;
 	}
 
 	protected void die() throws IOException {

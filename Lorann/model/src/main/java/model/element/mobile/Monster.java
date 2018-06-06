@@ -15,4 +15,60 @@ public class Monster extends Mobile{
         super(x, y, spriteM, map, Collision.KILL);
         spriteM.loadImage();      
     }
+
+
+	@Override
+	public void moveUp() throws IOException {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void moveDown() throws IOException {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void moveLeft() throws IOException {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void moveRight() throws IOException {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void moveUpRight() throws IOException {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void moveUpLeft() throws IOException {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void moveDownRight() throws IOException {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void moveDownLeft() throws IOException {
+		// TODO Auto-generated method stub
+		
+	}
 }

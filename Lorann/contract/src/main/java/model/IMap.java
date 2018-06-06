@@ -15,4 +15,14 @@ public interface IMap {
 	void setMobileHasChanged();
 
 	void setEmptyXY(final int x, final int y);
+
+	public int getStartX();
+
+	public int getStartY();
+
+	public int getStartXM();
+
+	public int getStartYM();
+	
+	void setOpenDoor(int x, int y);
 }

@@ -9,5 +9,5 @@ public interface IModel {
 	public IMobile getMonster();
 	
 	public IMobile getSpell();
-
+	
 }

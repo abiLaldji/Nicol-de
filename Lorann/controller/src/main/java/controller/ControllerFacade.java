@@ -14,8 +14,6 @@ public class ControllerFacade implements IController, IOrderPerformer {
 
 	private IModel model;
 
-	private final int SPEED = 100;
-
 	private UserOrder stackOrder;
 
 	public ControllerFacade(final IView view, final IModel model) {
@@ -26,8 +24,8 @@ public class ControllerFacade implements IController, IOrderPerformer {
 	}
 
 	public void play() throws InterruptedException, IOException {
+		// Thread.sleep(100);
 		while (this.getModel().getLorann().isAlive()) {
-			Thread.sleep(SPEED);
 			switch (this.getStackOrder()) {
 			case RIGHT:
 				if ((model.getMonster().getPosition()
@@ -57,24 +55,18 @@ public class ControllerFacade implements IController, IOrderPerformer {
 				}
 				this.getModel().getLorann().moveDown();
 				break;
-			// case UPLEFT:
-			// this.getModel().getLorann().moveUpLeft();
-			// break;
-			// case UPRIGHT:
-			// this.getModel().getLorann().moveUpRight();
-			// break;
-			// case DOWNLEFT:
-			// this.getModel().getLorann().moveDownLeft();
-			// break;
-			// case DOWNRIGHT:
-			// this.getModel().getLorann().moveDownRight();
-			// break;
-			/*
-			 * case UPLEFT: this.getModel().getLorann().moveUpLeft(); break; case DOWNLEFT:
-			 * this.getModel().getLorann().moveDownLeft(); break; case UPRIGHT:
-			 * this.getModel().getLorann().moveUpRight(); break; case DOWNRIGHT:
-			 * this.getModel().getLorann().moveDownRight(); break; case NOP:
-			 */
+			case UPLEFT:
+				this.getModel().getLorann().moveUpLeft();
+				break;
+			case UPRIGHT:
+				this.getModel().getLorann().moveUpRight();
+				break;
+			case DOWNLEFT:
+				this.getModel().getLorann().moveDownLeft();
+				break;
+			case DOWNRIGHT:
+				this.getModel().getLorann().moveDownRight();
+				break;
 			case FIRE:
 				this.getModel().getLorann().fire();
 				break;
@@ -83,6 +75,7 @@ public class ControllerFacade implements IController, IOrderPerformer {
 				break;
 			}
 			this.clearStackOrder();
+
 		}
 	}
 
@@ -98,7 +91,7 @@ public class ControllerFacade implements IController, IOrderPerformer {
 		this.view = view;
 	}
 
-	private IModel getModel() {
+	public IModel getModel() {
 		return this.model;
 	}
 
@@ -123,6 +116,7 @@ public class ControllerFacade implements IController, IOrderPerformer {
 	}
 
 	private void hitMonstre() {
+		this.getModel().getLorann().setAlive(false);
 		JOptionPane.showMessageDialog(null, "YOU DIED");
 		System.exit(0);
 	}

@@ -18,6 +18,10 @@ class Map extends Observable implements IMap {
 	private IElement[][] onTheMap = new Element[WIDTH][HEIGHT];
 
 	private static String sql = "{call print_decor}";
+	private int startX;
+	private int startY;
+	private int startXM;
+	private int startYM;
 
 	private IMap map;
 
@@ -65,6 +69,14 @@ class Map extends Observable implements IMap {
 							break;
 						case "Purse":
 							this.setOnTheMapXY(NonMobileFactory.getFromFileSymbol('P'), x, y);
+							break;
+						case "Lorann":
+							this.startX = x;
+							this.startY = y;
+							break;
+						case "Monster1":
+							this.startXM = x;
+							this.startYM = y;
 							break;
 						default:
 							this.setOnTheMapXY(NonMobileFactory.getFromFileSymbol(' '), x, y);
@@ -124,6 +136,10 @@ class Map extends Observable implements IMap {
 	public void setEmptyXY(final int x, final int y) {
 		setOnTheMapXY(NonMobileFactory.getFromFileSymbol(' '), x, y);
 	}
+	
+	public void setOpenDoor(final int x, final int y) {
+		setOnTheMapXY(NonMobileFactory.getFromFileSymbol('['), x, y);
+	}
 
 	public final void setMobileHasChanged() {
 		this.setChanged();
@@ -132,6 +148,22 @@ class Map extends Observable implements IMap {
 
 	public Observable getObservable() {
 		return this;
+	}
+
+	public int getStartX() {
+		return this.startX;
+	}
+
+	public int getStartY() {
+		return this.startY;
+	}
+
+	public int getStartXM() {
+		return this.startXM;
+	}
+
+	public int getStartYM() {
+		return this.startYM;
 	}
 
 }

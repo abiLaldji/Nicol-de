@@ -31,7 +31,7 @@ public class EmptyTest {
 
 	@Test
 	public void test() {
-		final Collision expected = Collision.PENETRABLE;
+		final Collision expected = Collision.FREE;
 		assertEquals(expected, empty.getCollision());
 	}
 

@@ -5,25 +5,18 @@ import java.io.IOException;
 
 public interface ISprite {
 	
-	
-
-
 	public void loadImage() throws IOException;
-	
+
 	public Collision getCollision();
 
 	public char getConsoleImage();
 
 	public boolean isVisible();
-	
+
 	public Image getImage();
 
 	public String getImageLink();
 
 	public boolean isLoaded();
-
-
-
-
 
 }

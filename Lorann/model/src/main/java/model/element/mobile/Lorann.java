@@ -22,7 +22,7 @@ public class Lorann extends Mobile {
 
 	private static final Sprite SPRITE_UL = new Sprite('L', "lorann_ul.png");
 
-	private static final Sprite SPRITE_UR = new Sprite('L', "lorann_up.png");
+	private static final Sprite SPRITE_UR = new Sprite('L', "lorann_ur.png");
 
 	public Lorann(final int x, final int y, final IMap map) throws IOException {
 		super(x, y, SPRITE_U, map, Collision.BLOCKING);
@@ -38,48 +38,56 @@ public class Lorann extends Mobile {
 	}
 
 	public final void moveLeft() throws IOException {
-		super.moveLeft();
+		super.move(-1, 0);
 		this.setSprite(SPRITE_L);
 	}
 
 	public final void moveRight() throws IOException {
-		super.moveRight();
+		super.move(1, 0);
 		this.setSprite(SPRITE_R);
 	}
 
 	public final void moveUp() throws IOException {
-		super.moveUp();
+		super.move(0, -1);
 		this.setSprite(SPRITE_U);
 	}
 
 	public final void moveDown() throws IOException {
-		super.moveDown();
+		super.move(0, 1);
 		this.setSprite(SPRITE_B);
 	}
 
-	public final void moveUpLeft() {
-		super.moveUpLeft();
+	public final void moveUpLeft() throws IOException {
+		super.move(-1, -1);
 		this.setSprite(SPRITE_UL);
 	}
 
-	public final void moveUpRight() {
-		super.moveUpRight();
+	public final void moveUpRight() throws IOException {
+		super.move(1,-1);
 		this.setSprite(SPRITE_UR);
 	}
 
-	public final void moveDownRight() {
-		super.moveDownRight();
+	public final void moveDownRight() throws IOException {
+		super.move(1,1);
 		this.setSprite(SPRITE_BR);
 	}
 
-	public final void moveDownLeft() {
-		super.moveDownLeft();
+	public final void moveDownLeft() throws IOException {
+		super.move(-1,1);
 		this.setSprite(SPRITE_BL);
 	}
 
 	public final void doNothing() {
 		super.doNothing();
-		this.setSprite(SPRITE_U);
+		while (isAlive()) {
+			this.setSprite(SPRITE_U);
+
+		}
+	}
+
+
+	@Override
+	public void collect(int i, int j) throws IOException {		
 	}
 
 }

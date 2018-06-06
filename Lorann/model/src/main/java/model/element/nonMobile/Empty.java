@@ -9,6 +9,6 @@ class Empty extends NonMobile {
 
    
     Empty() {
-        super(SPRITE, Collision.PENETRABLE);
+        super(SPRITE, Collision.FREE);
     }
 }

@@ -9,10 +9,58 @@ import model.element.Sprite;
 
 public class Spell extends Mobile{
 	
-    private static final Sprite spriteS = new Sprite('S', "fireball_1");
+    private static final Sprite spriteS = new Sprite('S', "fireball_1.png");
 
     public Spell(final int x, final int y, final IMap map) throws IOException {
         super(x, y, spriteS, map, Collision.POWER);
         spriteS.loadImage();   
     }
+
+	@Override
+	public void moveUp() throws IOException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void moveDown() throws IOException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void moveLeft() throws IOException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void moveRight() throws IOException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void moveUpRight() throws IOException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void moveUpLeft() throws IOException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void moveDownRight() throws IOException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void moveDownLeft() throws IOException {
+		// TODO Auto-generated method stub
+		
+	}
 }
