@@ -10,6 +10,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.IOException;
 
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 
@@ -204,6 +205,11 @@ public class ViewFacade implements IView, Runnable, KeyListener, IPawn, ActionLi
 			e.printStackTrace();
 		}
 	}
+	
+	public void loosingScreen() {
+		JOptionPane.showMessageDialog(null, "YOU DIED");
+		System.exit(0);
+	}
 
 	@Override
 	public void keyTyped(KeyEvent arg0) {
@@ -233,6 +239,12 @@ public class ViewFacade implements IView, Runnable, KeyListener, IPawn, ActionLi
 	public Point getPosition() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public void victoryScreen(int score) {
+		JOptionPane.showMessageDialog(null, "YOU WIN");
+		JOptionPane.showMessageDialog(null, "Your score : " + score);
+		System.exit(0);
 	}
 
 }

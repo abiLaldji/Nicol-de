@@ -8,11 +8,8 @@ package view;
  */
 public interface IView {
 
-    /**
-     * Display message.
-     *
-     * @param message
-     *            the message
-     */
-    //void displayMessage(String message);
+	void loosingScreen();
+	
+	void victoryScreen(int score);
+
 }

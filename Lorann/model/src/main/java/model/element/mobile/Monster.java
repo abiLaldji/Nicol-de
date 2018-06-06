@@ -10,13 +10,17 @@ import model.element.Sprite;
 public class Monster extends Mobile {
 	Mdirection dir = Mdirection.MUP;
 
-
 	private static final Sprite spriteM = new Sprite('#', "monster_1.png");
 
 	public Monster(final int x, final int y, final IMap map) throws IOException {
 		super(x, y, spriteM, map, Collision.KILL);
 		spriteM.loadImage();
 	}
+
+	/**
+	 * movement of the monster, when it hit a purse, wall or ball, it turn around.
+	 * This monster can do up and down
+	 */
 
 	public void move() {
 

@@ -2,6 +2,8 @@ package model.element.nonMobile;
 
 public abstract class NonMobileFactory {
 
+	/** create non mobile Sprite. DP factory */
+
 	private static final HBone H_BONE = new HBone();
 
 	private static final VBone V_BONE = new VBone();
@@ -19,6 +21,17 @@ public abstract class NonMobileFactory {
 	private static final Empty EMPTY = new Empty();
 
 	private static NonMobile[] nonMobile = { H_BONE, V_BONE, BONE, PURSE, BALL, OPEN_DOOR, CLOSED_DOOR, EMPTY };
+
+	/** Load the non mobile element corresponding to its console symbol */
+
+	public static NonMobile getSymbol(final char symbol) {
+		for (final NonMobile nonMobile : nonMobile) {
+			if (nonMobile.getSprite().getConsoleImage() == symbol) {
+				return nonMobile;
+			}
+		}
+		return EMPTY;
+	}
 
 	public NonMobile createVBone() {
 		return V_BONE;
@@ -52,12 +65,4 @@ public abstract class NonMobileFactory {
 		return EMPTY;
 	}
 
-	public static NonMobile getFromFileSymbol(final char fileSymbol) {
-		for (final NonMobile nonMobile : nonMobile) {
-			if (nonMobile.getSprite().getConsoleImage() == fileSymbol) {
-				return nonMobile;
-			}
-		}
-		return EMPTY;
-	}
 }

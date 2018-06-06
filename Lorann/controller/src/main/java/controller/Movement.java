@@ -1,5 +1,6 @@
 package controller;
 
+import java.awt.Point;
 import java.io.IOException;
 
 import javax.swing.JOptionPane;
@@ -13,6 +14,16 @@ public abstract class Movement {
 	IController controller;
 
 	int score = 0;
+
+	private boolean hit = false;
+
+	public boolean hitMonster(int x, int y) {
+		if ((this.controller.getModel().getMonster().getPosition().equals(new Point(
+				this.controller.getModel().getLorann().getX() + 1, this.controller.getModel().getLorann().getY())))) {
+			this.hit = true;
+		}
+		return this.hit ;
+	}
 
 	public void move(int moveX, int moveY) throws IOException {
 		if (this.getLorann().getY() != 0) {
@@ -78,21 +89,18 @@ public abstract class Movement {
 		}
 	}
 
-	//public void fire() throws IOException {
-	//	System.out.println("fire");
-	//	this.controller.getModel().setSpell(new Spell(this.getX() + 1, this.getY(), this.getMap()));
-	//	// this.getMap().getOnTheMapXY(this.getX() + x, this.getY() + y).move();
-	//}
-
-
-
+	// public void fire() throws IOException {
+	// System.out.println("fire");
+	// this.controller.getModel().setSpell(new Spell(this.getX() + 1, this.getY(),
+	// this.getMap()));
+	// // this.getMap().getOnTheMapXY(this.getX() + x, this.getY() + y).move();
+	// }
 
 	protected void die() throws IOException {
 		this.getLorann().setAlive(false);
 		JOptionPane.showMessageDialog(null, "YOU DIED");
 		System.exit(0);
 	}
-
 
 	public int getScore() {
 		return score;
@@ -101,11 +109,11 @@ public abstract class Movement {
 	public void setScore(int score) {
 		this.score = score;
 	}
-	
+
 	private IMobile getLorann() {
 		return this.controller.getModel().getLorann();
 	}
-	
+
 	private IMap getMap() {
 		return this.controller.getModel().getMap();
 	}
