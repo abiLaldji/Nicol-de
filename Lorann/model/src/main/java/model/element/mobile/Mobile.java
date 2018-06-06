@@ -19,6 +19,11 @@ public abstract class Mobile extends Element implements IMobile {
 	private IMap map;
 	private IBoard board;
 
+<<<<<<< HEAD
+=======
+	private IMobile spell;
+
+>>>>>>> branch 'master' of https://github.com/abiLaldji/Nicol-de.git
 	private int score = 0;
 
 	Mobile(final Sprite sprite, final IMap map, final Collision collision) {

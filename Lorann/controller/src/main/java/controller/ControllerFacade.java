@@ -99,15 +99,15 @@ public class ControllerFacade implements IController, IOrderPerformer {
 		this.model = model;
 	}
 
-	private UserOrder getStackOrder() {
+	protected UserOrder getStackOrder() {
 		return this.stackOrder;
 	}
 
-	private void setStackOrder(final UserOrder stackOrder) {
+	protected void setStackOrder(final UserOrder stackOrder) {
 		this.stackOrder = stackOrder;
 	}
 
-	private void clearStackOrder() {
+	protected void clearStackOrder() {
 		this.stackOrder = UserOrder.NOP;
 	}
 
