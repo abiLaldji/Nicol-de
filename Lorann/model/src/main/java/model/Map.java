@@ -6,8 +6,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.Observable;
 
-import model.IElement;
-import model.IMap;
 import model.element.Element;
 import model.element.nonMobile.NonMobileFactory;
 

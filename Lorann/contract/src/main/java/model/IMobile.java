@@ -17,23 +17,23 @@ public interface IMobile extends IPawn, IElement {
 	public void moveUpRight() throws IOException;
 
 	public void moveUpLeft() throws IOException;
-	
+
 	public void moveDownRight() throws IOException;
-	
+
 	public void moveDownLeft() throws IOException;
 
 	public boolean isAlive();
 
 	public void doNothing();
-	
+
 	public int getX();
-	
+
 	public int getY();
-	
+
 	public void fire() throws IOException;
 
 	public void move(int i, int j) throws IOException;
-	
+
 	public void move() throws IOException;
 
 	public void setXY(int i, int j);
@@ -41,4 +41,5 @@ public interface IMobile extends IPawn, IElement {
 	void collect(int i, int j) throws IOException;
 
 	public void setAlive(boolean alive);
+
 }

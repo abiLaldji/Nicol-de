@@ -3,8 +3,6 @@ package controller;
 import java.awt.Point;
 import java.io.IOException;
 
-import javax.swing.JOptionPane;
-
 import model.IModel;
 import view.IView;
 
@@ -15,8 +13,8 @@ public class ControllerFacade implements IController, IOrderPerformer {
 	private IModel model;
 
 	private UserOrder stackOrder;
-
-	private Movement movement;
+	
+	
 
 	public ControllerFacade(final IView view, final IModel model) {
 		setModel(model);
@@ -24,6 +22,8 @@ public class ControllerFacade implements IController, IOrderPerformer {
 		this.clearStackOrder();
 		System.out.println("controller");
 	}
+
+	boolean spell = true;
 
 	/**
 	 * Main loop of the game, does different action depending on UserOrder (enum).
@@ -33,18 +33,24 @@ public class ControllerFacade implements IController, IOrderPerformer {
 	public void play() throws InterruptedException, IOException {
 		while (this.getModel().getLorann().isAlive()) {
 			Thread.sleep(200);
+			if (spell == true) {
+				this.getModel().initSpell(-1, 0);
+				// this.getModel().getSpell().move();
+				spell = false;
+			}
 			this.getModel().getMonster().move();
+
 			switch (this.getStackOrder()) {
 			case RIGHT:
 				if ((model.getMonster().getPosition()
-						.equals(new Point(model.getLorann().getX() +1, model.getLorann().getY())))) {
+						.equals(new Point(model.getLorann().getX() + 1, model.getLorann().getY())))) {
 					hitMonstre();
 				}
 				this.getModel().getLorann().moveRight();
 				break;
 			case LEFT:
 				if ((model.getMonster().getPosition()
-						.equals(new Point(model.getLorann().getX() -1, model.getLorann().getY())))) {
+						.equals(new Point(model.getLorann().getX() - 1, model.getLorann().getY())))) {
 					hitMonstre();
 				}
 				this.getModel().getLorann().moveLeft();
@@ -65,34 +71,35 @@ public class ControllerFacade implements IController, IOrderPerformer {
 				break;
 			case UPLEFT:
 				if ((model.getMonster().getPosition()
-						.equals(new Point(model.getLorann().getX()-1, model.getLorann().getY() - 1)))) {
+						.equals(new Point(model.getLorann().getX() - 1, model.getLorann().getY() - 1)))) {
 					hitMonstre();
 				}
 				this.getModel().getLorann().moveUpLeft();
 				break;
 			case UPRIGHT:
 				if ((model.getMonster().getPosition()
-						.equals(new Point(model.getLorann().getX()+1, model.getLorann().getY() - 1)))) {
+						.equals(new Point(model.getLorann().getX() + 1, model.getLorann().getY() - 1)))) {
 					hitMonstre();
 				}
 				this.getModel().getLorann().moveUpRight();
 				break;
 			case DOWNLEFT:
 				if ((model.getMonster().getPosition()
-						.equals(new Point(model.getLorann().getX()-1, model.getLorann().getY() + 1)))) {
+						.equals(new Point(model.getLorann().getX() - 1, model.getLorann().getY() + 1)))) {
 					hitMonstre();
 				}
 				this.getModel().getLorann().moveDownLeft();
 				break;
 			case DOWNRIGHT:
 				if ((model.getMonster().getPosition()
-						.equals(new Point(model.getLorann().getX()+1, model.getLorann().getY() + 1)))) {
+						.equals(new Point(model.getLorann().getX() + 1, model.getLorann().getY() + 1)))) {
 					hitMonstre();
 				}
 				this.getModel().getLorann().moveDownRight();
 				break;
 			case FIRE:
-				this.getModel().getLorann().fire();
+				this.getModel().initSpell(-1, 0);
+				this.getModel().getSpell().move();
 				break;
 			default:
 				// this.getModel().getLorann().doNothing();
@@ -150,5 +157,6 @@ public class ControllerFacade implements IController, IOrderPerformer {
 		this.getModel().getLorann().setAlive(false);
 		this.getView().loosingScreen();
 	}
+	
 
 }
