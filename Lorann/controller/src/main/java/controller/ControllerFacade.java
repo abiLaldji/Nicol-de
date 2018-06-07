@@ -16,6 +16,8 @@ public class ControllerFacade implements IController, IOrderPerformer {
 
 	private UserOrder stackOrder;
 
+	private Movement movement;
+
 	public ControllerFacade(final IView view, final IModel model) {
 		setModel(model);
 		setView(view);
@@ -23,20 +25,26 @@ public class ControllerFacade implements IController, IOrderPerformer {
 		System.out.println("controller");
 	}
 
+	/**
+	 * Main loop of the game, does different action depending on UserOrder (enum).
+	 * Check if Lorann hits a monster.
+	 */
+
 	public void play() throws InterruptedException, IOException {
-		// Thread.sleep(100);
 		while (this.getModel().getLorann().isAlive()) {
+			Thread.sleep(200);
+			this.getModel().getMonster().move();
 			switch (this.getStackOrder()) {
 			case RIGHT:
 				if ((model.getMonster().getPosition()
-						.equals(new Point(model.getLorann().getX() + 1, model.getLorann().getY())))) {
+						.equals(new Point(model.getLorann().getX() +1, model.getLorann().getY())))) {
 					hitMonstre();
 				}
 				this.getModel().getLorann().moveRight();
 				break;
 			case LEFT:
 				if ((model.getMonster().getPosition()
-						.equals(new Point(model.getLorann().getX() - 1, model.getLorann().getY())))) {
+						.equals(new Point(model.getLorann().getX() -1, model.getLorann().getY())))) {
 					hitMonstre();
 				}
 				this.getModel().getLorann().moveLeft();
@@ -56,15 +64,31 @@ public class ControllerFacade implements IController, IOrderPerformer {
 				this.getModel().getLorann().moveDown();
 				break;
 			case UPLEFT:
+				if ((model.getMonster().getPosition()
+						.equals(new Point(model.getLorann().getX()-1, model.getLorann().getY() - 1)))) {
+					hitMonstre();
+				}
 				this.getModel().getLorann().moveUpLeft();
 				break;
 			case UPRIGHT:
+				if ((model.getMonster().getPosition()
+						.equals(new Point(model.getLorann().getX()+1, model.getLorann().getY() - 1)))) {
+					hitMonstre();
+				}
 				this.getModel().getLorann().moveUpRight();
 				break;
 			case DOWNLEFT:
+				if ((model.getMonster().getPosition()
+						.equals(new Point(model.getLorann().getX()-1, model.getLorann().getY() + 1)))) {
+					hitMonstre();
+				}
 				this.getModel().getLorann().moveDownLeft();
 				break;
 			case DOWNRIGHT:
+				if ((model.getMonster().getPosition()
+						.equals(new Point(model.getLorann().getX()+1, model.getLorann().getY() + 1)))) {
+					hitMonstre();
+				}
 				this.getModel().getLorann().moveDownRight();
 				break;
 			case FIRE:
@@ -75,9 +99,12 @@ public class ControllerFacade implements IController, IOrderPerformer {
 				break;
 			}
 			this.clearStackOrder();
-
 		}
 	}
+
+	/**
+	 * set StackOrder on User Order's
+	 */
 
 	public final void orderPerform(final UserOrder userOrder) throws IOException {
 		this.setStackOrder(userOrder);
@@ -115,10 +142,13 @@ public class ControllerFacade implements IController, IOrderPerformer {
 		return this;
 	}
 
+	/**
+	 * When Lorann hit a monster, end of the game. Death message.
+	 */
+
 	private void hitMonstre() {
 		this.getModel().getLorann().setAlive(false);
-		JOptionPane.showMessageDialog(null, "YOU DIED");
-		System.exit(0);
+		this.getView().loosingScreen();
 	}
 
 }

@@ -21,10 +21,10 @@ public class ModelFacade implements IModel {
 		this.setMap(new Map());
 		this.setLorann(new Lorann(this.getMap().getStartX(), this.getMap().getStartY(), this.getMap()));
 		this.setMonster(new Monster(this.getMap().getStartXM(), this.getMap().getStartYM(), this.getMap()));
-		this.setSpell(new Spell(2, 2, this.getMap()));
+ 
 		this.getLorann().getSprite().loadImage();
 		this.getMonster().getSprite().loadImage();
-		this.getSpell().getSprite().loadImage();
+
 	}
 
 	private void setMonster(Monster monster) {

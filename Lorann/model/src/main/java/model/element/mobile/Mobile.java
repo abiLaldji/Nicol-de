@@ -3,8 +3,6 @@ package model.element.mobile;
 import java.awt.Point;
 import java.io.IOException;
 
-import javax.swing.JOptionPane;
-
 import model.Collision;
 import model.IMap;
 import model.IMobile;
@@ -19,11 +17,6 @@ public abstract class Mobile extends Element implements IMobile {
 	private IMap map;
 	private IBoard board;
 
-<<<<<<< HEAD
-=======
-	private IMobile spell;
-
->>>>>>> branch 'master' of https://github.com/abiLaldji/Nicol-de.git
 	private int score = 0;
 
 	Mobile(final Sprite sprite, final IMap map, final Collision collision) {
@@ -36,60 +29,85 @@ public abstract class Mobile extends Element implements IMobile {
 		this(sprite, map, collision);
 		this.setXY(x, y);
 	}
-	
+
+	/**
+	 * Main move method. Check for the square the pawn want to go in. If it's free,
+	 * the pawn move dependending on the moveX and moveY parameters. Execute action
+	 * of collecting Purse, die, and open the door with the energy ball.
+	 */
+
 	public void move(int moveX, int moveY) throws IOException {
-        if (this.getY() != 0) {
-            switch (this.getMap().getOnTheMapXY(this.getX()+ moveX, this.getY() + moveY).getCollision()) {
-            case FREE:
-                this.setXY(this.getX() + moveX, this.getY() + moveY);                
-                this.setHasMoved();
-                break;
-            case COLLECTABLE:
-                this.collect(this.getX() + moveX , this.getY() + moveY);
-                this.setXY(this.getX() + moveX, this.getY() + moveY);    
-                this.setHasMoved();
-                break;
-            case KILL:
-                die();
-                break;
-            case WIN:
-                this.setXY(this.getX() + moveX, this.getY() + moveY);    
-                this.setHasMoved();
-                win();
-                break;
-            case OPENDOOR:
-                openTheDoor(this.getX() + moveX, this.getY() + moveY);
-                this.setXY(this.getX() + moveX, this.getY() + moveY);    
-                this.setHasMoved();
-                break;
-            default:
-                break;
-            }
-        }
-    }
+		if (this.getY() != 0) {
+			switch (this.getMap().getOnTheMapXY(this.getX() + moveX, this.getY() + moveY).getCollision()) {
+			case FREE:
+				this.setXY(this.getX() + moveX, this.getY() + moveY);
+				this.setHasMoved();
+				break;
+			case COLLECTABLE:
+				System.out.println("collect");
+				this.collect(this.getX() + moveX, this.getY() + moveY);
+				this.setXY(this.getX() + moveX, this.getY() + moveY);
+				this.setHasMoved();
+				break;
+			case KILL:
+				die();
+				break;
+			case WIN:
+				this.setXY(this.getX() + moveX, this.getY() + moveY);
+				this.setHasMoved();
+				win();
+				break;
+			case OPENDOOR:
+				openTheDoor(this.getX() + moveX, this.getY() + moveY);
+				this.setXY(this.getX() + moveX, this.getY() + moveY);
+				this.setHasMoved();
+				break;
+			default:
+				break;
+			}
+		}
+	}
 
 	public void doNothing() {
 		this.setHasMoved();
 	}
 
-	private void setHasMoved() {
+	/**
+	 * Tell the map that something has changed so that the map can notify the
+	 * showboard
+	 */
+
+	protected void setHasMoved() {
 		this.getMap().setMobileHasChanged();
 	}
 
+	/**
+	 * Call wining message
+	 */
+
 	public void win() {
-		JOptionPane.showMessageDialog(null, "YOU WIN");
-		JOptionPane.showMessageDialog(null, getScore());
-		System.exit(0);
+
 	}
+
+	/**
+	 * Method called when Lorann hit the Purse. When it does, the Purse square is
+	 * replace with an empty square with FREE collision
+	 */
 
 	public void collect(int x, int y) throws IOException {
 		this.getMap().getOnTheMapXY(x, y).setSprite(new Sprite(' ', "empty.png"));
 		this.getMap().getOnTheMapXY(x, y).setCollision(Collision.FREE);
 		this.getMap().getOnTheMapXY(x, y).getSprite().loadImage();
-		score = score + 1;
+		score = score + 100;
 		System.out.print("Your score : ");
 		System.out.println(score);
 	}
+
+	/**
+	 * Method called when Lorann hit the energy ball. Look for every square in the
+	 * map that has ']' console image, when it has found it, it's replaced by an
+	 * open door with WIN collision
+	 */
 
 	private void openTheDoor(int x, int y) throws IOException {
 		this.getMap().getOnTheMapXY(x, y).setSprite(new Sprite(' ', "empty.png"));
@@ -110,31 +128,20 @@ public abstract class Mobile extends Element implements IMobile {
 	}
 
 	public void fire() throws IOException {
-		System.out.println("fire");
-		// this.setSpell(new Spell(this.getX() + 1, this.getY(), this.getMap()));
-		// this.getMap().getOnTheMapXY(this.getX() + x, this.getY() + y).move();
-	}
-	
-	public final void setXY(final int x, final int y) {
-        this.getPosition().x = x;
-        this.getPosition().y = y;
-    }
 
+	}
+
+	public final void setXY(final int x, final int y) {
+		this.getPosition().x = x;
+		this.getPosition().y = y;
+	}
 
 	public final int getX() {
 		return this.getPosition().x;
 	}
 
-	public final void setX(final int x) {
-		this.getPosition().x = x;
-	}
-
 	public final int getY() {
 		return this.getPosition().y;
-	}
-
-	public final void setY(final int y) {
-		this.getPosition().y = (y + this.getMap().getHeight()) % this.getMap().getHeight();
 	}
 
 	private void setMap(final IMap map) {
@@ -144,15 +151,13 @@ public abstract class Mobile extends Element implements IMobile {
 	public boolean isAlive() {
 		return this.alive;
 	}
-	
+
 	public void setAlive(boolean alive) {
 		this.alive = alive;
 	}
 
 	protected void die() throws IOException {
-		this.alive = false;
-		JOptionPane.showMessageDialog(null, "YOU DIED");
-		System.exit(0);
+		// completer
 	}
 
 	public Point getPosition() {

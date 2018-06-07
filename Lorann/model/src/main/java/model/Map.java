@@ -6,10 +6,16 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.Observable;
 
+import model.IElement;
+import model.IMap;
 import model.element.Element;
-import model.element.nonMobile.NonMobileFactory;;
+import model.element.nonMobile.NonMobileFactory;
 
 class Map extends Observable implements IMap {
+
+	/**
+	 * A map is what the board is made of : Elements
+	 */
 
 	private final int WIDTH = 20;
 
@@ -32,6 +38,12 @@ class Map extends Observable implements IMap {
 		fillMap(this.map);
 	}
 
+	/**
+	 * Load data from the data base, from a stored procedure. Look for column 'type'
+	 * and call the non-mobile factory depending on this type Also set the starting
+	 * point of Lorann and monsters
+	 */
+
 	public void loadDB() {
 
 		try {
@@ -53,22 +65,22 @@ class Map extends Observable implements IMap {
 					if (levelNumber == levelNumberBdd) {
 						switch (type) {
 						case "HWall":
-							this.setOnTheMapXY(NonMobileFactory.getFromFileSymbol('_'), x, y);
+							this.setOnTheMapXY(NonMobileFactory.getSymbol('_'), x, y);
 							break;
 						case "VWall":
-							this.setOnTheMapXY(NonMobileFactory.getFromFileSymbol('|'), x, y);
+							this.setOnTheMapXY(NonMobileFactory.getSymbol('|'), x, y);
 							break;
 						case "CWall":
-							this.setOnTheMapXY(NonMobileFactory.getFromFileSymbol('o'), x, y);
+							this.setOnTheMapXY(NonMobileFactory.getSymbol('o'), x, y);
 							break;
 						case "Door":
-							this.setOnTheMapXY(NonMobileFactory.getFromFileSymbol(']'), x, y);
+							this.setOnTheMapXY(NonMobileFactory.getSymbol(']'), x, y);
 							break;
 						case "Bubble":
-							this.setOnTheMapXY(NonMobileFactory.getFromFileSymbol('B'), x, y);
+							this.setOnTheMapXY(NonMobileFactory.getSymbol('B'), x, y);
 							break;
 						case "Purse":
-							this.setOnTheMapXY(NonMobileFactory.getFromFileSymbol('P'), x, y);
+							this.setOnTheMapXY(NonMobileFactory.getSymbol('P'), x, y);
 							break;
 						case "Lorann":
 							this.startX = x;
@@ -79,7 +91,7 @@ class Map extends Observable implements IMap {
 							this.startYM = y;
 							break;
 						default:
-							this.setOnTheMapXY(NonMobileFactory.getFromFileSymbol(' '), x, y);
+							this.setOnTheMapXY(NonMobileFactory.getSymbol(' '), x, y);
 							break;
 						}
 					}
@@ -93,6 +105,10 @@ class Map extends Observable implements IMap {
 
 	}
 
+	/**
+	 * Set a default empty Element for every location in the map
+	 */
+
 	private void setupMap(IMap map) {
 		this.map = map;
 		for (int x = 0; x < this.getWidth(); x++) {
@@ -101,6 +117,10 @@ class Map extends Observable implements IMap {
 			}
 		}
 	}
+
+	/**
+	 * Load the images of every element in the map
+	 */
 
 	private void fillMap(final IMap map) throws IOException {
 		this.map = map;
@@ -134,11 +154,11 @@ class Map extends Observable implements IMap {
 	}
 
 	public void setEmptyXY(final int x, final int y) {
-		setOnTheMapXY(NonMobileFactory.getFromFileSymbol(' '), x, y);
+		setOnTheMapXY(NonMobileFactory.getSymbol(' '), x, y);
 	}
-	
+
 	public void setOpenDoor(final int x, final int y) {
-		setOnTheMapXY(NonMobileFactory.getFromFileSymbol('['), x, y);
+		setOnTheMapXY(NonMobileFactory.getSymbol('['), x, y);
 	}
 
 	public final void setMobileHasChanged() {

@@ -10,6 +10,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.IOException;
 
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 
@@ -19,33 +20,79 @@ import model.IModel;
 import showboard.BoardFrame;
 import showboard.IPawn;
 
+/**
+ * <h1>The Class BoardFrame.</h1>
+ * <p>
+ * This class is just used to load the BoardPanel. It extends JPanel and implements IBoard.
+ * </p>
+ * <p>
+ * As the BoardPanel is a private class, BoardPanel is a Facade.
+ * </p>
+ * 
+ * @author Jérémy DUSSAUX / Abigael LALDJI / Nathan VIVES / Yoann TILLET
+ * @version 3.0
+ * @see IView
+ * @see Runnable
+ * @see KeyListener
+ * @see IPawn
+ * @see ActionListener
+ * @see Timer
+ * @see IModel
+ * @see IOrderPerformer
+ * @see BoardFrame
+ * @see UserOrder
+ * @see Image
+ * @see Point
+ */
 public class ViewFacade implements IView, Runnable, KeyListener, IPawn, ActionListener {
 
+	/** The initial square size. */
 	private static final int SQUARE_SIZE = 70;
 
+	/** The boolean direction up. */
 	public static boolean up = false;
+	/** The boolean direction down. */
 	public static boolean down = false;
+	/** The boolean direction right. */
 	public static boolean right = false;
+	/** The boolean direction left. */
 	public static boolean left = false;
-	
-	private final int DELAY = 400;
+
+	/** The Constant DELAY. */
+	private final int DELAY = 1000;
+	/** The attribute timer. */
 	Timer timer;
 
+	/** The private attribute model. */
 	private IModel model;
 
+	/** The private attribute orderPerformer. */
 	private IOrderPerformer orderPerformer;
+	
+	/** Instantiates a new board frame.
+	 * @param title
+	 *  		Lorann Game	
+	 */ 
+	final BoardFrame boardFrame = new BoardFrame("Lorann Game");
 
+
+	/**
+     * Instantiates a new ViewFacade.
+     *
+     * @param model
+     *            the model
+     */
 	public ViewFacade(IModel model) throws IOException {
 		System.out.println("view");
 		this.model = model;
 		SwingUtilities.invokeLater(this);
-		timer = new Timer(DELAY, this);
-
+//		timer = new Timer(DELAY, this);
+//		timer.start();
 	}
-
+	
+	/** run. */
 	public void run() {
-		
-		final BoardFrame boardFrame = new BoardFrame("Lorann Game");
+
 		boardFrame.setDimension(new Dimension(model.getMap().getWidth(), model.getMap().getHeight()));
 		boardFrame.setDisplayFrame(new Rectangle(0, 0, model.getMap().getWidth(), model.getMap().getHeight()));
 		boardFrame.setSize(model.getMap().getWidth() * SQUARE_SIZE, model.getMap().getHeight() * SQUARE_SIZE);
@@ -66,13 +113,17 @@ public class ViewFacade implements IView, Runnable, KeyListener, IPawn, ActionLi
 
 		boardFrame.setVisible(true);
 
-		boardFrame.addPawn(model.getSpell());
-
 		model.getMap().getObservable().addObserver(boardFrame.getObserver());
 		show();
 
 	}
+	
+	/** add a Spell. */
+	public void addSpell() {
+		boardFrame.addPawn(model.getSpell());
+	}
 
+	/** show the map , lorann and monster */
 	public final void show() {
 		for (int x = 0; x < model.getMap().getWidth(); x++) {
 			for (int y = 0; y < model.getMap().getHeight(); y++) {
@@ -89,31 +140,36 @@ public class ViewFacade implements IView, Runnable, KeyListener, IPawn, ActionLi
 		}
 	}
 
+
 	protected static UserOrder keyCodeToUserOrder(final int keyCode) {
+
 		UserOrder userOrder = UserOrder.NOP;
 
 		switch (keyCode) {
 		case KeyEvent.VK_RIGHT:
 			right = true;
 			break;
-			
+
 		case KeyEvent.VK_LEFT:
 			left = true;
 			break;
-		
+
 		case KeyEvent.VK_UP:
 			up = true;
 			break;
-			
+
 		case KeyEvent.VK_DOWN:
 			down = true;
 			break;
-			
+
 		case KeyEvent.VK_SPACE:
 			break;
-			
+
 		default:
-			down = false; up = false; right = false; left = false;
+			down = false;
+			up = false;
+			right = false;
+			left = false;
 			break;
 		}
 		if (right == true && left == false && up == false && down == false) {
@@ -146,6 +202,12 @@ public class ViewFacade implements IView, Runnable, KeyListener, IPawn, ActionLi
 		return userOrder;
 	}
 
+	/**
+     * the keyPressed.
+     *
+     * @param key
+     *            the new key
+     */
 	public final void keyPressed(final KeyEvent key) {
 
 		try {
@@ -156,14 +218,34 @@ public class ViewFacade implements IView, Runnable, KeyListener, IPawn, ActionLi
 
 	}
 
+
 	public IOrderPerformer getOrderPerformer() {
+
+	/**
+     * Gets the Order Performer.
+     *
+     * @return the order Performer
+     */
+
 		return this.orderPerformer;
 	}
 
+	 /**
+     * Sets the Order Performer.
+     *
+     * @param orderPerformer
+     *            the new orderPerformer
+     */
 	public final void setOrderPerformer(final IOrderPerformer orderPerformer) {
 		this.orderPerformer = orderPerformer;
 	}
-	
+
+	/**
+     * the key Released.
+     *
+     * @param KeyEvent
+     *            the new KeyEvent
+     */
 	public void keyReleased(KeyEvent e) {
 
 		int key = e.getKeyCode();
@@ -189,16 +271,25 @@ public class ViewFacade implements IView, Runnable, KeyListener, IPawn, ActionLi
 		}
 	}
 
+	/**
+     * the action Performed.
+     *
+     * @param Action Event
+     *            the new Action Event
+     */
 	public void actionPerformed(ActionEvent arg0) {
 		try {
+			System.out.println("refresh");
 			orderPerformer.orderPerform(UserOrder.NOP);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 	
-	
-	
+	public void loosingScreen() {
+		JOptionPane.showMessageDialog(null, "YOU DIED");
+		System.exit(0);
+	}
 
 	@Override
 	public void keyTyped(KeyEvent arg0) {
@@ -230,6 +321,10 @@ public class ViewFacade implements IView, Runnable, KeyListener, IPawn, ActionLi
 		return null;
 	}
 
-	
+	public void victoryScreen(int score) {
+		JOptionPane.showMessageDialog(null, "YOU WIN");
+		JOptionPane.showMessageDialog(null, "Your score : " + score);
+		System.exit(0);
+	}
 
 }
