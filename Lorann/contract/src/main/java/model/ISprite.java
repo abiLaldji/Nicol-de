@@ -7,8 +7,6 @@ public interface ISprite {
 	
 	public void loadImage() throws IOException;
 
-	public Collision getCollision();
-
 	public char getConsoleImage();
 
 	public boolean isVisible();
@@ -16,7 +14,5 @@ public interface ISprite {
 	public Image getImage();
 
 	public String getImageLink();
-
-	public boolean isLoaded();
 
 }

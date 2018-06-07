@@ -44,7 +44,6 @@ import showboard.IPawn;
  * @see Image
  * @see Point
  * @see KeyEvent
- * @see Action Event
  */
 public class ViewFacade implements IView, Runnable, KeyListener, IPawn, ActionListener {
 
@@ -61,9 +60,6 @@ public class ViewFacade implements IView, Runnable, KeyListener, IPawn, ActionLi
 	public static boolean left = false;
 
 	/** The Constant DELAY. */
-	private final int DELAY = 1000;
-	/** The attribute timer. */
-	Timer timer;
 
 	/** The private attribute model. */
 	private IModel model;
@@ -88,8 +84,6 @@ public class ViewFacade implements IView, Runnable, KeyListener, IPawn, ActionLi
 		System.out.println("view");
 		this.model = model;
 		SwingUtilities.invokeLater(this);
-//		timer = new Timer(DELAY, this);
-//		timer.start();
 	}
 	
 	/** run. */

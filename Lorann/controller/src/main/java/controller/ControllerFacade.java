@@ -1,6 +1,5 @@
 package controller;
 
-import java.awt.Point;
 import java.io.IOException;
 
 import model.IModel;

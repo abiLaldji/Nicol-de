@@ -16,10 +16,9 @@ public abstract class Main {
 			final ViewFacade view = new ViewFacade(model);
 			final IController controller = new ControllerFacade(view, model);
 			view.setOrderPerformer(controller.getOrderPerformer());
-
+			
 			controller.play();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

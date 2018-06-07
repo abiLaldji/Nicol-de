@@ -23,8 +23,8 @@ public class Movement {
 
 	public boolean hitMonster(int x, int y) {
 		if (this.controller.getModel().getMonster().getPosition()
-				.equals(new Point(this.controller.getModel().getLorann().getX() + x,
-						this.controller.getModel().getLorann().getY() + y)  )) {
+				.equals(new Point(this.controller.getModel().getLorann().getX(),
+						this.controller.getModel().getLorann().getY())  )) {
 			this.hit = true;
 		}
 		
