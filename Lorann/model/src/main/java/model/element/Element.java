@@ -9,6 +9,11 @@ import showboard.ISquare;
 
 public abstract class Element implements ISquare, IElement {
 
+	/**
+	 * Element represents every every square in the map. It is composed of a Sprite
+	 * and a collision type
+	 */
+
 	private ISprite sprite;
 
 	private Collision collision;

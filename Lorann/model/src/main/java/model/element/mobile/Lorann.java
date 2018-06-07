@@ -4,10 +4,13 @@ import java.io.IOException;
 
 import model.Collision;
 import model.IMap;
-import model.ISprite;
 import model.element.Sprite;
 
 public class Lorann extends Mobile {
+
+	/**
+	 * instanciate every sprite of Lorann character
+	 */
 
 	private static final Sprite SPRITE_U = new Sprite('L', "lorann_u.png");
 
@@ -44,8 +47,10 @@ public class Lorann extends Mobile {
 		this.spell = new Spell(this.getX() + x, this.getY() + y, this.getMap());
 		this.spell.getSprite().loadImage();
 	}
-	
 
+	/**
+	 * Call move fonction in Mobile class. Set a different sprite for every move.
+	 */
 
 	public final void moveLeft() throws IOException {
 		super.move(-1, 0);
