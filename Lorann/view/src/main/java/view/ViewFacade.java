@@ -29,7 +29,7 @@ import showboard.IPawn;
  * As the BoardPanel is a private class, BoardPanel is a Facade.
  * </p>
  * 
- * @author Jérémy DUSSAUX / Abigael LALDJI / Nathan VIVES / Yoann TILLET
+ * @author JÃ©rÃ©my DUSSAUX / Abigael LALDJI / Nathan VIVES / Yoann TILLET
  * @version 3.0
  * @see IView
  * @see Runnable
@@ -140,15 +140,9 @@ public class ViewFacade implements IView, Runnable, KeyListener, IPawn, ActionLi
 		}
 	}
 
-	/**
-     * the keyCode To UserOrder.
-     *
-     *@param keyCode
-     *			the new keyCode
-     *
-     * @return the userOrder
-     */
-	private static UserOrder keyCodeToUserOrder(final int keyCode) {
+
+	protected static UserOrder keyCodeToUserOrder(final int keyCode) {
+
 		UserOrder userOrder = UserOrder.NOP;
 
 		switch (keyCode) {
@@ -224,12 +218,15 @@ public class ViewFacade implements IView, Runnable, KeyListener, IPawn, ActionLi
 
 	}
 
+
+	public IOrderPerformer getOrderPerformer() {
+
 	/**
      * Gets the Order Performer.
      *
      * @return the order Performer
      */
-	private IOrderPerformer getOrderPerformer() {
+
 		return this.orderPerformer;
 	}
 

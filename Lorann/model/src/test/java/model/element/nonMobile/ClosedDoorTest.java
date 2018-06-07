@@ -16,7 +16,7 @@ import model.Collision;
 
 
 public class ClosedDoorTest {
-	ClosedDoor closeddoor = new ClosedDoor();
+	ClosedDoor closeddoor;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -28,6 +28,7 @@ public class ClosedDoorTest {
 
 	@Before
 	public void setUp() throws Exception {
+		closeddoor = new ClosedDoor();
 	}
 
 	@After

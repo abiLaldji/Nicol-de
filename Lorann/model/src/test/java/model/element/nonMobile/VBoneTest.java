@@ -11,7 +11,7 @@ import org.junit.Test;
 import model.Collision;
 
 public class VBoneTest {
-	VBone vbone = new VBone();
+	VBone vbone; 
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -23,6 +23,7 @@ public class VBoneTest {
 
 	@Before
 	public void setUp() throws Exception {
+		vbone = new VBone();
 	}
 
 	@After

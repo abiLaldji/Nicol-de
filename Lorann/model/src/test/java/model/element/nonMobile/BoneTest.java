@@ -11,7 +11,7 @@ import org.junit.Test;
 import model.Collision;
 
 public class BoneTest {
-	Bone bone = new Bone();
+	Bone bone ;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -23,6 +23,7 @@ public class BoneTest {
 
 	@Before
 	public void setUp() throws Exception {
+		bone = new Bone();
 	}
 
 	@After

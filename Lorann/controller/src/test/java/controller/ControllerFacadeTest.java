@@ -9,7 +9,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class ControllerFacadeTest {
-ControllerFacade cf= new ControllerFacade(null, null);
+ControllerFacade cf;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -22,6 +22,7 @@ ControllerFacade cf= new ControllerFacade(null, null);
 
 	@Before
 	public void setUp() throws Exception {
+		cf= new ControllerFacade(null, null);
 	}
 
 	@After
