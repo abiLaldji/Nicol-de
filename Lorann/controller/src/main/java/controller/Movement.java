@@ -11,6 +11,10 @@ import model.IMobile;
 
 public abstract class Movement {
 
+	/**
+	 * This class is not used yet, it would have move the model object
+	 */
+
 	IController controller;
 
 	int score = 0;
@@ -22,7 +26,7 @@ public abstract class Movement {
 				this.controller.getModel().getLorann().getX() + 1, this.controller.getModel().getLorann().getY())))) {
 			this.hit = true;
 		}
-		return this.hit ;
+		return this.hit;
 	}
 
 	public void move(int moveX, int moveY) throws IOException {
@@ -88,13 +92,6 @@ public abstract class Movement {
 			}
 		}
 	}
-
-	// public void fire() throws IOException {
-	// System.out.println("fire");
-	// this.controller.getModel().setSpell(new Spell(this.getX() + 1, this.getY(),
-	// this.getMap()));
-	// // this.getMap().getOnTheMapXY(this.getX() + x, this.getY() + y).move();
-	// }
 
 	protected void die() throws IOException {
 		this.getLorann().setAlive(false);

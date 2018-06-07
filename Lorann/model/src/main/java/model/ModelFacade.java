@@ -21,7 +21,6 @@ public class ModelFacade implements IModel {
 		this.setMap(new Map());
 		this.setLorann(new Lorann(this.getMap().getStartX(), this.getMap().getStartY(), this.getMap()));
 		this.setMonster(new Monster(this.getMap().getStartXM(), this.getMap().getStartYM(), this.getMap()));
- 
 		this.getLorann().getSprite().loadImage();
 		this.getMonster().getSprite().loadImage();
 
@@ -57,6 +56,12 @@ public class ModelFacade implements IModel {
 
 	public void setSpell(IMobile spell) {
 		this.spell = spell;
+	}
+	
+	public void initSpell(int x, int y) throws IOException {
+		System.out.println("spell");
+		this.spell = new Spell(this.getLorann().getX() + x, this.getLorann().getY() + y, this.getMap());
+		this.getSpell().getSprite().loadImage();
 	}
 
 }

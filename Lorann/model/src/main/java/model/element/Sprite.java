@@ -5,27 +5,19 @@ import java.io.IOException;
 
 import javax.swing.ImageIcon;
 
-import model.Collision;
 import model.ISprite;
 
 public class Sprite implements ISprite {
 
 	/** A sprite is composed of an Image, a Collision type, and a console image */
-	
+
 	private boolean loaded;
 	private String imageLink;
 	private Image image;
 	private char consoleImage;
 	private boolean visible;
-
-	private Collision collision;	
-	private String chemin = "C:\\Users\\tille\\git\\Nicol-de\\Lorann\\image\\";
-	
-
-	private Collision collision;
 	/** Yes I know it is horrible */
 	private String chemin = "/home/abi/git/Nicol-de/Lorann/image/";
-
 
 	public Sprite(final char character, final String imageName) {
 		this.setConsoleImage(character);
@@ -39,14 +31,6 @@ public class Sprite implements ISprite {
 		setImage(ii.getImage());
 		this.setLoaded(true);
 		this.setVisible(true);
-	}
-
-	public Collision getCollision() {
-		return this.collision;
-	}
-
-	public void setCollision(Collision collision) {
-		this.collision = collision;
 	}
 
 	public char getConsoleImage() {

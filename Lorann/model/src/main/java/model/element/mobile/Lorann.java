@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import model.Collision;
 import model.IMap;
+import model.IMobile;
 import model.element.Sprite;
 
 public class Lorann extends Mobile {
@@ -28,8 +29,6 @@ public class Lorann extends Mobile {
 
 	private static final Sprite SPRITE_UR = new Sprite('L', "lorann_ur.png");
 
-	private Spell spell;
-
 	public Lorann(final int x, final int y, final IMap map) throws IOException {
 		super(x, y, SPRITE_U, map, Collision.LORANN);
 		SPRITE_U.loadImage();
@@ -41,11 +40,6 @@ public class Lorann extends Mobile {
 		SPRITE_BL.loadImage();
 		SPRITE_BR.loadImage();
 
-	}
-
-	public void initSpell(int x, int y) throws IOException {
-		this.spell = new Spell(this.getX() + x, this.getY() + y, this.getMap());
-		this.spell.getSprite().loadImage();
 	}
 
 	/**
