@@ -9,20 +9,41 @@ import model.Collision;
 import model.IMap;
 import model.IMobile;
 
-public abstract class Movement {
-
-	IController controller;
+public class Movement {
 
 	int score = 0;
 
 	private boolean hit = false;
 
+	private IController controller;
+
+	public Movement(ControllerFacade cont) {
+		this.controller = cont;
+	}
+
 	public boolean hitMonster(int x, int y) {
-		if ((this.controller.getModel().getMonster().getPosition().equals(new Point(
-				this.controller.getModel().getLorann().getX() + 1, this.controller.getModel().getLorann().getY())))) {
+		if (this.controller.getModel().getMonster().getPosition()
+				.equals(new Point(this.controller.getModel().getLorann().getX(),
+						this.controller.getModel().getLorann().getY())  )) {
 			this.hit = true;
 		}
-		return this.hit ;
+		
+		else if (this.controller.getModel().getMonster2().getPosition()
+				.equals(new Point(this.controller.getModel().getLorann().getX() + x,
+						this.controller.getModel().getLorann().getY() + y)  )) {
+			this.hit = true;
+		}
+		else if (this.controller.getModel().getMonster3().getPosition()
+				.equals(new Point(this.controller.getModel().getLorann().getX() + x,
+						this.controller.getModel().getLorann().getY() + y)  )) {
+			this.hit = true;
+		}
+		else if (this.controller.getModel().getMonster4().getPosition()
+				.equals(new Point(this.controller.getModel().getLorann().getX() + x,
+						this.controller.getModel().getLorann().getY() + y)  )) {
+			this.hit = true;
+		}
+		return this.hit;
 	}
 
 	public void move(int moveX, int moveY) throws IOException {

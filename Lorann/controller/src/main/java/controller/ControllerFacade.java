@@ -1,9 +1,6 @@
 package controller;
 
-import java.awt.Point;
 import java.io.IOException;
-
-import javax.swing.JOptionPane;
 
 import model.IModel;
 import view.IView;
@@ -14,9 +11,9 @@ public class ControllerFacade implements IController, IOrderPerformer {
 
 	private IModel model;
 
-	private UserOrder stackOrder;
+	private Movement mov = new Movement(this);
 
-	private Movement movement;
+	private UserOrder stackOrder;
 
 	public ControllerFacade(final IView view, final IModel model) {
 		setModel(model);
@@ -34,59 +31,54 @@ public class ControllerFacade implements IController, IOrderPerformer {
 		while (this.getModel().getLorann().isAlive()) {
 			Thread.sleep(200);
 			this.getModel().getMonster().move();
+			this.getModel().getMonster2().move();
+			this.getModel().getMonster3().move();
+			this.getModel().getMonster4().move();
 			switch (this.getStackOrder()) {
 			case RIGHT:
-				if ((model.getMonster().getPosition()
-						.equals(new Point(model.getLorann().getX() +1, model.getLorann().getY())))) {
+				if ((this.mov.hitMonster(1, 0) == true )) {
 					hitMonstre();
 				}
 				this.getModel().getLorann().moveRight();
 				break;
 			case LEFT:
-				if ((model.getMonster().getPosition()
-						.equals(new Point(model.getLorann().getX() -1, model.getLorann().getY())))) {
+				if (this.mov.hitMonster(-1, 0) == true ) {
 					hitMonstre();
 				}
 				this.getModel().getLorann().moveLeft();
 				break;
 			case UP:
-				if ((model.getMonster().getPosition()
-						.equals(new Point(model.getLorann().getX(), model.getLorann().getY() - 1)))) {
+				if (this.mov.hitMonster(0, -1) == true ) {
 					hitMonstre();
 				}
 				this.getModel().getLorann().moveUp();
 				break;
 			case DOWN:
-				if ((model.getMonster().getPosition()
-						.equals(new Point(model.getLorann().getX(), model.getLorann().getY() + 1)))) {
+				if (this.mov.hitMonster(0, 1) == true ) {
 					hitMonstre();
 				}
 				this.getModel().getLorann().moveDown();
 				break;
 			case UPLEFT:
-				if ((model.getMonster().getPosition()
-						.equals(new Point(model.getLorann().getX()-1, model.getLorann().getY() - 1)))) {
+				if ((this.mov.hitMonster(-1, -1) == true )) {
 					hitMonstre();
 				}
 				this.getModel().getLorann().moveUpLeft();
 				break;
 			case UPRIGHT:
-				if ((model.getMonster().getPosition()
-						.equals(new Point(model.getLorann().getX()+1, model.getLorann().getY() - 1)))) {
+				if (this.mov.hitMonster(1, -1) == true ) {
 					hitMonstre();
 				}
 				this.getModel().getLorann().moveUpRight();
 				break;
 			case DOWNLEFT:
-				if ((model.getMonster().getPosition()
-						.equals(new Point(model.getLorann().getX()-1, model.getLorann().getY() + 1)))) {
+				if (this.mov.hitMonster(-1, 1) == true ) {
 					hitMonstre();
 				}
 				this.getModel().getLorann().moveDownLeft();
 				break;
 			case DOWNRIGHT:
-				if ((model.getMonster().getPosition()
-						.equals(new Point(model.getLorann().getX()+1, model.getLorann().getY() + 1)))) {
+				if (this.mov.hitMonster(1, 1) == true ) {
 					hitMonstre();
 				}
 				this.getModel().getLorann().moveDownRight();

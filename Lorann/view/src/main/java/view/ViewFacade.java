@@ -29,7 +29,7 @@ import showboard.IPawn;
  * As the BoardPanel is a private class, BoardPanel is a Facade.
  * </p>
  * 
- * @author Jérémy DUSSAUX / Abigael LALDJI / Nathan VIVES / Yoann TILLET
+ * @author Jeremy DUSSAUX / Abigael LALDJI / Nathan VIVES / Yoann TILLET
  * @version 3.0
  * @see IView
  * @see Runnable
@@ -43,6 +43,7 @@ import showboard.IPawn;
  * @see UserOrder
  * @see Image
  * @see Point
+ * @see KeyEvent
  */
 public class ViewFacade implements IView, Runnable, KeyListener, IPawn, ActionListener {
 
@@ -59,9 +60,6 @@ public class ViewFacade implements IView, Runnable, KeyListener, IPawn, ActionLi
 	public static boolean left = false;
 
 	/** The Constant DELAY. */
-	private final int DELAY = 1000;
-	/** The attribute timer. */
-	Timer timer;
 
 	/** The private attribute model. */
 	private IModel model;
@@ -86,8 +84,6 @@ public class ViewFacade implements IView, Runnable, KeyListener, IPawn, ActionLi
 		System.out.println("view");
 		this.model = model;
 		SwingUtilities.invokeLater(this);
-//		timer = new Timer(DELAY, this);
-//		timer.start();
 	}
 	
 	/** run. */
@@ -110,6 +106,12 @@ public class ViewFacade implements IView, Runnable, KeyListener, IPawn, ActionLi
 		boardFrame.addPawn(model.getLorann());
 
 		boardFrame.addPawn(model.getMonster());
+		
+		boardFrame.addPawn(model.getMonster2());
+		
+		boardFrame.addPawn(model.getMonster3());
+		
+		boardFrame.addPawn(model.getMonster4());
 
 		boardFrame.setVisible(true);
 

@@ -3,6 +3,8 @@ package model.element.mobile;
 import java.awt.Point;
 import java.io.IOException;
 
+import javax.swing.JOptionPane;
+
 import model.Collision;
 import model.IMap;
 import model.IMobile;
@@ -86,7 +88,14 @@ public abstract class Mobile extends Element implements IMobile {
 	 */
 
 	public void win() {
-
+		JOptionPane.showMessageDialog(null, "YOU WIN");
+		System.exit(0);
+	}
+	
+	protected void die() throws IOException {
+		this.setAlive(false);
+		JOptionPane.showMessageDialog(null, "YOU DIED");
+		System.exit(0);
 	}
 
 	/**
@@ -156,9 +165,7 @@ public abstract class Mobile extends Element implements IMobile {
 		this.alive = alive;
 	}
 
-	protected void die() throws IOException {
-		// completer
-	}
+	
 
 	public Point getPosition() {
 		return this.position;

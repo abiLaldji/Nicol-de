@@ -23,6 +23,18 @@ public interface IMap {
 	public int getStartXM();
 
 	public int getStartYM();
-	
+
+	public int getStartXM2();
+
+	public int getStartYM2();
+
+	public int getStartYM3();
+
+	public int getStartXM3();
+
+	public int getStartYM4();
+
+	public int getStartXM4();
+
 	void setOpenDoor(int x, int y);
 }

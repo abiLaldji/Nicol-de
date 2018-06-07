@@ -6,8 +6,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.Observable;
 
-import model.IElement;
-import model.IMap;
 import model.element.Element;
 import model.element.nonMobile.NonMobileFactory;
 
@@ -28,6 +26,12 @@ class Map extends Observable implements IMap {
 	private int startY;
 	private int startXM;
 	private int startYM;
+	private int startXM2;
+	private int startYM2;
+	private int startXM3;
+	private int startYM3;
+	private int startXM4;
+	private int startYM4;
 
 	private IMap map;
 
@@ -89,6 +93,18 @@ class Map extends Observable implements IMap {
 						case "Monster1":
 							this.startXM = x;
 							this.startYM = y;
+							break;
+						case "Monster2":
+							this.startXM2 = x;
+							this.startYM2 = y;
+							break;
+						case "Monster3":
+							this.startXM3 = x;
+							this.startYM3 = y;
+							break;
+						case "Monster4":
+							this.startXM4 = x;
+							this.startYM4 = y;
 							break;
 						default:
 							this.setOnTheMapXY(NonMobileFactory.getSymbol(' '), x, y);
@@ -184,6 +200,30 @@ class Map extends Observable implements IMap {
 
 	public int getStartYM() {
 		return this.startYM;
+	}
+	
+	public int getStartXM2() {
+		return this.startXM2;
+	}
+
+	public int getStartYM2() {
+		return this.startYM2;
+	}
+	
+	public int getStartXM3() {
+		return this.startXM3;
+	}
+
+	public int getStartYM3() {
+		return this.startYM3;
+	}
+	
+	public int getStartXM4() {
+		return this.startXM4;
+	}
+
+	public int getStartYM4() {
+		return this.startYM4;
 	}
 
 }

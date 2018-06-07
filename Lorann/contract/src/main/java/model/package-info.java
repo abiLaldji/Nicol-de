@@ -1,7 +1,7 @@
 /**
  * Provides all contracts for the model component.
  * 
- * @author Jean-Aymeric DIET jadiet@cesi.fr
+ * @author Jeremy DUSSAUX / Abigael LALDJI / Nathan VIVES / Yoann TILLET
  * @version 1.0
  */
 package model;
