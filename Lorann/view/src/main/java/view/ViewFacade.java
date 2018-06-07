@@ -19,25 +19,68 @@ import model.IModel;
 import showboard.BoardFrame;
 import showboard.IPawn;
 
+/**
+ * <h1>The Class BoardFrame.</h1>
+ * <p>
+ * This class is just used to load the BoardPanel. It extends JPanel and implements IBoard.
+ * </p>
+ * <p>
+ * As the BoardPanel is a private class, BoardPanel is a Facade.
+ * </p>
+ * 
+ * @author Jérémy DUSSAUX / Abigael LALDJI / Nathan VIVES / Yoann TILLET
+ * @version 3.0
+ * @see IView
+ * @see Runnable
+ * @see KeyListener
+ * @see IPawn
+ * @see ActionListener
+ * @see Timer
+ * @see IModel
+ * @see IOrderPerformer
+ * @see BoardFrame
+ * @see UserOrder
+ * @see Image
+ * @see Point
+ */
 public class ViewFacade implements IView, Runnable, KeyListener, IPawn, ActionListener {
 
+	/** The initial square size. */
 	private static final int SQUARE_SIZE = 70;
 
+	/** The boolean direction up. */
 	public static boolean up = false;
+	/** The boolean direction down. */
 	public static boolean down = false;
+	/** The boolean direction right. */
 	public static boolean right = false;
+	/** The boolean direction left. */
 	public static boolean left = false;
 
+	/** The Constant DELAY. */
 	private final int DELAY = 1000;
+	/** The attribute timer. */
 	Timer timer;
 
+	/** The private attribute model. */
 	private IModel model;
 
+	/** The private attribute orderPerformer. */
 	private IOrderPerformer orderPerformer;
 	
+	/** Instantiates a new board frame.
+	 * @param title
+	 *  		Lorann Game	
+	 */ 
 	final BoardFrame boardFrame = new BoardFrame("Lorann Game");
 
 
+	/**
+     * Instantiates a new ViewFacade.
+     *
+     * @param model
+     *            the model
+     */
 	public ViewFacade(IModel model) throws IOException {
 		System.out.println("view");
 		this.model = model;
@@ -45,7 +88,8 @@ public class ViewFacade implements IView, Runnable, KeyListener, IPawn, ActionLi
 //		timer = new Timer(DELAY, this);
 //		timer.start();
 	}
-
+	
+	/** run. */
 	public void run() {
 
 		boardFrame.setDimension(new Dimension(model.getMap().getWidth(), model.getMap().getHeight()));
@@ -73,10 +117,12 @@ public class ViewFacade implements IView, Runnable, KeyListener, IPawn, ActionLi
 
 	}
 	
+	/** add a Spell. */
 	public void addSpell() {
 		boardFrame.addPawn(model.getSpell());
 	}
 
+	/** show the map , lorann and monster */
 	public final void show() {
 		for (int x = 0; x < model.getMap().getWidth(); x++) {
 			for (int y = 0; y < model.getMap().getHeight(); y++) {
@@ -93,6 +139,14 @@ public class ViewFacade implements IView, Runnable, KeyListener, IPawn, ActionLi
 		}
 	}
 
+	/**
+     * the keyCode To UserOrder.
+     *
+     *@param keyCode
+     *			the new keyCode
+     *
+     * @return the userOrder
+     */
 	private static UserOrder keyCodeToUserOrder(final int keyCode) {
 		UserOrder userOrder = UserOrder.NOP;
 
@@ -153,6 +207,12 @@ public class ViewFacade implements IView, Runnable, KeyListener, IPawn, ActionLi
 		return userOrder;
 	}
 
+	/**
+     * the keyPressed.
+     *
+     * @param key
+     *            the new key
+     */
 	public final void keyPressed(final KeyEvent key) {
 
 		try {
@@ -163,14 +223,31 @@ public class ViewFacade implements IView, Runnable, KeyListener, IPawn, ActionLi
 
 	}
 
+	/**
+     * Gets the Order Performer.
+     *
+     * @return the order Performer
+     */
 	private IOrderPerformer getOrderPerformer() {
 		return this.orderPerformer;
 	}
 
+	 /**
+     * Sets the Order Performer.
+     *
+     * @param orderPerformer
+     *            the new orderPerformer
+     */
 	public final void setOrderPerformer(final IOrderPerformer orderPerformer) {
 		this.orderPerformer = orderPerformer;
 	}
 
+	/**
+     * the key Released.
+     *
+     * @param KeyEvent
+     *            the new KeyEvent
+     */
 	public void keyReleased(KeyEvent e) {
 
 		int key = e.getKeyCode();
@@ -196,6 +273,12 @@ public class ViewFacade implements IView, Runnable, KeyListener, IPawn, ActionLi
 		}
 	}
 
+	/**
+     * the action Performed.
+     *
+     * @param Action Event
+     *            the new Action Event
+     */
 	public void actionPerformed(ActionEvent arg0) {
 		try {
 			System.out.println("refresh");
