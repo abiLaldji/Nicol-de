@@ -7,6 +7,7 @@ import model.element.mobile.Monster;
 import model.element.mobile.Monster2;
 import model.element.mobile.Monster3;
 import model.element.mobile.Monster4;
+import model.element.mobile.Spell;
 
 public class ModelFacade implements IModel {
 
@@ -94,6 +95,12 @@ public class ModelFacade implements IModel {
 
 	public void setSpell(IMobile spell) {
 		this.spell = spell;
+	}
+	
+	public void initSpell(int x, int y) throws IOException {
+		System.out.println("spell");
+		this.spell = new Spell(this.getLorann().getX() + x, this.getLorann().getY() + y, this.getMap());
+		this.getSpell().getSprite().loadImage();
 	}
 
 }

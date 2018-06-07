@@ -1,4 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: model.ExampleTest
 -------------------------------------------------------------------------------
+<<<<<<< HEAD
 Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.042 sec
+=======
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.043 sec
+>>>>>>> 0ec9f5d94207ea9f2cb2b9480812f964fd780446

@@ -22,6 +22,8 @@ public class ControllerFacade implements IController, IOrderPerformer {
 		System.out.println("controller");
 	}
 
+	boolean spell = true;
+
 	/**
 	 * Main loop of the game, does different action depending on UserOrder (enum).
 	 * Check if Lorann hits a monster.
@@ -30,61 +32,77 @@ public class ControllerFacade implements IController, IOrderPerformer {
 	public void play() throws InterruptedException, IOException {
 		while (this.getModel().getLorann().isAlive()) {
 			Thread.sleep(200);
+			if (spell == true) {
+				this.getModel().initSpell(-1, 0);
+				// this.getModel().getSpell().move();
+				spell = false;
+			}
 			this.getModel().getMonster().move();
+
 			this.getModel().getMonster2().move();
 			this.getModel().getMonster3().move();
 			this.getModel().getMonster4().move();
 			switch (this.getStackOrder()) {
 			case RIGHT:
-				if ((this.mov.hitMonster(1, 0) == true )) {
+				if ((this.mov.hitMonster(1, 0) == true)) {
+
 					hitMonstre();
 				}
 				this.getModel().getLorann().moveRight();
 				break;
 			case LEFT:
-				if (this.mov.hitMonster(-1, 0) == true ) {
+				if (this.mov.hitMonster(-1, 0) == true) {
+
 					hitMonstre();
 				}
 				this.getModel().getLorann().moveLeft();
 				break;
 			case UP:
-				if (this.mov.hitMonster(0, -1) == true ) {
+				if (this.mov.hitMonster(0, -1) == true) {
 					hitMonstre();
 				}
 				this.getModel().getLorann().moveUp();
 				break;
 			case DOWN:
-				if (this.mov.hitMonster(0, 1) == true ) {
+				if (this.mov.hitMonster(0, 1) == true) {
 					hitMonstre();
 				}
 				this.getModel().getLorann().moveDown();
 				break;
 			case UPLEFT:
-				if ((this.mov.hitMonster(-1, -1) == true )) {
+
+				if ((this.mov.hitMonster(-1, -1) == true)) {
+
 					hitMonstre();
 				}
 				this.getModel().getLorann().moveUpLeft();
 				break;
 			case UPRIGHT:
-				if (this.mov.hitMonster(1, -1) == true ) {
+
+				if (this.mov.hitMonster(1, -1) == true) {
+
 					hitMonstre();
 				}
 				this.getModel().getLorann().moveUpRight();
 				break;
 			case DOWNLEFT:
-				if (this.mov.hitMonster(-1, 1) == true ) {
+
+				if (this.mov.hitMonster(-1, 1) == true) {
+
 					hitMonstre();
 				}
 				this.getModel().getLorann().moveDownLeft();
 				break;
 			case DOWNRIGHT:
-				if (this.mov.hitMonster(1, 1) == true ) {
+				if (this.mov.hitMonster(1, 1) == true) {
+
 					hitMonstre();
 				}
 				this.getModel().getLorann().moveDownRight();
 				break;
 			case FIRE:
-				this.getModel().getLorann().fire();
+				this.getModel().initSpell(-1, 0);
+				this.getModel().getSpell().move();
 				break;
 			default:
 				// this.getModel().getLorann().doNothing();

@@ -47,7 +47,7 @@ public abstract class Mobile extends Element implements IMobile {
 				break;
 			case COLLECTABLE:
 				System.out.println("collect");
-				this.collect(this.getX() + moveX, this.getY() + moveY);
+				collect(this.getX() + moveX, this.getY() + moveY);
 				this.setXY(this.getX() + moveX, this.getY() + moveY);
 				this.setHasMoved();
 				break;
@@ -84,16 +84,17 @@ public abstract class Mobile extends Element implements IMobile {
 	}
 
 	/**
-	 * Call wining message
+	 * Wining message
 	 */
 
 	public void win() {
 		JOptionPane.showMessageDialog(null, "YOU WIN");
 		System.exit(0);
 	}
-	
+
 	protected void die() throws IOException {
 		this.setAlive(false);
+
 		JOptionPane.showMessageDialog(null, "YOU DIED");
 		System.exit(0);
 	}
@@ -104,6 +105,7 @@ public abstract class Mobile extends Element implements IMobile {
 	 */
 
 	public void collect(int x, int y) throws IOException {
+		System.out.println("enter");
 		this.getMap().getOnTheMapXY(x, y).setSprite(new Sprite(' ', "empty.png"));
 		this.getMap().getOnTheMapXY(x, y).setCollision(Collision.FREE);
 		this.getMap().getOnTheMapXY(x, y).getSprite().loadImage();
@@ -164,8 +166,6 @@ public abstract class Mobile extends Element implements IMobile {
 	public void setAlive(boolean alive) {
 		this.alive = alive;
 	}
-
-	
 
 	public Point getPosition() {
 		return this.position;

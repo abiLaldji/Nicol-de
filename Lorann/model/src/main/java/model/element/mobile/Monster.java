@@ -112,4 +112,5 @@ public class Monster extends Mobile {
 		// TODO Auto-generated method stub
 
 	}
+
 }

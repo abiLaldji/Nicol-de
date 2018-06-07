@@ -22,25 +22,22 @@ public class Movement {
 	}
 
 	public boolean hitMonster(int x, int y) {
-		if (this.controller.getModel().getMonster().getPosition()
-				.equals(new Point(this.controller.getModel().getLorann().getX(),
-						this.controller.getModel().getLorann().getY())  )) {
+		if (this.controller.getModel().getMonster().getPosition().equals(new Point(
+				this.controller.getModel().getLorann().getX(), this.controller.getModel().getLorann().getY()))) {
 			this.hit = true;
 		}
-		
+
 		else if (this.controller.getModel().getMonster2().getPosition()
 				.equals(new Point(this.controller.getModel().getLorann().getX() + x,
-						this.controller.getModel().getLorann().getY() + y)  )) {
+						this.controller.getModel().getLorann().getY() + y))) {
 			this.hit = true;
-		}
-		else if (this.controller.getModel().getMonster3().getPosition()
+		} else if (this.controller.getModel().getMonster3().getPosition()
 				.equals(new Point(this.controller.getModel().getLorann().getX() + x,
-						this.controller.getModel().getLorann().getY() + y)  )) {
+						this.controller.getModel().getLorann().getY() + y))) {
 			this.hit = true;
-		}
-		else if (this.controller.getModel().getMonster4().getPosition()
+		} else if (this.controller.getModel().getMonster4().getPosition()
 				.equals(new Point(this.controller.getModel().getLorann().getX() + x,
-						this.controller.getModel().getLorann().getY() + y)  )) {
+						this.controller.getModel().getLorann().getY() + y))) {
 			this.hit = true;
 		}
 		return this.hit;
@@ -109,13 +106,6 @@ public class Movement {
 			}
 		}
 	}
-
-	// public void fire() throws IOException {
-	// System.out.println("fire");
-	// this.controller.getModel().setSpell(new Spell(this.getX() + 1, this.getY(),
-	// this.getMap()));
-	// // this.getMap().getOnTheMapXY(this.getX() + x, this.getY() + y).move();
-	// }
 
 	protected void die() throws IOException {
 		this.getLorann().setAlive(false);
